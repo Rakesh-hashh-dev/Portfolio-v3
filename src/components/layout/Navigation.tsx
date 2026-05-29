@@ -52,7 +52,7 @@ export default function Navigation() {
         <motion.a
           href="mailto:rk821604@gmail.com"
           whileHover={{ y: -2 }}
-          className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-amber-700"
+          className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#6fa4ff]"
         >
           Connect
           <ArrowUpRight size={16} />

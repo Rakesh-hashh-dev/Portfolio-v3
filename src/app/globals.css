@@ -1,17 +1,17 @@
 @import "tailwindcss";
 
 @theme {
-  --color-surface: #241611;
-  --color-primary: #b45309;
-  --color-accent-cyan: #fbbf24;
-  --color-accent-purple: #fb7185;
+  --color-surface: #0f1321;
+  --color-primary: #4d8eff;
+  --color-accent-cyan: #adc6ff;
+  --color-accent-purple: #ddb7ff;
   
   --font-sans: var(--font-inter);
 }
 
 :root {
-  --background: #241611;
-  --foreground: #ffffff;
+  --background: #0f1321;
+  --foreground: #dfe1f6;
 }
 
 html {
@@ -19,11 +19,7 @@ html {
 }
 
 body {
-  background:
-    radial-gradient(circle at 16% 8%, rgba(251, 191, 36, 0.2), transparent 28rem),
-    radial-gradient(circle at 86% 16%, rgba(251, 113, 133, 0.16), transparent 24rem),
-    radial-gradient(circle at 50% 92%, rgba(180, 83, 9, 0.16), transparent 30rem),
-    linear-gradient(135deg, #241611 0%, #3a2117 42%, #1f1b16 100%);
+  background: #0f1321;
   color: var(--foreground);
   font-family: var(--font-sans), sans-serif;
   overflow-x: hidden;
@@ -36,8 +32,8 @@ body::before {
   z-index: -2;
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(255, 244, 214, 0.052) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 244, 214, 0.04) 1px, transparent 1px);
+    linear-gradient(rgba(173, 198, 255, 0.052) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(221, 183, 255, 0.04) 1px, transparent 1px);
   background-size: 72px 72px;
   mask-image: linear-gradient(to bottom, black, transparent 82%);
 }
@@ -48,34 +44,31 @@ body::after {
   inset: 0;
   z-index: -3;
   pointer-events: none;
-  background:
-    linear-gradient(180deg, rgba(36, 22, 17, 0.08), rgba(36, 22, 17, 0.58)),
-    radial-gradient(circle at 20% 30%, rgba(251, 191, 36, 0.12), transparent 24rem),
-    radial-gradient(circle at 84% 56%, rgba(251, 113, 133, 0.1), transparent 22rem),
-    radial-gradient(circle at 50% 120%, rgba(217, 119, 6, 0.16), transparent 34rem);
+  background: linear-gradient(180deg, rgba(15, 19, 33, 0.04), rgba(15, 19, 33, 0.68));
 }
 
 .glass-card {
-  background: linear-gradient(145deg, rgba(255, 248, 232, 0.13), rgba(255, 248, 232, 0.055));
+  background: linear-gradient(145deg, rgba(48, 52, 68, 0.56), rgba(23, 27, 42, 0.42));
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-  border: 1px solid rgba(255, 238, 196, 0.16);
-  box-shadow: 0 20px 70px rgba(59, 27, 12, 0.22);
+  border: 1px solid rgba(223, 225, 246, 0.12);
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.28);
 }
 
 .neon-glow {
-  box-shadow: 0 0 24px rgba(251, 191, 36, 0.32);
+  box-shadow: 0 0 24px rgba(173, 198, 255, 0.32);
 }
 
 .text-gradient {
-  background: linear-gradient(to right, #fef3c7, var(--color-accent-cyan), var(--color-accent-purple));
+  background: linear-gradient(to right, #ffffff, var(--color-accent-cyan), var(--color-accent-purple));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 15px rgba(173, 198, 255, 0.28));
 }
 
 .section-band {
-  background: linear-gradient(180deg, rgba(255, 248, 232, 0.07), rgba(255, 248, 232, 0.025));
-  border-block: 1px solid rgba(255, 238, 196, 0.12);
+  background: linear-gradient(180deg, rgba(48, 52, 68, 0.42), rgba(23, 27, 42, 0.22));
+  border-block: 1px solid rgba(223, 225, 246, 0.1);
 }
 
 .content-section {
@@ -157,6 +150,6 @@ body::after {
   .glass-card {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 12px 42px rgba(59, 27, 12, 0.18);
+    box-shadow: 0 12px 42px rgba(0, 0, 0, 0.22);
   }
 }
