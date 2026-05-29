@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { ArrowUpRight } from "lucide-react";
 
 import Image from "next/image";
+import ThemeToggle from "./ThemeToggle";
 
 const links = [
   { name: "About", href: "/about" },
@@ -49,14 +50,17 @@ export default function Navigation() {
           })}
         </div>
 
-        <motion.a
-          href="mailto:rk821604@gmail.com"
-          whileHover={{ y: -2 }}
-          className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#6fa4ff]"
-        >
-          Connect
-          <ArrowUpRight size={16} />
-        </motion.a>
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <motion.a
+            href="mailto:rk821604@gmail.com"
+            whileHover={{ y: -2 }}
+            className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[var(--theme-primary-hover)]"
+          >
+            Connect
+            <ArrowUpRight size={16} />
+          </motion.a>
+        </div>
       </div>
     </nav>
   );

@@ -10,6 +10,17 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
+const themeScript = `
+try {
+  var theme = localStorage.getItem("portfolio-theme");
+  document.documentElement.dataset.theme = theme === "light" ? "light" : "dark";
+  document.documentElement.style.colorScheme = theme === "light" ? "light" : "dark";
+} catch (_) {
+  document.documentElement.dataset.theme = "dark";
+  document.documentElement.style.colorScheme = "dark";
+}
+`;
+
 export const metadata: Metadata = {
   title: "Rakesh Kumar Behera | MBA Portfolio",
   description:
@@ -25,8 +36,11 @@ export default function RootLayout({
     <html
       lang="en"
       data-scroll-behavior="smooth"
+      data-theme="dark"
       className={`${inter.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
+      <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       <body className="min-h-full flex flex-col">
         <AnimatedBackground />
         <Navigation />

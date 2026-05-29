@@ -2,6 +2,12 @@
 
 import { useEffect, useRef } from "react";
 
+type ParticleTheme = {
+  particleRgb: string;
+  particleAlpha: number;
+  lineAlpha: number;
+};
+
 class Particle {
   x: number;
   y: number;
@@ -43,10 +49,10 @@ class Particle {
     if (this.baseY < 0 || this.baseY > height) this.vy *= -1;
   }
 
-  draw(ctx: CanvasRenderingContext2D) {
+  draw(ctx: CanvasRenderingContext2D, theme: ParticleTheme) {
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    ctx.fillStyle = "rgba(173, 198, 255, 0.4)";
+    ctx.fillStyle = `rgba(${theme.particleRgb}, ${theme.particleAlpha})`;
     ctx.fill();
   }
 }
@@ -71,6 +77,18 @@ export default function AnimatedBackground() {
     let mouseX = -1000;
     let mouseY = -1000;
     const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    const theme: ParticleTheme = {
+      particleRgb: "173, 198, 255",
+      particleAlpha: 0.4,
+      lineAlpha: 0.15,
+    };
+
+    function syncTheme() {
+      const styles = getComputedStyle(document.documentElement);
+      theme.particleRgb = styles.getPropertyValue("--theme-particle-rgb").trim() || "173, 198, 255";
+      theme.particleAlpha = Number(styles.getPropertyValue("--theme-particle-alpha")) || 0.4;
+      theme.lineAlpha = Number(styles.getPropertyValue("--theme-particle-line-alpha")) || 0.15;
+    }
 
     function initParticles(width: number, height: number) {
       particles = [];
@@ -118,28 +136,31 @@ export default function AnimatedBackground() {
             renderCtx.beginPath();
             renderCtx.moveTo(particles[index].x, particles[index].y);
             renderCtx.lineTo(particles[nextIndex].x, particles[nextIndex].y);
-            renderCtx.strokeStyle = `rgba(173, 198, 255, ${0.15 * (1 - distance / 100)})`;
+            renderCtx.strokeStyle = `rgba(${theme.particleRgb}, ${theme.lineAlpha * (1 - distance / 100)})`;
             renderCtx.lineWidth = 1;
             renderCtx.stroke();
           }
         }
 
         particles[index].update(mouseX, mouseY, width, height);
-        particles[index].draw(renderCtx);
+        particles[index].draw(renderCtx, theme);
       }
 
       animationFrameId = requestAnimationFrame(animate);
     }
 
+    syncTheme();
     resize();
     animate();
 
     window.addEventListener("resize", resize);
+    window.addEventListener("themechange", syncTheme);
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
     window.addEventListener("mouseleave", handleMouseLeave);
 
     return () => {
       window.removeEventListener("resize", resize);
+      window.removeEventListener("themechange", syncTheme);
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseleave", handleMouseLeave);
       cancelAnimationFrame(animationFrameId);

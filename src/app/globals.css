@@ -1,17 +1,76 @@
 @import "tailwindcss";
 
 @theme {
-  --color-surface: #0f1321;
-  --color-primary: #4d8eff;
-  --color-accent-cyan: #adc6ff;
-  --color-accent-purple: #ddb7ff;
+  --color-white: var(--theme-contrast);
+  --color-surface: var(--theme-surface);
+  --color-primary: var(--theme-primary);
+  --color-accent-cyan: var(--theme-accent-cyan);
+  --color-accent-purple: var(--theme-accent-purple);
   
   --font-sans: var(--font-inter);
 }
 
 :root {
-  --background: #0f1321;
-  --foreground: #dfe1f6;
+  --theme-contrast: #ffffff;
+  --theme-surface: #0f1321;
+  --theme-primary: #4d8eff;
+  --theme-primary-hover: #6fa4ff;
+  --theme-accent-cyan: #adc6ff;
+  --theme-accent-purple: #ddb7ff;
+  --theme-background: #0f1321;
+  --theme-foreground: #dfe1f6;
+  --theme-grid-a: rgba(173, 198, 255, 0.052);
+  --theme-grid-b: rgba(221, 183, 255, 0.04);
+  --theme-body-overlay: linear-gradient(180deg, rgba(15, 19, 33, 0.04), rgba(15, 19, 33, 0.68));
+  --theme-card-bg: linear-gradient(145deg, rgba(48, 52, 68, 0.56), rgba(23, 27, 42, 0.42));
+  --theme-card-border: rgba(223, 225, 246, 0.12);
+  --theme-card-shadow: rgba(0, 0, 0, 0.28);
+  --theme-card-shadow-mobile: rgba(0, 0, 0, 0.22);
+  --theme-glow: rgba(173, 198, 255, 0.32);
+  --theme-gradient-start: #ffffff;
+  --theme-gradient-shadow: rgba(173, 198, 255, 0.28);
+  --theme-section-bg: linear-gradient(180deg, rgba(48, 52, 68, 0.42), rgba(23, 27, 42, 0.22));
+  --theme-section-border: rgba(223, 225, 246, 0.1);
+  --theme-particle-rgb: 173, 198, 255;
+  --theme-particle-alpha: 0.4;
+  --theme-particle-line-alpha: 0.15;
+  --theme-bg-glow-primary: rgba(173, 198, 255, 0.2);
+  --theme-bg-glow-secondary: rgba(221, 183, 255, 0.15);
+  --theme-noise-opacity: 0.03;
+  --background: var(--theme-background);
+  --foreground: var(--theme-foreground);
+}
+
+:root[data-theme="light"] {
+  --theme-contrast: #172033;
+  --theme-surface: #fffaf0;
+  --theme-primary: #2563eb;
+  --theme-primary-hover: #1d4ed8;
+  --theme-accent-cyan: #0f766e;
+  --theme-accent-purple: #7c3aed;
+  --theme-background: #fffaf0;
+  --theme-foreground: #172033;
+  --theme-grid-a: rgba(37, 99, 235, 0.06);
+  --theme-grid-b: rgba(124, 58, 237, 0.045);
+  --theme-body-overlay:
+    radial-gradient(circle at 14% 10%, rgba(37, 99, 235, 0.12), transparent 28rem),
+    radial-gradient(circle at 86% 20%, rgba(124, 58, 237, 0.09), transparent 26rem),
+    linear-gradient(180deg, rgba(255, 250, 240, 0.1), rgba(250, 244, 232, 0.78));
+  --theme-card-bg: linear-gradient(145deg, rgba(255, 255, 255, 0.76), rgba(248, 242, 229, 0.58));
+  --theme-card-border: rgba(37, 99, 235, 0.14);
+  --theme-card-shadow: rgba(31, 41, 55, 0.12);
+  --theme-card-shadow-mobile: rgba(31, 41, 55, 0.1);
+  --theme-glow: rgba(37, 99, 235, 0.24);
+  --theme-gradient-start: #1e293b;
+  --theme-gradient-shadow: rgba(37, 99, 235, 0.16);
+  --theme-section-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.62), rgba(248, 242, 229, 0.36));
+  --theme-section-border: rgba(37, 99, 235, 0.12);
+  --theme-particle-rgb: 37, 99, 235;
+  --theme-particle-alpha: 0.28;
+  --theme-particle-line-alpha: 0.11;
+  --theme-bg-glow-primary: rgba(37, 99, 235, 0.14);
+  --theme-bg-glow-secondary: rgba(124, 58, 237, 0.1);
+  --theme-noise-opacity: 0.025;
 }
 
 html {
@@ -19,7 +78,7 @@ html {
 }
 
 body {
-  background: #0f1321;
+  background: var(--theme-background);
   color: var(--foreground);
   font-family: var(--font-sans), sans-serif;
   overflow-x: hidden;
@@ -32,8 +91,8 @@ body::before {
   z-index: -2;
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(173, 198, 255, 0.052) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(221, 183, 255, 0.04) 1px, transparent 1px);
+    linear-gradient(var(--theme-grid-a) 1px, transparent 1px),
+    linear-gradient(90deg, var(--theme-grid-b) 1px, transparent 1px);
   background-size: 72px 72px;
   mask-image: linear-gradient(to bottom, black, transparent 82%);
 }
@@ -44,31 +103,31 @@ body::after {
   inset: 0;
   z-index: -3;
   pointer-events: none;
-  background: linear-gradient(180deg, rgba(15, 19, 33, 0.04), rgba(15, 19, 33, 0.68));
+  background: var(--theme-body-overlay);
 }
 
 .glass-card {
-  background: linear-gradient(145deg, rgba(48, 52, 68, 0.56), rgba(23, 27, 42, 0.42));
+  background: var(--theme-card-bg);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-  border: 1px solid rgba(223, 225, 246, 0.12);
-  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.28);
+  border: 1px solid var(--theme-card-border);
+  box-shadow: 0 20px 70px var(--theme-card-shadow);
 }
 
 .neon-glow {
-  box-shadow: 0 0 24px rgba(173, 198, 255, 0.32);
+  box-shadow: 0 0 24px var(--theme-glow);
 }
 
 .text-gradient {
-  background: linear-gradient(to right, #ffffff, var(--color-accent-cyan), var(--color-accent-purple));
+  background: linear-gradient(to right, var(--theme-gradient-start), var(--color-accent-cyan), var(--color-accent-purple));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 15px rgba(173, 198, 255, 0.28));
+  filter: drop-shadow(0 0 15px var(--theme-gradient-shadow));
 }
 
 .section-band {
-  background: linear-gradient(180deg, rgba(48, 52, 68, 0.42), rgba(23, 27, 42, 0.22));
-  border-block: 1px solid rgba(223, 225, 246, 0.1);
+  background: var(--theme-section-bg);
+  border-block: 1px solid var(--theme-section-border);
 }
 
 .content-section {
@@ -82,7 +141,7 @@ body::after {
   z-index: -2;
   pointer-events: none;
   overflow: hidden;
-  background: #0f1321;
+  background: var(--theme-background);
 }
 
 .animated-bg__canvas {
@@ -105,7 +164,7 @@ body::after {
   top: 25%;
   width: 24rem;
   height: 24rem;
-  background: rgba(173, 198, 255, 0.2);
+  background: var(--theme-bg-glow-primary);
   filter: blur(120px);
   transform: translate(-50%, -50%);
 }
@@ -115,7 +174,7 @@ body::after {
   bottom: 25%;
   width: 30rem;
   height: 30rem;
-  background: rgba(221, 183, 255, 0.15);
+  background: var(--theme-bg-glow-secondary);
   filter: blur(150px);
   transform: translate(50%, 50%);
 }
@@ -127,7 +186,7 @@ body::after {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  opacity: 0.03;
+  opacity: var(--theme-noise-opacity);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -150,6 +209,6 @@ body::after {
   .glass-card {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 12px 42px rgba(0, 0, 0, 0.22);
+    box-shadow: 0 12px 42px var(--theme-card-shadow-mobile);
   }
 }

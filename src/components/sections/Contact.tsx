@@ -62,7 +62,7 @@ export default function Contact() {
 
             <a
               href={`mailto:${profile.email}?subject=Portfolio%20Conversation&body=Hi%20Rakesh%2C%0A%0AI%20came%20across%20your%20portfolio%20and%20would%20like%20to%20connect%20regarding...`}
-              className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-6 py-4 font-semibold text-white transition-colors hover:bg-[#6fa4ff]"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-6 py-4 font-semibold text-white transition-colors hover:bg-[var(--theme-primary-hover)]"
             >
               Email Rakesh
               <Send size={18} />
