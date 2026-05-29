@@ -2,71 +2,61 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { useState, useRef } from "react";
+import { usePathname } from "next/navigation";
+import { ArrowUpRight } from "lucide-react";
 
-const MagneticButton = ({ children, className }: { children: React.ReactNode; className?: string }) => {
-  const ref = useRef<HTMLButtonElement>(null);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+import Image from "next/image";
 
-  const handleMouse = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const { clientX, clientY } = e;
-    const { height, width, left, top } = ref.current?.getBoundingClientRect() || { height: 0, width: 0, left: 0, top: 0 };
-    const middleX = clientX - (left + width / 2);
-    const middleY = clientY - (top + height / 2);
-    setPosition({ x: middleX * 0.1, y: middleY * 0.1 });
-  };
-
-  const reset = () => {
-    setPosition({ x: 0, y: 0 });
-  };
-
-  return (
-    <motion.button
-      ref={ref}
-      onMouseMove={handleMouse}
-      onMouseLeave={reset}
-      animate={{ x: position.x, y: position.y }}
-      transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
-      className={className}
-    >
-      {children}
-    </motion.button>
-  );
-};
+const links = [
+  { name: "About", href: "/about" },
+  { name: "Experience", href: "/experience" },
+  { name: "Case Studies", href: "/case-studies" },
+  { name: "Skills", href: "/skills" },
+  { name: "Contact", href: "/contact" },
+];
 
 export default function Navigation() {
-  const links = [
-    { name: "Work", href: "#work" },
-    { name: "Expertise", href: "#expertise" },
-    { name: "Process", href: "#process" },
-    { name: "Contact", href: "#contact" },
-  ];
+  const pathname = usePathname();
 
   return (
-    <nav className="fixed top-0 w-full z-50 px-6 py-4 flex items-center justify-between glass-card border-b-0 border-x-0 border-t-0 bg-transparent">
-      <div className="flex items-center gap-2">
-        {/* Placeholder for Logo */}
-        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400 to-purple-600 flex items-center justify-center text-white font-bold neon-glow">
-          RK
-        </div>
-      </div>
-      
-      <div className="hidden md:flex items-center gap-8">
-        {links.map((link) => (
-          <Link 
-            key={link.name} 
-            href={link.href}
-            className="text-white/70 hover:text-white transition-colors text-sm font-medium tracking-wide"
-          >
-            {link.name}
-          </Link>
-        ))}
-      </div>
+    <nav className="fixed top-0 z-50 w-full px-4 py-3 md:px-6">
+      <div className="mx-auto flex max-w-7xl items-center justify-between rounded-lg border border-white/10 bg-surface/90 px-4 py-3 shadow-xl shadow-black/20 backdrop-blur">
+        <Link href="/" className="flex min-w-0 items-center gap-3">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-lg neon-glow">
+            <Image src="/logo.png" alt="RK Logo" width={40} height={40} className="object-cover" />
+          </div>
+          <div className="hidden min-w-0 leading-tight sm:block">
+            <p className="truncate text-sm font-semibold text-white">Rakesh Kumar Behera</p>
+            <p className="truncate text-xs text-white/50">MBA | Strategy, Analytics, Execution</p>
+          </div>
+        </Link>
 
-      <div>
-        <MagneticButton className="px-6 py-2.5 rounded-full bg-primary text-white font-medium hover:bg-blue-600 transition-colors neon-glow">
-          Hire Me
-        </MagneticButton>
+        <div className="hidden items-center gap-1 lg:flex">
+          {links.map((link) => {
+            const active = pathname === link.href;
+
+            return (
+              <Link
+                key={link.name}
+                href={link.href}
+                className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                  active ? "bg-white/10 text-white" : "text-white/60 hover:bg-white/5 hover:text-white"
+                }`}
+              >
+                {link.name}
+              </Link>
+            );
+          })}
+        </div>
+
+        <motion.a
+          href="mailto:rk821604@gmail.com"
+          whileHover={{ y: -2 }}
+          className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-amber-700"
+        >
+          Connect
+          <ArrowUpRight size={16} />
+        </motion.a>
       </div>
     </nav>
   );

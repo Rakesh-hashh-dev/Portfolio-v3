@@ -12,7 +12,7 @@ interface GlassCardProps extends HTMLMotionProps<"div"> {
 export function GlassCard({ children, className = "", glowOnHover = false, ...props }: GlassCardProps) {
   return (
     <motion.div
-      className={`glass-card rounded-2xl p-6 ${glowOnHover ? "hover:neon-glow transition-shadow duration-300" : ""} ${className}`}
+      className={`glass-card rounded-lg p-6 ${glowOnHover ? "hover:neon-glow transition-all duration-300 hover:-translate-y-1" : ""} ${className}`}
       {...props}
     >
       {children}

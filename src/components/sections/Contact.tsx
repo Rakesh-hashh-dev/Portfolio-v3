@@ -2,94 +2,74 @@
 
 import { motion } from "framer-motion";
 import { GlassCard } from "../ui/GlassCard";
-import { useState } from "react";
-import { Send } from "lucide-react";
+import { Mail, MapPin, Send, UserRound } from "lucide-react";
+import { profile } from "@/lib/profile";
+
+const contactLinks = [
+  {
+    icon: Mail,
+    label: "Email",
+    value: profile.email,
+    href: `mailto:${profile.email}`,
+  },
+  {
+    icon: UserRound,
+    label: "LinkedIn",
+    value: "linkedin.com/in/rakesh-kumar-behera-rk821604",
+    href: profile.linkedin,
+  },
+  {
+    icon: MapPin,
+    label: "Location",
+    value: profile.location,
+    href: "/",
+  },
+];
 
 export default function Contact() {
-  const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle");
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus("submitting");
-    // Dummy handler
-    setTimeout(() => {
-      setStatus("success");
-      console.log("Form submitted dummy!");
-      setTimeout(() => setStatus("idle"), 3000);
-    }, 1500);
-  };
-
   return (
-    <section id="contact" className="py-32 relative z-10 px-6 max-w-4xl mx-auto">
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="text-center mb-16"
-      >
-        <h2 className="text-4xl md:text-5xl font-bold mb-4">
-          Let's <span className="text-gradient">Collaborate</span>
-        </h2>
-        <p className="text-white/60 max-w-xl mx-auto text-lg">
-          Ready to build something extraordinary? Send me a message and let's discuss your next cinematic project.
-        </p>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-      >
-        <GlassCard glowOnHover className="p-8 md:p-12">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-white/80 ml-1">Name</label>
-                <input 
-                  type="text" 
-                  required
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
-                  placeholder="John Doe"
-                />
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-white/80 ml-1">Email</label>
-                <input 
-                  type="email" 
-                  required
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
-                  placeholder="john@example.com"
-                />
-              </div>
-            </div>
-            
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-white/80 ml-1">Message</label>
-              <textarea 
-                required
-                rows={5}
-                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all resize-none"
-                placeholder="Tell me about your project..."
-              />
-            </div>
-
-            <button
-              type="submit"
-              disabled={status !== "idle"}
-              className="w-full py-4 rounded-xl bg-primary text-white font-medium hover:bg-blue-600 transition-colors neon-glow flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+    <section className="content-section relative z-10 mx-auto max-w-6xl px-6 py-16">
+      <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
+        <div className="space-y-4">
+          {contactLinks.map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              className="glass-card flex items-center gap-4 rounded-lg p-5 transition-colors hover:bg-white/10"
             >
-              {status === "idle" && (
-                <>
-                  <span>Send Message</span>
-                  <Send size={18} />
-                </>
-              )}
-              {status === "submitting" && "Sending..."}
-              {status === "success" && "Message Sent!"}
-            </button>
-          </form>
-        </GlassCard>
-      </motion.div>
+              <div className="rounded-lg bg-accent-cyan/10 p-3 text-accent-cyan">
+                <item.icon size={22} />
+              </div>
+              <div>
+                <p className="text-sm text-white/45">{item.label}</p>
+                <p className="break-all font-medium text-white">{item.value}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        <motion.div initial={{ opacity: 0, y: 22 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+          <GlassCard className="p-6 md:p-8">
+            <div className="mb-6 flex items-center gap-3">
+              <div className="rounded-lg bg-accent-purple/15 p-3 text-accent-purple">
+                <Send size={22} />
+              </div>
+              <div>
+                <h3 className="text-2xl font-semibold text-white">Quick message</h3>
+                <p className="text-sm text-white/50">This opens your email client with a prepared message.</p>
+              </div>
+            </div>
+
+            <a
+              href={`mailto:${profile.email}?subject=Portfolio%20Conversation&body=Hi%20Rakesh%2C%0A%0AI%20came%20across%20your%20portfolio%20and%20would%20like%20to%20connect%20regarding...`}
+              className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-6 py-4 font-semibold text-white transition-colors hover:bg-amber-700"
+            >
+              Email Rakesh
+              <Send size={18} />
+            </a>
+          </GlassCard>
+        </motion.div>
+      </div>
     </section>
   );
 }

@@ -1,104 +1,117 @@
 "use client";
 
-import { useRef } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, Sphere, MeshDistortMaterial } from "@react-three/drei";
+import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
-import * as THREE from "three";
-
-// A simple animated globe/sphere for the RK logo placeholder
-const HolographicGlobe = () => {
-  const sphereRef = useRef<THREE.Mesh>(null);
-  
-  useFrame(({ clock }) => {
-    if (sphereRef.current) {
-      sphereRef.current.rotation.x = clock.getElapsedTime() * 0.2;
-      sphereRef.current.rotation.y = clock.getElapsedTime() * 0.3;
-    }
-  });
-
-  return (
-    <Sphere ref={sphereRef} args={[1, 64, 64]} scale={2}>
-      <MeshDistortMaterial
-        color="#3B82F6"
-        attach="material"
-        distort={0.4}
-        speed={2}
-        roughness={0.2}
-        metalness={0.8}
-        wireframe={true}
-      />
-    </Sphere>
-  );
-};
+import { ArrowRight, BarChart3, Download, MapPin, Sparkles } from "lucide-react";
+import { highlights, impactMetrics, profile } from "@/lib/profile";
 
 export default function Hero() {
   return (
-    <section id="home" className="relative h-screen w-full flex items-center justify-center overflow-hidden pt-20">
-      {/* 3D Background */}
-      <div className="absolute inset-0 z-0 opacity-60">
-        <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
-          <ambientLight intensity={0.5} />
-          <directionalLight position={[10, 10, 5]} intensity={1} />
-          <HolographicGlobe />
-          <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.5} />
-        </Canvas>
-      </div>
+    <section className="relative min-h-screen overflow-hidden px-6 pt-32 md:pt-40">
+      <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.02fr_0.98fr]">
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+        >
+          <div className="mb-5 inline-flex items-center gap-2 rounded-lg border border-white/15 bg-white/10 px-3 py-2 text-sm font-medium text-accent-cyan shadow-lg shadow-black/10">
+            <MapPin size={16} />
+            {profile.location}
+          </div>
 
-      {/* Content */}
-      <div className="relative z-10 text-center flex flex-col items-center px-4 max-w-4xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="mb-4 inline-block px-4 py-1.5 rounded-full glass-card text-accent-cyan text-sm font-medium tracking-wider uppercase"
-        >
-          Creative Developer & Designer
+          <h1 className="max-w-4xl text-4xl font-bold leading-tight md:text-6xl">
+            {profile.name}
+            <span className="mt-3 block text-gradient">MBA talent for roles that need strategy, execution, and measurable growth.</span>
+          </h1>
+
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-white/72">{profile.summary}</p>
+
+          <div className="mt-6 flex flex-wrap gap-2">
+            {["MBA Candidate", "Business Strategy", "Data-Driven Execution", "Lean Six Sigma Green Belt"].map((item) => (
+              <span key={item} className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.07] px-3 py-2 text-sm text-white/72">
+                <Sparkles size={14} className="text-accent-purple" />
+                {item}
+              </span>
+            ))}
+          </div>
+
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <Link
+              href="/case-studies"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 font-semibold text-white transition-colors hover:bg-amber-700"
+            >
+              View Case Studies
+              <ArrowRight size={18} />
+            </Link>
+            <a
+              href={profile.resume}
+              className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/5 px-6 py-3 font-semibold text-white transition-colors hover:bg-white/10"
+            >
+              Resume
+              <Download size={18} />
+            </a>
+          </div>
+
+          <div className="mt-10 grid gap-3 sm:grid-cols-3">
+            {highlights.map((item) => (
+              <div key={item.label} className="rounded-lg border border-white/10 bg-white/[0.04] p-4">
+                <p className="text-xs font-semibold uppercase tracking-wider text-accent-cyan">{item.label}</p>
+                <p className="mt-2 text-base font-semibold text-white">{item.value}</p>
+                <p className="mt-1 text-sm text-white/58">{item.detail}</p>
+              </div>
+            ))}
+          </div>
         </motion.div>
-        
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-tight"
-        >
-          Building <span className="text-gradient">Cinematic</span> <br className="hidden md:block" />
-          Digital Experiences
-        </motion.h1>
-        
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-lg md:text-xl text-white/60 mb-10 max-w-2xl mx-auto"
-        >
-          Hi, I'm Rakesh Kumar Behera. I blend high-performance engineering with premium 3D aesthetics to create immersive web applications.
-        </motion.p>
-        
+
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 32 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="flex flex-col sm:flex-row gap-4 items-center justify-center"
+          transition={{ duration: 0.7, delay: 0.15 }}
+          className="relative"
         >
-          <button className="px-8 py-4 rounded-full bg-primary text-white font-medium hover:bg-blue-600 transition-colors neon-glow text-lg">
-            Explore My Work
-          </button>
-          <button className="px-8 py-4 rounded-full glass-card text-white hover:text-accent-cyan transition-colors text-lg">
-            Let's Talk
-          </button>
+          <div className="relative mx-auto aspect-[4/5] max-w-[520px] overflow-hidden rounded-lg border border-white/10 bg-white/5 shadow-2xl shadow-black/35">
+            <Image
+              src="/DP-optimized.webp"
+              alt="Rakesh Kumar Behera"
+              fill
+              priority
+              quality={88}
+              sizes="(min-width: 1024px) 520px, 92vw"
+              className="object-cover"
+            />
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-surface via-surface/65 to-transparent p-5 pt-24">
+              <div className="glass-card rounded-lg p-4">
+                <div className="mb-4 flex items-center justify-between">
+                  <div>
+                    <p className="text-sm text-white/50">Impact Snapshot</p>
+                    <p className="font-semibold text-white">Leadership and execution</p>
+                  </div>
+                  <BarChart3 className="text-accent-purple" size={22} />
+                </div>
+                <div className="space-y-3">
+                  {impactMetrics.slice(0, 3).map((metric) => (
+                    <div key={metric.label}>
+                      <div className="mb-1 flex items-center justify-between text-xs">
+                        <span className="text-white/60">{metric.label}</span>
+                        <span className="font-semibold text-white">{metric.value}</span>
+                      </div>
+                      <div className="h-1.5 rounded-full bg-white/10">
+                        <motion.div
+                          initial={{ width: 0 }}
+                          animate={{ width: metric.width }}
+                          transition={{ duration: 1, delay: 0.35 }}
+                          className="h-full rounded-full bg-gradient-to-r from-accent-cyan to-accent-purple"
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
         </motion.div>
       </div>
-      
-      {/* Scroll indicator */}
-      <motion.div 
-        className="absolute bottom-24 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center opacity-50"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ repeat: Infinity, duration: 2 }}
-      >
-        <span className="text-xs uppercase tracking-widest mb-2">Scroll</span>
-        <div className="w-[1px] h-12 bg-gradient-to-b from-white to-transparent"></div>
-      </motion.div>
     </section>
   );
 }

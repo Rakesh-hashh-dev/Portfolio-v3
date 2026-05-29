@@ -2,84 +2,52 @@
 
 import { motion } from "framer-motion";
 import { GlassCard } from "../ui/GlassCard";
-
-const timeline = [
-  {
-    year: "2023 - Present",
-    role: "Senior Creative Developer",
-    company: "TechNova",
-    desc: "Leading frontend engineering with WebGL and React.",
-  },
-  {
-    year: "2021 - 2023",
-    role: "Frontend Engineer",
-    company: "Studio 3D",
-    desc: "Built award-winning interactive websites.",
-  },
-  {
-    year: "2019 - 2021",
-    role: "UI/UX Designer",
-    company: "Digital Edge",
-    desc: "Designed interfaces with high focus on micro-interactions.",
-  },
-];
+import { education, profile, stats } from "@/lib/profile";
 
 export default function About() {
   return (
-    <section id="expertise" className="py-32 relative z-10 px-6 max-w-6xl mx-auto">
+    <section className="content-section relative z-10 mx-auto max-w-7xl px-6 py-16">
       <motion.div
-        initial={{ opacity: 0, y: 50 }}
+        initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
-        className="mb-16"
+        className="mb-12 grid gap-8 lg:grid-cols-[0.8fr_1.2fr]"
       >
-        <h2 className="text-4xl md:text-5xl font-bold mb-4">
-          <span className="text-gradient">Experience</span> & Journey
-        </h2>
-        <p className="text-white/60 max-w-2xl text-lg">
-          My path in digital creation is defined by a constant push to bridge the gap between technical engineering and aesthetic design.
+        <div>
+          <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-accent-cyan">Profile</p>
+          <h2 className="text-3xl font-bold md:text-5xl">Business generalist with technical depth.</h2>
+        </div>
+        <p className="rounded-lg border border-white/10 bg-white/[0.045] p-5 text-lg leading-8 text-white/68">
+          {profile.summary} I am actively seeking opportunities in consulting, operations, strategy, marketing, and
+          business analytics where structured execution and data-driven thinking create measurable value.
         </p>
       </motion.div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        {/* Timeline */}
-        <div className="relative pl-8 border-l border-white/10 space-y-12">
-          {timeline.map((item, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ delay: i * 0.2 }}
-              className="relative"
-            >
-              <div className="absolute -left-[41px] top-1 w-5 h-5 rounded-full bg-surface border-2 border-primary neon-glow" />
-              <span className="text-accent-cyan font-mono text-sm mb-2 block">{item.year}</span>
-              <h3 className="text-2xl font-semibold text-white mb-1">{item.role}</h3>
-              <h4 className="text-lg text-white/80 mb-3">{item.company}</h4>
-              <p className="text-white/50">{item.desc}</p>
-            </motion.div>
-          ))}
+      <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
+        <div>
+          <h3 className="mb-4 text-2xl font-semibold text-white">Education</h3>
+          <div className="grid gap-4">
+            {education.map((item) => (
+              <GlassCard key={item.program} className="p-5">
+                <p className="text-sm font-medium text-accent-purple">{item.period}</p>
+                <h4 className="mt-2 text-xl font-semibold text-white">{item.program}</h4>
+                <p className="text-white/75">{item.school}</p>
+                <p className="mt-3 text-sm leading-6 text-white/65">{item.detail}</p>
+              </GlassCard>
+            ))}
+          </div>
         </div>
 
-        {/* Stats Grid */}
-        <div className="grid grid-cols-2 gap-4 h-fit">
-          <GlassCard glowOnHover className="flex flex-col items-center justify-center text-center p-8">
-            <span className="text-4xl font-bold text-white mb-2">5+</span>
-            <span className="text-sm text-white/50 uppercase tracking-wider">Years Exp.</span>
-          </GlassCard>
-          <GlassCard glowOnHover className="flex flex-col items-center justify-center text-center p-8">
-            <span className="text-4xl font-bold text-white mb-2">40+</span>
-            <span className="text-sm text-white/50 uppercase tracking-wider">Projects</span>
-          </GlassCard>
-          <GlassCard glowOnHover className="flex flex-col items-center justify-center text-center p-8">
-            <span className="text-4xl font-bold text-white mb-2">12</span>
-            <span className="text-sm text-white/50 uppercase tracking-wider">Awards</span>
-          </GlassCard>
-          <GlassCard glowOnHover className="flex flex-col items-center justify-center text-center p-8">
-            <span className="text-4xl font-bold text-white mb-2">100%</span>
-            <span className="text-sm text-white/50 uppercase tracking-wider">Passion</span>
-          </GlassCard>
+        <div>
+          <h3 className="mb-4 text-2xl font-semibold text-white">Operating Style</h3>
+          <div className="grid grid-cols-2 gap-4">
+            {stats.map((stat) => (
+              <GlassCard key={stat.label} glowOnHover className="p-5">
+                <p className="text-3xl font-bold text-white">{stat.value}</p>
+                <p className="mt-2 text-sm text-white/65">{stat.label}</p>
+              </GlassCard>
+              ))}
+          </div>
         </div>
       </div>
     </section>
