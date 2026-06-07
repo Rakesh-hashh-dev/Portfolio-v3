@@ -10,7 +10,16 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <main className="min-h-screen bg-surface text-white">
-      <PageIntro eyebrow="Contact" title="Open to roles and conversations in consulting, operations, strategy, and marketing.">
+      <PageIntro
+        eyebrow="Contact"
+        title={
+          <>
+            Open to roles in{" "}
+            <span className="text-gradient-cyan">consulting, operations,</span>{" "}
+            strategy, and marketing.
+          </>
+        }
+      >
         Reach out for internships, live projects, case competitions, or opportunities where disciplined execution and
         business problem solving matter.
       </PageIntro>

@@ -10,7 +10,16 @@ export const metadata: Metadata = {
 export default function SkillsPage() {
   return (
     <main className="min-h-screen bg-surface text-white">
-      <PageIntro eyebrow="Skills" title="MBA capabilities supported by analytical and technical foundations.">
+      <PageIntro
+        eyebrow="Skills"
+        title={
+          <>
+            MBA capabilities supported by{" "}
+            <span className="text-gradient-cyan">analytical and technical</span>{" "}
+            foundations.
+          </>
+        }
+      >
         The profile is organized around business strategy, execution, analytics, and certifications that support
         structured problem solving.
       </PageIntro>

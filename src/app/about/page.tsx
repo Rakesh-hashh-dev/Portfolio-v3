@@ -10,7 +10,16 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <main className="min-h-screen bg-surface text-white">
-      <PageIntro eyebrow="About" title="A business profile shaped by engineering, MBA training, and execution leadership.">
+      <PageIntro
+        eyebrow="About"
+        title={
+          <>
+            A business profile shaped by{" "}
+            <span className="text-gradient-cyan">engineering, MBA training,</span>
+            {" "}and execution leadership.
+          </>
+        }
+      >
         Rakesh brings together technical depth, structured problem solving, and MBA learning across operations,
         marketing, and strategy.
       </PageIntro>

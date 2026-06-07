@@ -3,17 +3,17 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowUpRight } from "lucide-react";
+import { Mail } from "lucide-react";
 import Image from "next/image";
 import ThemeToggle from "./ThemeToggle";
 import { useEffect, useState } from "react";
 
 const links = [
-  { name: "About", href: "/about" },
+  { name: "About",      href: "/about" },
   { name: "Experience", href: "/experience" },
-  { name: "Case Studies", href: "/case-studies" },
-  { name: "Skills", href: "/skills" },
-  { name: "Contact", href: "/contact" },
+  { name: "Cases",      href: "/case-studies" },
+  { name: "Skills",     href: "/skills" },
+  { name: "Contact",    href: "/contact" },
 ];
 
 export default function Navigation() {
@@ -21,30 +21,41 @@ export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 24);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
-    <nav className="fixed top-0 z-50 w-full px-4 py-3 md:px-6">
+    <motion.nav
+      initial={{ opacity: 0, y: -16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="fixed top-0 z-50 flex w-full justify-center px-4 pt-3"
+    >
       <div
-        className={`mx-auto flex max-w-7xl items-center justify-between rounded-xl border px-4 py-2.5 backdrop-blur-md transition-all duration-300 ${
+        className={`relative flex items-center gap-0.5 rounded-full border px-2 py-1.5 transition-all duration-300 ${
           scrolled
-            ? "border-white/15 bg-surface/95 shadow-2xl shadow-black/30"
-            : "border-white/8 bg-surface/70 shadow-xl shadow-black/15"
+            ? "border-white/14 bg-surface/94 shadow-2xl shadow-black/28 backdrop-blur-2xl"
+            : "border-white/7 bg-surface/52 shadow-lg shadow-black/12 backdrop-blur-xl"
         }`}
       >
-        <Link href="/" className="flex min-w-0 items-center gap-3">
-          <div className="flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-lg neon-glow">
-            <Image src="/logo.png" alt="RK Logo" width={36} height={36} className="object-cover" />
-          </div>
-          <div className="hidden min-w-0 leading-tight sm:block">
-            <p className="truncate text-sm font-semibold text-white">Rakesh Kumar Behera</p>
-            <p className="truncate text-xs text-white/45">MBA | Strategy, Analytics, Execution</p>
+        {/* Top glow line on scroll */}
+        {scrolled && (
+          <div className="pointer-events-none absolute inset-x-6 top-0 h-px rounded-full bg-gradient-to-r from-transparent via-accent-cyan/20 to-transparent" />
+        )}
+
+        {/* ── Logo avatar ───────────────────────────── */}
+        <Link href="/" className="group mr-0.5 flex items-center">
+          <div className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full ring-1 ring-white/12 transition-all duration-200 group-hover:ring-accent-cyan/35 group-hover:shadow-sm group-hover:shadow-accent-cyan/18">
+            <Image src="/logo.png" alt="RK" width={32} height={32} className="object-cover" />
           </div>
         </Link>
 
+        {/* Divider */}
+        <div className="mx-2 h-3.5 w-px shrink-0 bg-white/12" />
+
+        {/* ── Nav links ─────────────────────────────── */}
         <div className="hidden items-center gap-0.5 lg:flex">
           {links.map((link) => {
             const active = pathname === link.href;
@@ -52,15 +63,15 @@ export default function Navigation() {
               <Link
                 key={link.name}
                 href={link.href}
-                className={`relative rounded-lg px-3.5 py-2 text-sm font-medium transition-colors ${
-                  active ? "text-white" : "text-white/55 hover:text-white"
+                className={`relative rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors duration-200 ${
+                  active ? "text-white" : "text-white/40 hover:text-white/72"
                 }`}
               >
                 {active && (
                   <motion.div
-                    layoutId="nav-active"
-                    className="absolute inset-0 rounded-lg bg-white/10"
-                    transition={{ type: "spring", stiffness: 400, damping: 32 }}
+                    layoutId="island-pill"
+                    className="absolute inset-0 rounded-full bg-white/10"
+                    transition={{ type: "spring", stiffness: 420, damping: 34 }}
                   />
                 )}
                 <span className="relative z-10">{link.name}</span>
@@ -69,19 +80,25 @@ export default function Navigation() {
           })}
         </div>
 
-        <div className="flex items-center gap-2">
-          <ThemeToggle />
-          <motion.a
-            href="mailto:rk821604@gmail.com"
-            whileHover={{ y: -1, scale: 1.02 }}
-            whileTap={{ scale: 0.97 }}
-            className="inline-flex items-center gap-1.5 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-colors hover:bg-[var(--theme-primary-hover)]"
-          >
-            Connect
-            <ArrowUpRight size={15} />
-          </motion.a>
-        </div>
+        {/* Divider */}
+        <div className="mx-2 hidden h-3.5 w-px shrink-0 bg-white/12 lg:block" />
+
+        {/* ── Theme toggle ──────────────────────────── */}
+        <ThemeToggle />
+
+        {/* ── Mail dot CTA ──────────────────────────── */}
+        <motion.a
+          href="mailto:rk821604@gmail.com"
+          whileHover={{ scale: 1.08 }}
+          whileTap={{ scale: 0.94 }}
+          className="ml-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-[white] shadow-md shadow-primary/22 transition-shadow duration-200 hover:shadow-lg hover:shadow-primary/32"
+          style={{ background: "linear-gradient(140deg, var(--theme-primary) 0%, #6ab0ff 100%)" }}
+          aria-label="Connect via email"
+          title="Connect"
+        >
+          <Mail size={13} />
+        </motion.a>
       </div>
-    </nav>
+    </motion.nav>
   );
 }

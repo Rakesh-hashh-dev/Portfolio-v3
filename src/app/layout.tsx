@@ -8,6 +8,7 @@ import "./globals.css";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const themeScript = `
@@ -35,7 +36,6 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      data-scroll-behavior="smooth"
       data-theme="dark"
       className={`${inter.variable} h-full antialiased`}
       suppressHydrationWarning
@@ -44,10 +44,18 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <AnimatedBackground />
         <Navigation />
-        {children}
+        <div className="flex-1">{children}</div>
         <DockNav />
-        <footer className="px-6 py-8 text-center text-sm text-white/40">
-          <p>&copy; {new Date().getFullYear()} Rakesh Kumar Behera. MBA portfolio built with Next.js.</p>
+        <footer className="border-t border-white/6 px-6 py-10">
+          <div className="mx-auto flex max-w-7xl flex-col items-center gap-4 text-center md:flex-row md:justify-between md:text-left">
+            <div>
+              <p className="font-semibold text-white">Rakesh Kumar Behera</p>
+              <p className="mt-0.5 text-sm text-white/35">MBA Candidate · IIM Sambalpur · 2025–2027</p>
+            </div>
+            <p className="text-sm text-white/28">
+              &copy; {new Date().getFullYear()} · All rights reserved
+            </p>
+          </div>
         </footer>
       </body>
     </html>

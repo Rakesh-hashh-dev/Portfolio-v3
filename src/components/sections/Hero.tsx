@@ -3,115 +3,135 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowDown, ArrowRight, BarChart3, Download, MapPin, Sparkles } from "lucide-react";
-import { highlights, impactMetrics, profile } from "@/lib/profile";
+import { ArrowRight, BarChart3, Download } from "lucide-react";
+import { impactMetrics, profile, stats } from "@/lib/profile";
+
+const container = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.09 } },
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] } },
+};
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen overflow-hidden px-6 pt-32 md:pt-40">
-      <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.02fr_0.98fr]">
-        <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, ease: [0.25, 0.46, 0.45, 0.94] }}
-        >
-          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-accent-cyan/25 bg-accent-cyan/8 px-3.5 py-1.5 text-sm font-medium text-accent-cyan">
-            <MapPin size={14} />
-            {profile.location}
-          </div>
+    <section className="relative min-h-screen overflow-hidden px-6 pt-24 pb-20 md:pt-32 md:pb-24">
 
-          <h1 className="max-w-4xl text-4xl font-bold leading-[1.08] tracking-tight md:text-6xl">
-            {profile.name}
-            <span className="mt-3 block text-gradient">
-              MBA talent for roles that need strategy, execution, and measurable growth.
-            </span>
-          </h1>
+      {/* Section-level spotlight */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute -top-32 left-1/4 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-primary/8 blur-[120px]" />
+        <div className="absolute top-40 right-1/4 h-[400px] w-[400px] translate-x-1/2 rounded-full bg-accent-purple/8 blur-[100px]" />
+      </div>
 
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-white/65">{profile.summary}</p>
+      <div className="relative mx-auto max-w-7xl">
+        <div className="grid gap-16 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
 
-          <div className="mt-5 flex flex-wrap gap-2">
-            {["MBA Candidate", "Business Strategy", "Data-Driven Execution", "Lean Six Sigma Green Belt"].map((item) => (
-              <span
-                key={item}
-                className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.06] px-3 py-1.5 text-sm text-white/68"
-              >
-                <Sparkles size={12} className="text-accent-purple" />
-                {item}
-              </span>
-            ))}
-          </div>
+          {/* ── Left: text ──────────────────────────────────── */}
+          <motion.div variants={container} initial="hidden" animate="show">
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Link
-              href="/case-studies"
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3 font-semibold text-white shadow-lg shadow-primary/25 transition-all hover:-translate-y-0.5 hover:bg-[var(--theme-primary-hover)] hover:shadow-xl hover:shadow-primary/30"
+            <motion.p variants={fadeUp} className="eyebrow mb-8">
+              MBA Candidate · IIM Sambalpur · 2025–2027
+            </motion.p>
+
+            <motion.h1
+              variants={fadeUp}
+              className="text-6xl font-black leading-[1.0] tracking-tight md:text-7xl lg:text-[5.75rem]"
             >
-              View Case Studies
-              <ArrowRight size={17} />
-            </Link>
-            <a
-              href={profile.resume}
-              className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/12 bg-white/[0.05] px-6 py-3 font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-white/[0.09]"
+              Rakesh<br />
+              <span className="text-gradient">Kumar Behera</span>
+            </motion.h1>
+
+            <motion.p
+              variants={fadeUp}
+              className="mt-6 text-xl font-semibold text-white/75 md:text-2xl"
             >
-              Resume
-              <Download size={17} />
-            </a>
-          </div>
+              Strategy · Execution · Measurable Growth
+            </motion.p>
 
-          <div className="mt-10 grid gap-3 sm:grid-cols-3">
-            {highlights.map((item) => (
-              <div
-                key={item.label}
-                className="relative overflow-hidden rounded-xl border border-white/8 bg-white/[0.035] p-4 transition-colors hover:border-white/14"
+            <motion.p
+              variants={fadeUp}
+              className="mt-5 max-w-xl text-[1.0625rem] leading-[1.85] text-white/48"
+            >
+              {profile.summary}
+            </motion.p>
+
+            <motion.div variants={fadeUp} className="mt-9 flex flex-wrap gap-3">
+              <Link
+                href="/case-studies"
+                className="group inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3.5 font-semibold text-white shadow-lg shadow-primary/30 transition-all hover:-translate-y-0.5 hover:bg-[var(--theme-primary-hover)] hover:shadow-xl hover:shadow-primary/40"
               >
-                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-purple/35 to-transparent" />
-                <p className="text-xs font-bold uppercase tracking-wider text-accent-cyan">{item.label}</p>
-                <p className="mt-2 text-base font-semibold text-white">{item.value}</p>
-                <p className="mt-1 text-sm text-white/52">{item.detail}</p>
-              </div>
-            ))}
-          </div>
-        </motion.div>
+                View Case Studies
+                <ArrowRight size={17} className="transition-transform group-hover:translate-x-0.5" />
+              </Link>
+              <a
+                href={profile.resume}
+                className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] px-6 py-3.5 font-semibold text-white/80 transition-all hover:-translate-y-0.5 hover:border-white/18 hover:bg-white/[0.07] hover:text-white"
+              >
+                Resume
+                <Download size={17} />
+              </a>
+            </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 32 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, delay: 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="relative"
-        >
-          <div className="relative mx-auto aspect-[4/5] max-w-[520px] overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-2xl shadow-black/35">
-            <Image
-              src="/DP-optimized.webp"
-              alt="Rakesh Kumar Behera"
-              fill
-              priority
-              quality={88}
-              sizes="(min-width: 1024px) 520px, 92vw"
-              className="object-cover"
-            />
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-surface via-surface/70 to-transparent p-5 pt-28">
-              <div className="glass-card rounded-xl p-4">
-                <div className="mb-4 flex items-center justify-between">
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-wider text-white/45">Impact Snapshot</p>
-                    <p className="mt-0.5 font-semibold text-white">Leadership and execution</p>
-                  </div>
-                  <div className="rounded-lg bg-accent-purple/15 p-2 text-accent-purple">
-                    <BarChart3 size={20} />
+            {/* Stats strip */}
+            <motion.div
+              variants={fadeUp}
+              className="mt-14 grid grid-cols-2 gap-y-8 gap-x-8 border-t border-white/8 pt-10 sm:grid-cols-4"
+            >
+              {stats.map((stat) => (
+                <div key={stat.label}>
+                  <p className="text-gradient-cyan text-3xl font-black tracking-tight">{stat.value}</p>
+                  <p className="mt-2 text-xs leading-5 text-white/38">{stat.label}</p>
+                </div>
+              ))}
+            </motion.div>
+          </motion.div>
+
+          {/* ── Right: photo ─────────────────────────────────── */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.94 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="relative"
+          >
+            {/* Ambient glow behind photo */}
+            <div className="absolute -inset-8 rounded-3xl bg-gradient-to-br from-primary/18 via-transparent to-accent-purple/14 blur-2xl" />
+
+            {/* Photo */}
+            <div className="relative mx-auto aspect-[3/4] max-w-[390px] overflow-hidden rounded-3xl border border-white/10 shadow-2xl shadow-black/60">
+              <Image
+                src="/DP-optimized.webp"
+                alt="Rakesh Kumar Behera"
+                fill
+                priority
+                quality={88}
+                sizes="(min-width: 1024px) 390px, 90vw"
+                className="object-cover object-top"
+              />
+              <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-surface via-surface/65 to-transparent" />
+
+              {/* Floating impact card */}
+              <div className="absolute inset-x-4 bottom-4 glass-card rounded-2xl p-4">
+                <div className="mb-3.5 flex items-center justify-between">
+                  <p className="text-[10px] font-black uppercase tracking-[0.18em] text-white/32">Impact Snapshot</p>
+                  <div className="rounded-lg bg-accent-purple/15 p-1.5 text-accent-purple">
+                    <BarChart3 size={14} />
                   </div>
                 </div>
-                <div className="space-y-3">
+                <div className="space-y-2.5">
                   {impactMetrics.slice(0, 3).map((metric) => (
                     <div key={metric.label}>
-                      <div className="mb-1.5 flex items-center justify-between text-xs">
-                        <span className="text-white/55">{metric.label}</span>
-                        <span className="font-semibold text-white">{metric.value}</span>
+                      <div className="mb-1.5 flex justify-between text-[11px]">
+                        <span className="text-white/40">{metric.label}</span>
+                        <span className="font-bold text-white/85">{metric.value}</span>
                       </div>
-                      <div className="h-1.5 rounded-full bg-white/10">
+                      <div className="h-1 rounded-full bg-white/8">
                         <motion.div
                           initial={{ width: 0 }}
                           animate={{ width: metric.width }}
-                          transition={{ duration: 1.1, delay: 0.4, ease: "easeOut" }}
+                          transition={{ duration: 1.2, delay: 0.7, ease: "easeOut" }}
                           className="h-full rounded-full bg-gradient-to-r from-accent-cyan to-accent-purple"
                         />
                       </div>
@@ -120,26 +140,9 @@ export default function Hero() {
                 </div>
               </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.6 }}
-        className="mx-auto mt-16 flex max-w-7xl justify-center pb-8 lg:justify-start"
-      >
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-          className="flex flex-col items-center gap-1.5 text-white/30"
-        >
-          <span className="text-xs font-medium tracking-widest uppercase">Scroll</span>
-          <ArrowDown size={14} />
-        </motion.div>
-      </motion.div>
     </section>
   );
 }

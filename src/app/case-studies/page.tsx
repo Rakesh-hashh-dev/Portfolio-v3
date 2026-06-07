@@ -10,7 +10,16 @@ export const metadata: Metadata = {
 export default function CaseStudiesPage() {
   return (
     <main className="min-h-screen bg-surface text-white">
-      <PageIntro eyebrow="Case Studies" title="Business execution examples across operations, marketing, and strategy.">
+      <PageIntro
+        eyebrow="Case Studies"
+        title={
+          <>
+            Business execution examples across{" "}
+            <span className="text-gradient-cyan">operations, marketing,</span>{" "}
+            and strategy.
+          </>
+        }
+      >
         These case studies summarize the kind of work that best represents the profile: structured planning,
         cross-functional coordination, promotional execution, and measurable outcomes.
       </PageIntro>

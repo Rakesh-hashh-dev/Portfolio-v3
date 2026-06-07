@@ -37,10 +37,10 @@ export const impactMetrics = [
 export const experience = [
   {
     period: "Apr 2026 - Present",
-    role: "Strategy and Marketing Intern",
+    role: "Strategy, Marketing & Product Management Intern",
     company: "Mr Gardenr",
     location: "Ahmedabad, Gujarat",
-    detail: "Supporting strategy and marketing initiatives with a focus on market visibility, positioning, and business growth.",
+    detail: "Supporting strategy, marketing, and product management initiatives with a focus on market visibility, positioning, product development, and business growth.",
   },
   {
     period: "Mar 2026 - Present",
@@ -150,6 +150,11 @@ export const skillGroups = [
     title: "Analytics",
     icon: BarChart3,
     skills: ["Data analysis", "Financial analysis", "Data-driven decisions", "Microsoft Power BI"],
+  },
+  {
+    title: "Product Management",
+    icon: TrendingUp,
+    skills: ["Product strategy", "User research", "Roadmapping", "Go-to-market planning", "Feature prioritization"],
   },
 ];
 
