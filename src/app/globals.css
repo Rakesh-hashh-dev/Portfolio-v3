@@ -114,6 +114,11 @@ body::after {
   box-shadow: 0 20px 70px var(--theme-card-shadow);
 }
 
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 16px var(--theme-glow); }
+  50% { box-shadow: 0 0 32px var(--theme-glow); }
+}
+
 .neon-glow {
   box-shadow: 0 0 24px var(--theme-glow);
 }
