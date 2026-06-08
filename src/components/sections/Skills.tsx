@@ -8,7 +8,7 @@ export default function Skills() {
   const isOdd = skillGroups.length % 2 !== 0;
 
   return (
-    <section className="content-section relative mx-auto max-w-7xl px-6 py-8 pb-24">
+    <section className="content-section section-raised relative mx-auto max-w-7xl px-6 py-8 pb-24">
       <div className="grid gap-12 border-t border-[var(--theme-hairline)] pt-12 lg:grid-cols-[1fr_0.66fr]">
 
         {/* ── Skill groups ─────────────────────────────── */}
@@ -30,7 +30,7 @@ export default function Skills() {
                     <div className="flex h-11 w-11 items-center justify-center rounded-md border border-[var(--theme-hairline)] text-accent-cyan transition-colors group-hover:border-accent-cyan/40">
                       <group.icon size={20} />
                     </div>
-                    <span className="text-xs font-medium uppercase tracking-[0.16em] text-white/35">
+                    <span className="text-xs font-medium uppercase tracking-[0.16em] text-white/55">
                       {group.skills.length} skills
                     </span>
                   </div>
@@ -64,7 +64,7 @@ export default function Skills() {
           <div className="rounded-lg border border-[var(--theme-hairline)] bg-surface p-6">
             <div className="mb-6 flex items-baseline gap-3 border-b border-[var(--theme-hairline)] pb-5">
               <p className="num text-4xl text-white">{certifications.length}</p>
-              <p className="text-sm text-white/45">credentials earned</p>
+              <p className="text-sm text-white/60">credentials earned</p>
             </div>
 
             <div className="space-y-3">
@@ -75,7 +75,7 @@ export default function Skills() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.07, duration: 0.35 }}
-                  className="flex items-start gap-3 text-sm leading-6 text-white/60"
+                  className="flex items-start gap-3 text-sm leading-6 text-white/75"
                 >
                   <Check size={15} className="mt-0.5 shrink-0 text-accent-cyan" />
                   {cert}

@@ -6,7 +6,7 @@ import { experience } from "@/lib/profile";
 
 export default function Experience() {
   return (
-    <section className="content-section relative mx-auto max-w-4xl px-6 py-8 pb-28">
+    <section className="content-section section-raised relative mx-auto max-w-4xl px-6 py-8 pb-28">
       <div className="relative border-t border-[var(--theme-hairline)] pt-12">
         {experience.map((item, index) => {
           const isCurrent = item.period.includes("Present");
@@ -23,10 +23,10 @@ export default function Experience() {
             >
               {/* Left rail: index + period */}
               <div className="flex items-start justify-between md:block md:pt-0.5">
-                <span className="num text-2xl text-accent-cyan/40">
+                <span className="num text-2xl text-accent-cyan/60">
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                <span className="text-sm font-medium tabular-nums text-white/45 md:mt-2 md:block">
+                <span className="text-sm font-medium tabular-nums text-white/60 md:mt-2 md:block">
                   {item.period}
                 </span>
               </div>
@@ -63,17 +63,17 @@ export default function Experience() {
                 <h3 className="display text-2xl text-white md:text-[1.7rem]">{item.role}</h3>
 
                 <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-1.5">
-                  <span className="flex items-center gap-2 text-sm font-semibold text-white/65">
-                    <Building2 size={14} className="text-white/35" />
+                  <span className="flex items-center gap-2 text-sm font-semibold text-white/80">
+                    <Building2 size={14} className="text-white/55" />
                     {item.company}
                   </span>
-                  <span className="flex items-center gap-2 text-sm text-white/45">
-                    <MapPin size={14} className="text-white/30" />
+                  <span className="flex items-center gap-2 text-sm text-white/60">
+                    <MapPin size={14} className="text-white/50" />
                     {item.location}
                   </span>
                 </div>
 
-                <p className="mt-3.5 max-w-2xl text-[0.9375rem] leading-[1.85] text-white/50">{item.detail}</p>
+                <p className="mt-3.5 max-w-2xl text-[0.9375rem] leading-[1.85] text-white/70">{item.detail}</p>
               </div>
             </motion.div>
           );

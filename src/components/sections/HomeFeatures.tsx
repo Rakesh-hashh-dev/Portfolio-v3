@@ -15,7 +15,7 @@ export default function HomeFeatures() {
   return (
     <>
       {/* ── What I bring ─────────────────────────────── */}
-      <section className="content-section mx-auto max-w-7xl px-6 pb-24">
+      <section className="content-section section-band mx-auto max-w-7xl px-6 pb-24 pt-16">
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}

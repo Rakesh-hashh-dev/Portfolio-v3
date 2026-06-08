@@ -20,8 +20,8 @@ export default function ExperiencePage() {
           </>
         }
       >
-        From Tata Consultancy Services to IIM Sambalpur leadership roles, this timeline highlights technical delivery,
-        consulting exposure, marketing execution, and stakeholder management.
+        From Team Lead at a $29B Fortune 500 client (TCS) to Strategy & Product Intern at Mr Gardenr — this timeline
+        shows enterprise delivery, consulting, and MBA leadership in sequence.
       </PageIntro>
       <Experience />
     </main>

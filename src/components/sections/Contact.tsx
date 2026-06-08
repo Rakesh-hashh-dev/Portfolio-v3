@@ -16,7 +16,7 @@ const up: Variants = {
 
 export default function Contact() {
   return (
-    <section className="content-section relative mx-auto max-w-4xl px-6 py-8 pb-28">
+    <section className="content-section section-raised relative mx-auto max-w-4xl px-6 py-8 pb-28">
       <motion.div
         variants={stagger}
         initial="hidden"
@@ -30,7 +30,7 @@ export default function Contact() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-purple opacity-60" />
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent-purple" />
             </span>
-            Available — Summer 2026
+            Open to Final Placements · 2027
           </span>
         </motion.div>
 
@@ -39,9 +39,8 @@ export default function Contact() {
           Let&rsquo;s talk.
         </motion.h2>
 
-        <motion.p variants={up} className="mt-6 max-w-md text-lg leading-[1.85] text-white/55">
-          Open to consulting, operations, strategy, and marketing roles where disciplined
-          execution matters.
+        <motion.p variants={up} className="mt-6 max-w-md text-lg leading-[1.85] text-white/70">
+          Targeting management consulting, strategy & operations, and product management — available for final placements in 2027.
         </motion.p>
 
         {/* Email */}
@@ -53,7 +52,7 @@ export default function Contact() {
           <span className="link-underline">{profile.email}</span>
           <ArrowUpRight
             size={24}
-            className="text-white/30 transition-all group-hover:text-accent-cyan group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            className="text-white/50 transition-all group-hover:text-accent-cyan group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
           />
         </motion.a>
 
@@ -69,12 +68,12 @@ export default function Contact() {
               <UserRound size={19} />
             </div>
             <div className="min-w-0 flex-1">
-              <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/40">LinkedIn</p>
+              <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/55">LinkedIn</p>
               <p className="mt-0.5 truncate text-sm font-semibold text-white/75">
                 rakesh-kumar-behera-rk821604
               </p>
             </div>
-            <ArrowUpRight size={15} className="shrink-0 text-white/30 transition-all group-hover:text-accent-cyan" />
+            <ArrowUpRight size={15} className="shrink-0 text-white/50 transition-all group-hover:text-accent-cyan" />
           </a>
 
           <div className="flex items-center gap-4 bg-surface p-5">
@@ -82,7 +81,7 @@ export default function Contact() {
               <MapPin size={19} />
             </div>
             <div>
-              <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/40">Location</p>
+              <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/55">Location</p>
               <p className="mt-0.5 text-sm font-semibold text-white/75">{profile.location}</p>
             </div>
           </div>

@@ -28,7 +28,7 @@ function getSnapshot(): Theme {
 }
 
 function getServerSnapshot(): Theme {
-  return "light";
+  return "dark";
 }
 
 export default function ThemeToggle() {

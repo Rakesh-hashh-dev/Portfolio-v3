@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Download, GraduationCap } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 import { impactMetrics, profile, stats } from "@/lib/profile";
 
 const container = {
@@ -30,7 +30,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
-          className="mb-12 flex items-center justify-between border-b border-[var(--theme-hairline)] pb-4 text-[11px] font-semibold uppercase tracking-[0.24em] text-white/40"
+          className="mb-12 flex items-center justify-between border-b border-[var(--theme-hairline)] pb-4 text-[11px] font-semibold uppercase tracking-[0.24em] text-white/55"
         >
           <span>Portfolio — MBA 2025/27</span>
           <span className="hidden sm:inline">Bhubaneswar · India</span>
@@ -48,7 +48,7 @@ export default function Hero() {
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-purple opacity-60" />
                   <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent-purple" />
                 </span>
-                Open to Summer 2026 internships
+                Open to Final Placements · 2027
               </span>
             </motion.div>
 
@@ -74,7 +74,7 @@ export default function Hero() {
               variants={fadeUp}
               className="mt-7 text-lg font-medium text-white/70"
             >
-              MBA Candidate at IIM Sambalpur · Ex-TCS System Engineer
+              MBA Candidate at IIM Sambalpur · Ex-TCS Team Lead · Fortune 500 delivery
             </motion.p>
 
             {/* Lede */}
@@ -106,7 +106,7 @@ export default function Hero() {
                     className={i > 0 ? "sm:border-l sm:border-[var(--theme-hairline)] sm:pl-6" : ""}
                   >
                     <p className="num text-3xl text-white md:text-[2rem]">{stat.value}</p>
-                    <p className="mt-2 text-xs leading-5 text-white/45">{stat.label}</p>
+                    <p className="mt-2 text-xs leading-5 text-white/60">{stat.label}</p>
                   </div>
                 ))}
               </div>
@@ -141,10 +141,6 @@ export default function Hero() {
                 />
                 {/* Bottom vignette for depth */}
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-surface/70 to-transparent" />
-                {/* Figure caption tab */}
-                <div className="absolute left-3 top-3 rounded-sm border border-white/15 bg-surface/65 px-2 py-1 text-[9px] font-bold uppercase tracking-[0.22em] text-white/70 backdrop-blur-sm">
-                  Fig. 01
-                </div>
               </div>
 
               {/* Credential chip — top-right */}
@@ -152,15 +148,21 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8, duration: 0.45 }}
-                className="absolute -left-6 top-8 z-10 hidden lg:block"
+                className="absolute -left-6 top-8 z-10 hidden md:block"
               >
                 <div style={{ animation: "float-badge-a 5s ease-in-out infinite 1.2s" }}>
                   <div className="glass-card flex items-center gap-2.5 rounded-lg px-3.5 py-2.5">
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-accent-cyan/12 text-accent-cyan">
-                      <GraduationCap size={15} />
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-md bg-white p-1">
+                      <Image
+                        src="/iim-sambalpur-logo.png"
+                        alt="IIM Sambalpur"
+                        width={32}
+                        height={32}
+                        className="object-contain"
+                      />
                     </div>
                     <div>
-                      <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/40">Program</p>
+                      <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/55">Program</p>
                       <p className="text-[13px] font-semibold text-white/90">IIM Sambalpur</p>
                     </div>
                   </div>
@@ -175,7 +177,7 @@ export default function Hero() {
                 className="glass-card relative z-10 -mt-10 ml-4 mr-[-0.5rem] rounded-lg p-5"
               >
                 <div className="mb-3 flex items-center justify-between">
-                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/55">
                     Selected Impact
                   </p>
                   <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-accent-cyan">
@@ -185,7 +187,7 @@ export default function Hero() {
                 <div className="divide-y divide-[var(--theme-hairline)]">
                   {impactMetrics.slice(0, 3).map((metric) => (
                     <div key={metric.label} className="flex items-baseline justify-between py-2.5">
-                      <span className="text-[13px] text-white/55">{metric.label}</span>
+                      <span className="text-[13px] text-white/70">{metric.label}</span>
                       <span className="num text-lg text-white">{metric.value}</span>
                     </div>
                   ))}

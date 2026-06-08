@@ -31,7 +31,7 @@ export function PageIntro({ eyebrow, title, children }: PageIntroProps) {
         {/* Masthead row */}
         <motion.div
           variants={up}
-          className="mb-10 flex items-center justify-between border-b border-[var(--theme-hairline)] pb-4 text-[11px] font-semibold uppercase tracking-[0.24em] text-white/40"
+          className="mb-10 flex items-center justify-between border-b border-[var(--theme-hairline)] pb-4 text-[11px] font-semibold uppercase tracking-[0.24em] text-white/55"
         >
           <span>{eyebrow}</span>
           <span className="hidden sm:inline">Rakesh Kumar Behera</span>
@@ -46,7 +46,7 @@ export function PageIntro({ eyebrow, title, children }: PageIntroProps) {
 
         <motion.p
           variants={up}
-          className="mt-8 max-w-2xl border-l-2 border-accent-cyan/40 pl-6 text-lg leading-[1.85] text-white/55"
+          className="mt-8 max-w-2xl border-l-2 border-accent-cyan/40 pl-6 text-lg leading-[1.85] text-white/70"
         >
           {children}
         </motion.p>

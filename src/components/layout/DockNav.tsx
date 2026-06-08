@@ -48,7 +48,7 @@ export default function DockNav() {
                 <Link
                   href={item.href}
                   className={`relative flex flex-col items-center gap-1 rounded-xl px-2.5 py-2 transition-colors duration-150 ${
-                    active ? "text-accent-cyan" : "text-white/38 hover:text-white/72"
+                    active ? "text-accent-cyan" : "text-white/60 hover:text-white/85"
                   }`}
                   aria-label={item.label}
                 >
@@ -94,7 +94,7 @@ export default function DockNav() {
               rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
               whileHover={{ scale: 1.1, x: -2 }}
               whileTap={{ scale: 0.94 }}
-              className="group relative flex items-center justify-center rounded-xl p-3 text-white/35 transition-colors hover:text-accent-cyan"
+              className="group relative flex items-center justify-center rounded-xl p-3 text-white/55 transition-colors hover:text-accent-cyan"
               aria-label={item.label}
               title={item.label}
             >

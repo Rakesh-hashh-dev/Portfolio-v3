@@ -11,7 +11,7 @@ export default function Projects() {
   const filtered = caseStudies.filter((p) => filter === "All" || p.category === filter);
 
   return (
-    <section className="content-section relative mx-auto max-w-7xl px-6 py-8 pb-28">
+    <section className="content-section section-raised relative mx-auto max-w-7xl px-6 py-8 pb-28">
 
       {/* ── Filter bar ─────────────────────────────────── */}
       <div className="mb-10 flex flex-wrap items-center gap-2 border-t border-[var(--theme-hairline)] pt-12">
@@ -32,7 +32,7 @@ export default function Projects() {
           key={filtered.length}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="ml-auto text-xs font-medium uppercase tracking-[0.18em] text-white/35"
+          className="ml-auto text-xs font-medium uppercase tracking-[0.18em] text-white/55"
         >
           {filtered.length} {filtered.length === 1 ? "study" : "studies"}
         </motion.span>
@@ -56,18 +56,18 @@ export default function Projects() {
                 <div className="flex h-11 w-11 items-center justify-center rounded-md border border-[var(--theme-hairline)] text-accent-cyan transition-colors group-hover:border-accent-cyan/40">
                   <project.icon size={20} />
                 </div>
-                <span className="rounded-full border border-[var(--theme-hairline)] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/50">
+                <span className="rounded-full border border-[var(--theme-hairline)] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/65">
                   {project.category}
                 </span>
               </div>
 
               <h3 className="display text-2xl text-white">{project.title}</h3>
               <p className="mt-2 text-sm font-semibold text-accent-cyan">{project.outcome}</p>
-              <p className="mt-4 text-sm leading-[1.88] text-white/50">{project.summary}</p>
+              <p className="mt-4 text-sm leading-[1.88] text-white/65">{project.summary}</p>
 
               <div className="mt-6 space-y-2.5 border-t border-[var(--theme-hairline)] pt-5">
                 {project.points.map((point) => (
-                  <div key={point} className="flex items-center gap-3 text-sm text-white/55">
+                  <div key={point} className="flex items-center gap-3 text-sm text-white/70">
                     <span className="h-1 w-1 shrink-0 rounded-full bg-accent-cyan" />
                     {point}
                   </div>

@@ -40,14 +40,17 @@
   --theme-glow: rgba(26, 58, 95, 0.12);
   --theme-gradient-start: #1c1b17;
   --theme-gradient-shadow: rgba(26, 58, 95, 0);
-  --theme-section-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(248, 244, 236, 0.32));
-  --theme-section-border: rgba(28, 27, 23, 0.08);
+  --theme-section-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.62), rgba(248, 244, 236, 0.42));
+  --theme-section-border: rgba(28, 27, 23, 0.12);
   --theme-hairline: rgba(28, 27, 23, 0.12);
   --theme-particle-rgb: 26, 58, 95;
   --theme-particle-alpha: 0.22;
   --theme-particle-line-alpha: 0.07;
   --theme-bg-glow-primary: rgba(26, 58, 95, 0.06);
   --theme-bg-glow-secondary: rgba(168, 96, 47, 0.05);
+  --theme-bg-glow-c: rgba(47, 109, 151, 0.04);
+  --theme-bg-glow-d: rgba(168, 96, 47, 0.03);
+  --theme-bg-glow-e: rgba(26, 58, 95, 0.025);
   --theme-noise-opacity: 0.03;
   --background: var(--theme-background);
   --foreground: var(--theme-foreground);
@@ -77,14 +80,17 @@
   --theme-glow: rgba(110, 168, 255, 0.22);
   --theme-gradient-start: #eef1f8;
   --theme-gradient-shadow: rgba(110, 168, 255, 0);
-  --theme-section-bg: linear-gradient(180deg, rgba(30, 41, 68, 0.36), rgba(15, 21, 38, 0.2));
-  --theme-section-border: rgba(238, 241, 248, 0.08);
+  --theme-section-bg: linear-gradient(180deg, rgba(30, 41, 68, 0.58), rgba(15, 21, 38, 0.36));
+  --theme-section-border: rgba(238, 241, 248, 0.13);
   --theme-hairline: rgba(214, 223, 244, 0.13);
   --theme-particle-rgb: 132, 182, 255;
   --theme-particle-alpha: 0.26;
   --theme-particle-line-alpha: 0.09;
   --theme-bg-glow-primary: rgba(110, 168, 255, 0.16);
-  --theme-bg-glow-secondary: rgba(227, 170, 110, 0.1);
+  --theme-bg-glow-secondary: rgba(227, 170, 110, 0.10);
+  --theme-bg-glow-c: rgba(94, 122, 214, 0.12);
+  --theme-bg-glow-d: rgba(227, 170, 110, 0.07);
+  --theme-bg-glow-e: rgba(132, 182, 255, 0.07);
   --theme-noise-opacity: 0.02;
 }
 
@@ -289,6 +295,18 @@ body::after {
   border-block: 1px solid var(--theme-section-border);
 }
 
+/* Slightly elevated surface — alternating sections */
+.section-raised {
+  background: color-mix(in srgb, var(--theme-surface) 38%, transparent);
+  border-block: 1px solid var(--theme-hairline);
+}
+
+/* Footer zone — distinctly elevated from content */
+.footer-band {
+  background: color-mix(in srgb, var(--theme-surface) 55%, transparent);
+  border-top: 1px solid var(--theme-hairline);
+}
+
 .hairline { background: var(--theme-hairline); }
 
 .section-divider {
@@ -307,7 +325,7 @@ body::after {
   transform: translateY(-3px);
 }
 
-/* Animated background (kept subtle for paper feel) */
+/* ── Animated background — aurora orb system ──── */
 .animated-bg {
   position: fixed;
   inset: 0;
@@ -317,52 +335,98 @@ body::after {
   background: var(--theme-background);
 }
 
-.animated-bg__canvas {
+/* Base orb — GPU-composited, no JS needed */
+.aurora-orb {
   position: absolute;
-  inset: 0;
-  display: block;
-  opacity: 0.55;
-}
-
-.animated-bg__glow {
-  position: absolute;
-  z-index: -1;
   border-radius: 9999px;
   pointer-events: none;
+  will-change: transform;
 }
 
-.animated-bg__glow--primary {
-  left: 20%;
-  top: 22%;
-  width: 38rem;
-  height: 38rem;
+/* Top-left: primary blue/azure */
+.aurora-orb--a {
+  width: 700px;
+  height: 700px;
+  left: 10%;
+  top: 18%;
   background: var(--theme-bg-glow-primary);
-  filter: blur(100px);
-  transform: translate(-50%, -50%);
-  animation: float-glow-a 18s ease-in-out infinite;
+  filter: blur(90px);
+  animation: aurora-a 20s ease-in-out infinite;
 }
 
-.animated-bg__glow--secondary {
-  right: 16%;
-  bottom: 20%;
-  width: 44rem;
-  height: 44rem;
+/* Bottom-right: warm amber */
+.aurora-orb--b {
+  width: 650px;
+  height: 650px;
+  right: 8%;
+  bottom: 12%;
   background: var(--theme-bg-glow-secondary);
-  filter: blur(115px);
-  transform: translate(50%, 50%);
-  animation: float-glow-b 22s ease-in-out infinite;
+  filter: blur(100px);
+  animation: aurora-b 26s ease-in-out infinite -8s;
 }
 
-@keyframes float-glow-a {
+/* Top-right: indigo-blue accent */
+.aurora-orb--c {
+  width: 500px;
+  height: 500px;
+  right: 12%;
+  top: 6%;
+  background: var(--theme-bg-glow-c);
+  filter: blur(80px);
+  animation: aurora-c 18s ease-in-out infinite -5s;
+}
+
+/* Bottom-left: faint amber depth */
+.aurora-orb--d {
+  width: 450px;
+  height: 450px;
+  left: 4%;
+  bottom: 22%;
+  background: var(--theme-bg-glow-d);
+  filter: blur(85px);
+  animation: aurora-d 22s ease-in-out infinite -14s;
+}
+
+/* Center: very soft mid-depth layer */
+.aurora-orb--e {
+  width: 600px;
+  height: 600px;
+  left: 45%;
+  top: 52%;
+  background: var(--theme-bg-glow-e);
+  filter: blur(120px);
+  transform: translate(-50%, -50%);
+  animation: aurora-e 30s ease-in-out infinite -20s;
+}
+
+@keyframes aurora-a {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25%  { transform: translate(6%, -8%) scale(1.05); }
+  50%  { transform: translate(-4%, 6%) scale(0.97); }
+  75%  { transform: translate(4%, -4%) scale(1.03); }
+}
+
+@keyframes aurora-b {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%  { transform: translate(-6%, 7%) scale(1.06); }
+  66%  { transform: translate(7%, -6%) scale(0.95); }
+}
+
+@keyframes aurora-c {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  40%  { transform: translate(-8%, 6%) scale(1.04); }
+  80%  { transform: translate(6%, -7%) scale(0.96); }
+}
+
+@keyframes aurora-d {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(7%, -5%) scale(1.05); }
+}
+
+@keyframes aurora-e {
   0%, 100% { transform: translate(-50%, -50%) scale(1); }
-  33%  { transform: translate(-46%, -54%) scale(1.05); }
-  66%  { transform: translate(-54%, -46%) scale(0.97); }
-}
-
-@keyframes float-glow-b {
-  0%, 100% { transform: translate(50%, 50%) scale(1); }
-  40%  { transform: translate(46%, 54%) scale(1.06); }
-  70%  { transform: translate(54%, 46%) scale(0.95); }
+  30%  { transform: translate(-44%, -56%) scale(1.04); }
+  60%  { transform: translate(-56%, -44%) scale(0.97); }
 }
 
 @keyframes float-badge-a {
@@ -387,12 +451,10 @@ body::after {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  body::before, body::after, .animated-bg__glow { animation: none; }
-  .animated-bg__canvas { display: none; }
+  body::before, body::after, .aurora-orb { animation: none; }
 }
 
 @media (max-width: 768px) {
-  .animated-bg__canvas { opacity: 0.45; }
   .glass-card {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);

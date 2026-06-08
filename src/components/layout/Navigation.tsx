@@ -38,8 +38,8 @@ export default function Navigation() {
       <div
         className={`absolute inset-0 transition-all duration-300 ${
           scrolled
-            ? "bg-surface/85 backdrop-blur-xl border-b border-[var(--theme-hairline)]"
-            : ""
+            ? "bg-surface/90 backdrop-blur-xl border-b border-[var(--theme-hairline)] shadow-sm shadow-black/20"
+            : "bg-surface/20 backdrop-blur-md border-b border-[var(--theme-hairline)]/50"
         }`}
       />
 
@@ -54,7 +54,7 @@ export default function Navigation() {
             <p className="display text-[15px] text-white transition-colors group-hover:text-accent-cyan">
               Rakesh Kumar Behera
             </p>
-            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/35">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/55">
               MBA · IIM Sambalpur
             </p>
           </div>
@@ -69,7 +69,7 @@ export default function Navigation() {
                 key={link.name}
                 href={link.href}
                 className={`relative px-3.5 py-2 text-[13px] font-medium tracking-wide transition-colors duration-150 ${
-                  active ? "text-white" : "text-white/50 hover:text-white"
+                  active ? "text-white" : "text-white/65 hover:text-white"
                 }`}
               >
                 {active && (

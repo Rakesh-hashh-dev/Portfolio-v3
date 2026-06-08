@@ -14,14 +14,13 @@ export default function AboutPage() {
         eyebrow="About"
         title={
           <>
-            A business profile shaped by{" "}
-            <span className="text-gradient-cyan">engineering, MBA training,</span>
-            {" "}and execution leadership.
+            44 months of Fortune 500 delivery,{" "}
+            <span className="text-gradient-cyan">now deepened with MBA strategy.</span>
           </>
         }
       >
-        Rakesh brings together technical depth, structured problem solving, and MBA learning across operations,
-        marketing, and strategy.
+        Systems Engineer turned MBA candidate — combining enterprise IT delivery experience from TCS with IIM Sambalpur
+        training in strategy, consulting frameworks, and product management.
       </PageIntro>
       <About />
     </main>

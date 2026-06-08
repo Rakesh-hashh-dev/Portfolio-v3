@@ -24,12 +24,12 @@ const fraunces = Fraunces({
 const themeScript = `
 try {
   var theme = localStorage.getItem("portfolio-theme");
-  var t = theme === "dark" ? "dark" : "light";
+  var t = theme === "light" ? "light" : "dark";
   document.documentElement.dataset.theme = t;
   document.documentElement.style.colorScheme = t;
 } catch (_) {
-  document.documentElement.dataset.theme = "light";
-  document.documentElement.style.colorScheme = "light";
+  document.documentElement.dataset.theme = "dark";
+  document.documentElement.style.colorScheme = "dark";
 }
 `;
 
@@ -55,7 +55,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      data-theme="light"
+      data-theme="dark"
       className={`${inter.variable} ${fraunces.variable} h-full antialiased`}
       suppressHydrationWarning
     >
@@ -72,7 +72,7 @@ export default function RootLayout({
         </PageTransition>
         <DockNav />
 
-        <footer className="content-section border-t border-[var(--theme-hairline)] px-6 pt-16 pb-10">
+        <footer className="content-section footer-band px-6 pt-16 pb-10">
           <div className="mx-auto max-w-7xl">
             <div className="grid gap-10 md:grid-cols-[1.4fr_1fr] md:gap-16">
               {/* Brand */}
@@ -93,10 +93,10 @@ export default function RootLayout({
               {/* Nav + social */}
               <div className="grid grid-cols-2 gap-8">
                 <div>
-                  <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.22em] text-white/35">
+                  <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.22em] text-white/55">
                     Explore
                   </p>
-                  <nav className="flex flex-col gap-2.5 text-sm text-white/55">
+                  <nav className="flex flex-col gap-2.5 text-sm text-white/65">
                     {footerLinks.map(([label, href]) => (
                       <a key={label} href={href} className="link-underline w-fit hover:text-white">
                         {label}
@@ -105,10 +105,10 @@ export default function RootLayout({
                   </nav>
                 </div>
                 <div>
-                  <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.22em] text-white/35">
+                  <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.22em] text-white/55">
                     Connect
                   </p>
-                  <nav className="flex flex-col gap-2.5 text-sm text-white/55">
+                  <nav className="flex flex-col gap-2.5 text-sm text-white/65">
                     <a
                       href="https://www.linkedin.com/in/rakesh-kumar-behera-rk821604"
                       target="_blank"
@@ -128,7 +128,7 @@ export default function RootLayout({
               </div>
             </div>
 
-            <div className="mt-12 flex flex-col items-start gap-2 border-t border-[var(--theme-hairline)] pt-6 text-xs text-white/35 md:flex-row md:items-center md:justify-between">
+            <div className="mt-12 flex flex-col items-start gap-2 border-t border-[var(--theme-hairline)] pt-6 text-xs text-white/50 md:flex-row md:items-center md:justify-between">
               <p>&copy; {new Date().getFullYear()} Rakesh Kumar Behera · All rights reserved</p>
               <p className="tracking-[0.14em] uppercase">Strategy · Execution · Measurable Growth</p>
             </div>

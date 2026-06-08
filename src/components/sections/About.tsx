@@ -16,13 +16,13 @@ const up: Variants = {
 
 const quickFacts = [
   { icon: GraduationCap, label: "Program", value: "MBA · IIM Sambalpur", sub: "2025 – 2027" },
-  { icon: Target, label: "Background", value: "TCS System Engineer", sub: "3 yrs 9 months" },
+  { icon: Target, label: "Background", value: "TCS System Engineer", sub: "44 months · Fortune 500" },
   { icon: MapPin, label: "Location", value: "Bhubaneswar, India", sub: null },
 ];
 
 export default function About() {
   return (
-    <div className="content-section relative pb-24">
+    <div className="content-section section-raised relative pb-24">
 
       {/* ── Profile + quick facts ───────────────────────── */}
       <section className="mx-auto max-w-7xl px-6 pt-8 pb-16">
@@ -35,15 +35,15 @@ export default function About() {
           >
             <p className="eyebrow mb-6">Profile</p>
             <h2 className="display text-4xl text-white md:text-5xl">
-              Business generalist with{" "}
-              <em className="italic text-gradient-cyan">technical depth.</em>
+              Fortune 500 delivery experience meets{" "}
+              <em className="italic text-gradient-cyan">MBA strategy.</em>
             </h2>
             <p className="mt-7 max-w-xl text-[1.0625rem] leading-[1.85] text-white/60">
               {profile.summary}
             </p>
-            <p className="mt-4 max-w-xl text-base leading-[1.85] text-white/45">
-              Seeking consulting, operations, strategy, marketing, and analytics roles where
-              structured execution and data-driven thinking create measurable value.
+            <p className="mt-4 max-w-xl text-base leading-[1.85] text-white/65">
+              Targeting management consulting, strategy & operations, and product management roles —
+              where enterprise delivery experience and MBA analytical frameworks create measurable business impact.
             </p>
           </motion.div>
 
@@ -60,9 +60,9 @@ export default function About() {
                   <f.icon size={18} />
                 </div>
                 <div>
-                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">{f.label}</p>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/55">{f.label}</p>
                   <p className="mt-0.5 font-semibold text-white/90">{f.value}</p>
-                  {f.sub && <p className="text-xs text-white/45">{f.sub}</p>}
+                  {f.sub && <p className="text-xs text-white/60">{f.sub}</p>}
                 </div>
               </motion.div>
             ))}
@@ -83,7 +83,7 @@ export default function About() {
               className="bg-surface p-6"
             >
               <p className="num text-4xl text-white">{stat.value}</p>
-              <p className="mt-2 text-xs leading-5 text-white/45">{stat.label}</p>
+              <p className="mt-2 text-xs leading-5 text-white/60">{stat.label}</p>
             </motion.div>
           ))}
         </div>
@@ -108,8 +108,8 @@ export default function About() {
                 >
                   <p className="text-sm font-semibold text-accent-cyan">{item.period}</p>
                   <h4 className="mt-3 text-xl font-semibold text-white">{item.program}</h4>
-                  <p className="mt-1 font-medium text-white/55">{item.school}</p>
-                  <p className="mt-3 text-sm leading-[1.8] text-white/45">{item.detail}</p>
+                  <p className="mt-1 font-medium text-white/70">{item.school}</p>
+                  <p className="mt-3 text-sm leading-[1.8] text-white/60">{item.detail}</p>
                 </motion.div>
               ))}
             </div>
@@ -128,7 +128,7 @@ export default function About() {
               <div className="divide-y divide-[var(--theme-hairline)]">
                 {impactMetrics.map((metric) => (
                   <div key={metric.label} className="flex items-baseline justify-between gap-3 py-4 first:pt-0 last:pb-0">
-                    <span className="text-sm text-white/55">{metric.label}</span>
+                    <span className="text-sm text-white/70">{metric.label}</span>
                     <span className="num text-2xl text-white">{metric.value}</span>
                   </div>
                 ))}
