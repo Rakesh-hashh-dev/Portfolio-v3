@@ -21,7 +21,7 @@ export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10);
+    const onScroll = () => setScrolled(window.scrollY > 8);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -33,37 +33,33 @@ export default function Navigation() {
       transition={{ duration: 0.45, ease: "easeOut" }}
       className="fixed inset-x-0 top-0 z-50"
     >
-      {/* Background — separate layer so centering math stays clean */}
+      {/* Background layer */}
       <div
         className={`absolute inset-0 transition-all duration-300 ${
           scrolled
-            ? "bg-surface/90 backdrop-blur-2xl border-b border-white/8 shadow-sm shadow-black/12"
+            ? "bg-surface/85 backdrop-blur-xl border-b border-[var(--theme-hairline)]"
             : ""
         }`}
       />
 
-      {/* Bottom accent line on scroll */}
-      {scrolled && (
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-accent-cyan/18 to-transparent" />
-      )}
-
-      {/* Content — h-16 keeps everything aligned */}
       <div className="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
 
-        {/* ── Logo ──────────────────────────────────── */}
+        {/* ── Wordmark ──────────────────────────────── */}
         <Link href="/" className="group flex shrink-0 items-center gap-3">
-          <div className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-lg ring-1 ring-white/12 transition-all duration-200 group-hover:ring-accent-cyan/35 group-hover:shadow-sm group-hover:shadow-accent-cyan/14">
+          <div className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-md ring-1 ring-[var(--theme-hairline)] transition-all duration-200 group-hover:ring-accent-cyan/45">
             <Image src="/logo.png" alt="RK" width={32} height={32} className="object-cover" />
           </div>
           <div className="hidden leading-tight sm:block">
-            <p className="text-sm font-semibold text-white/85 transition-colors group-hover:text-white">
+            <p className="display text-[15px] text-white transition-colors group-hover:text-accent-cyan">
               Rakesh Kumar Behera
             </p>
-            <p className="text-[11px] text-white/32">MBA · IIM Sambalpur</p>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/35">
+              MBA · IIM Sambalpur
+            </p>
           </div>
         </Link>
 
-        {/* ── Nav links — absolutely centered ──────── */}
+        {/* ── Center links ──────────────────────────── */}
         <div className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center lg:flex">
           {links.map((link) => {
             const active = pathname === link.href;
@@ -71,14 +67,14 @@ export default function Navigation() {
               <Link
                 key={link.name}
                 href={link.href}
-                className={`relative px-3.5 py-2 text-sm font-medium transition-colors duration-150 ${
-                  active ? "text-white" : "text-white/46 hover:text-white/82"
+                className={`relative px-3.5 py-2 text-[13px] font-medium tracking-wide transition-colors duration-150 ${
+                  active ? "text-white" : "text-white/50 hover:text-white"
                 }`}
               >
                 {active && (
                   <motion.span
                     layoutId="nav-line"
-                    className="absolute inset-x-3 bottom-0.5 h-[2px] rounded-full bg-accent-cyan"
+                    className="absolute inset-x-3.5 -bottom-0.5 h-px bg-accent-cyan"
                     transition={{ type: "spring", stiffness: 500, damping: 42 }}
                   />
                 )}
@@ -89,13 +85,13 @@ export default function Navigation() {
         </div>
 
         {/* ── Right actions ─────────────────────────── */}
-        <div className="flex shrink-0 items-center gap-2">
+        <div className="flex shrink-0 items-center gap-2.5">
           <ThemeToggle />
           <motion.a
             href="mailto:rk821604@gmail.com"
             whileHover={{ y: -1 }}
             whileTap={{ scale: 0.97 }}
-            className="group inline-flex items-center gap-1.5 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-[white] shadow-md shadow-primary/20 transition-all hover:bg-[var(--theme-primary-hover)] hover:shadow-lg hover:shadow-primary/30"
+            className="btn-primary group !px-4 !py-2 !text-[13px]"
           >
             Connect
             <ArrowUpRight

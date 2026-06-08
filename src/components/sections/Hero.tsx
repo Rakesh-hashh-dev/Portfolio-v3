@@ -3,248 +3,194 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, BarChart3, BriefcaseBusiness, Download, GraduationCap } from "lucide-react";
+import { ArrowRight, Download, GraduationCap } from "lucide-react";
 import { impactMetrics, profile, stats } from "@/lib/profile";
 
 const container = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.09 } },
+  show: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } },
 };
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 28 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] } },
+  hidden: { opacity: 0, y: 22 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.22, 0.61, 0.36, 1] as [number, number, number, number] },
+  },
 };
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen overflow-hidden px-6 pt-24 pb-20 md:pt-32 md:pb-24">
-
-      {/* Section-level background elements */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -top-32 left-1/4 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-primary/8 blur-[120px]" />
-        <div className="absolute top-40 right-1/4 h-[400px] w-[400px] translate-x-1/2 rounded-full bg-accent-purple/8 blur-[100px]" />
-
-        {/* Decorative concentric rings — right side */}
-        <div className="absolute right-0 top-0 h-full w-1/2 opacity-[0.055]">
-          <svg
-            className="absolute right-[-12%] top-[4%] h-[700px] w-[700px]"
-            viewBox="0 0 700 700"
-            fill="none"
-            aria-hidden="true"
-          >
-            <circle cx="350" cy="350" r="310" stroke="url(#hero-rings)" strokeWidth="1.5" />
-            <circle cx="350" cy="350" r="230" stroke="url(#hero-rings)" strokeWidth="1" />
-            <circle cx="350" cy="350" r="152" stroke="url(#hero-rings)" strokeWidth="0.8" />
-            <circle cx="350" cy="350" r="76"  stroke="url(#hero-rings)" strokeWidth="0.5" />
-            <defs>
-              <linearGradient id="hero-rings" x1="0" y1="0" x2="700" y2="700" gradientUnits="userSpaceOnUse">
-                <stop stopColor="#93c5fd" />
-                <stop offset="1" stopColor="#c084fc" />
-              </linearGradient>
-            </defs>
-          </svg>
-        </div>
-
-        {/* Dot accent grid */}
-        <div
-          className="absolute inset-0 opacity-[0.038]"
-          style={{
-            backgroundImage: "radial-gradient(circle, #93c5fd 1px, transparent 1px)",
-            backgroundSize: "32px 32px",
-          }}
-        />
-      </div>
-
+    <section className="relative overflow-hidden px-6 pt-28 pb-20 md:pt-32 md:pb-28">
       <div className="relative mx-auto max-w-7xl">
-        <div className="grid gap-16 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
 
-          {/* ── Left: text ──────────────────────────────────── */}
+        {/* ── Masthead row ─────────────────────────────── */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          className="mb-12 flex items-center justify-between border-b border-[var(--theme-hairline)] pb-4 text-[11px] font-semibold uppercase tracking-[0.24em] text-white/40"
+        >
+          <span>Portfolio — MBA 2025/27</span>
+          <span className="hidden sm:inline">Bhubaneswar · India</span>
+        </motion.div>
+
+        <div className="grid gap-14 lg:grid-cols-[1.12fr_0.88fr] lg:items-center">
+
+          {/* ── Left: editorial lede ─────────────────────── */}
           <motion.div variants={container} initial="hidden" animate="show">
 
-            {/* Availability badge */}
+            {/* Availability */}
             <motion.div variants={fadeUp} className="mb-7">
-              <span className="inline-flex items-center gap-2.5 rounded-full border border-accent-cyan/22 bg-accent-cyan/8 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.2em] text-accent-cyan shadow-sm shadow-accent-cyan/8">
+              <span className="inline-flex items-center gap-2.5 rounded-full border border-[var(--theme-hairline)] px-3.5 py-1.5 text-[11px] font-semibold tracking-wide text-white/60">
                 <span className="relative flex h-1.5 w-1.5">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-cyan opacity-55" />
-                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent-cyan" />
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-purple opacity-60" />
+                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent-purple" />
                 </span>
-                Open to Internships · Summer 2026
+                Open to Summer 2026 internships
               </span>
             </motion.div>
 
-            <motion.p variants={fadeUp} className="eyebrow mb-8">
-              MBA Candidate · IIM Sambalpur · 2025–2027
+            {/* Name kicker */}
+            <motion.p
+              variants={fadeUp}
+              className="mb-5 text-[12px] font-bold uppercase tracking-[0.32em] text-accent-cyan"
+            >
+              Rakesh Kumar Behera
             </motion.p>
 
+            {/* Headline */}
             <motion.h1
               variants={fadeUp}
-              className="text-6xl font-black leading-[1.0] tracking-tight md:text-7xl lg:text-[5.75rem]"
+              className="display text-5xl text-white md:text-6xl lg:text-[4.4rem]"
             >
-              Rakesh<br />
-              <span className="text-gradient">Kumar Behera</span>
+              Strategy that ships{" "}
+              <em className="italic text-gradient-cyan">measurable results.</em>
             </motion.h1>
 
+            {/* Role line */}
             <motion.p
               variants={fadeUp}
-              className="mt-6 text-xl font-semibold text-white/75 md:text-2xl"
+              className="mt-7 text-lg font-medium text-white/70"
             >
-              Strategy · Execution · Measurable Growth
+              MBA Candidate at IIM Sambalpur · Ex-TCS System Engineer
             </motion.p>
 
+            {/* Lede */}
             <motion.p
               variants={fadeUp}
-              className="mt-5 max-w-xl text-[1.0625rem] leading-[1.85] text-white/48"
+              className="mt-4 max-w-xl text-[1.0625rem] leading-[1.85] text-white/55"
             >
               {profile.summary}
             </motion.p>
 
-            <motion.div variants={fadeUp} className="mt-9 flex flex-wrap gap-3">
-              <Link
-                href="/case-studies"
-                className="group inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3.5 font-semibold text-white shadow-lg shadow-primary/30 transition-all hover:-translate-y-0.5 hover:bg-[var(--theme-primary-hover)] hover:shadow-xl hover:shadow-primary/40"
-              >
+            {/* CTAs */}
+            <motion.div variants={fadeUp} className="mt-9 flex flex-wrap items-center gap-3">
+              <Link href="/case-studies" className="btn-primary group">
                 View Case Studies
-                <ArrowRight size={17} className="transition-transform group-hover:translate-x-0.5" />
+                <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
               </Link>
-              <a
-                href={profile.resume}
-                className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] px-6 py-3.5 font-semibold text-white/80 transition-all hover:-translate-y-0.5 hover:border-white/18 hover:bg-white/[0.07] hover:text-white"
-              >
-                Resume
-                <Download size={17} />
+              <a href={profile.resume} className="btn-ghost group">
+                Download Résumé
+                <Download size={16} className="transition-transform group-hover:translate-y-0.5" />
               </a>
             </motion.div>
 
-            {/* Stats strip */}
-            <motion.div
-              variants={fadeUp}
-              className="mt-14 border-t border-white/8 pt-10"
-            >
+            {/* Stat strip */}
+            <motion.div variants={fadeUp} className="mt-14 border-t border-[var(--theme-hairline)] pt-9">
               <div className="grid grid-cols-2 gap-y-8 sm:grid-cols-4">
                 {stats.map((stat, i) => (
-                  <div key={stat.label} className={`${i > 0 ? "sm:border-l sm:border-white/6 sm:pl-8" : ""}`}>
-                    <p className="text-gradient-cyan text-3xl font-black tracking-tight">{stat.value}</p>
-                    <p className="mt-2 text-xs leading-5 text-white/38">{stat.label}</p>
+                  <div
+                    key={stat.label}
+                    className={i > 0 ? "sm:border-l sm:border-[var(--theme-hairline)] sm:pl-6" : ""}
+                  >
+                    <p className="num text-3xl text-white md:text-[2rem]">{stat.value}</p>
+                    <p className="mt-2 text-xs leading-5 text-white/45">{stat.label}</p>
                   </div>
                 ))}
               </div>
             </motion.div>
           </motion.div>
 
-          {/* ── Right: photo ─────────────────────────────────── */}
+          {/* ── Right: framed portrait ───────────────────── */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.94 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="relative"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 0.61, 0.36, 1] }}
+            className="relative mx-auto w-full max-w-[400px] lg:max-w-none"
           >
-            {/* Ambient glow behind photo */}
-            <div className="absolute -inset-8 rounded-3xl bg-gradient-to-br from-primary/18 via-transparent to-accent-purple/14 blur-2xl" />
+            <div className="relative mx-auto max-w-[400px]">
+              {/* Editorial offset frame */}
+              <div className="pointer-events-none absolute -bottom-4 -right-4 h-full w-full rounded-sm border border-primary/30" />
 
-            {/* Photo + floating badges wrapper */}
-            <div className="relative mx-auto max-w-[390px]">
+              {/* Registration ticks (diagonal pair) */}
+              <span className="pointer-events-none absolute -right-2 -top-2 z-20 h-4 w-4 border-r border-t border-accent-cyan/55" />
+              <span className="pointer-events-none absolute -bottom-2 -left-2 z-20 h-4 w-4 border-b border-l border-accent-cyan/55" />
 
-              {/* Photo */}
-              <div className="relative aspect-[3/4] overflow-hidden rounded-3xl border border-white/10 shadow-2xl shadow-black/60">
+              {/* Portrait */}
+              <div className="group relative aspect-[4/5] overflow-hidden rounded-sm border border-[var(--theme-hairline)] shadow-xl shadow-black/10">
                 <Image
                   src="/DP-optimized.webp"
                   alt="Rakesh Kumar Behera"
                   fill
                   priority
-                  quality={88}
-                  sizes="(min-width: 1024px) 390px, 90vw"
-                  className="object-cover object-top"
+                  quality={90}
+                  sizes="(min-width: 1024px) 400px, 90vw"
+                  className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                 />
-                <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-surface via-surface/65 to-transparent" />
-
-                {/* Floating impact card */}
-                <div className="absolute inset-x-4 bottom-4 glass-card rounded-2xl p-4">
-                  <div className="mb-3.5 flex items-center justify-between">
-                    <p className="text-[10px] font-black uppercase tracking-[0.18em] text-white/32">Impact Snapshot</p>
-                    <div className="rounded-lg bg-accent-purple/15 p-1.5 text-accent-purple">
-                      <BarChart3 size={14} />
-                    </div>
-                  </div>
-                  <div className="space-y-2.5">
-                    {impactMetrics.slice(0, 3).map((metric) => (
-                      <div key={metric.label}>
-                        <div className="mb-1.5 flex justify-between text-[11px]">
-                          <span className="text-white/40">{metric.label}</span>
-                          <span className="font-bold text-white/85">{metric.value}</span>
-                        </div>
-                        <div className="h-1 rounded-full bg-white/8">
-                          <motion.div
-                            initial={{ width: 0 }}
-                            animate={{ width: metric.width }}
-                            transition={{ duration: 1.2, delay: 0.7, ease: "easeOut" }}
-                            className="h-full rounded-full bg-gradient-to-r from-accent-cyan to-accent-purple"
-                          />
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+                {/* Bottom vignette for depth */}
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-surface/70 to-transparent" />
+                {/* Figure caption tab */}
+                <div className="absolute left-3 top-3 rounded-sm border border-white/15 bg-surface/65 px-2 py-1 text-[9px] font-bold uppercase tracking-[0.22em] text-white/70 backdrop-blur-sm">
+                  Fig. 01
                 </div>
               </div>
 
-              {/* Floating badge 1: IIM Sambalpur — top-right */}
+              {/* Credential chip — top-right */}
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.9, duration: 0.45 }}
-                className="absolute -right-7 -top-5 z-10 hidden lg:block"
+                transition={{ delay: 0.8, duration: 0.45 }}
+                className="absolute -left-6 top-8 z-10 hidden lg:block"
               >
-                <div style={{ animation: "float-badge-a 4.5s ease-in-out infinite 1.4s" }}>
-                  <div className="glass-card flex items-center gap-2.5 rounded-xl px-3.5 py-2.5">
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-accent-cyan/14 text-accent-cyan">
+                <div style={{ animation: "float-badge-a 5s ease-in-out infinite 1.2s" }}>
+                  <div className="glass-card flex items-center gap-2.5 rounded-lg px-3.5 py-2.5">
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-accent-cyan/12 text-accent-cyan">
                       <GraduationCap size={15} />
                     </div>
                     <div>
-                      <p className="text-[9px] font-black uppercase tracking-[0.17em] text-white/28">Program</p>
-                      <p className="text-[13px] font-bold text-white/90">IIM Sambalpur</p>
+                      <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/40">Program</p>
+                      <p className="text-[13px] font-semibold text-white/90">IIM Sambalpur</p>
                     </div>
                   </div>
                 </div>
               </motion.div>
 
-              {/* Floating badge 2: TCS — left-side */}
+              {/* Selected impact card — overlapping bottom */}
               <motion.div
-                initial={{ opacity: 0, y: 10 }}
+                initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.05, duration: 0.45 }}
-                className="absolute -left-10 top-[30%] z-10 hidden lg:block"
+                transition={{ delay: 0.55, duration: 0.55 }}
+                className="glass-card relative z-10 -mt-10 ml-4 mr-[-0.5rem] rounded-lg p-5"
               >
-                <div style={{ animation: "float-badge-b 5.5s ease-in-out infinite 1.6s" }}>
-                  <div className="glass-card flex items-center gap-2.5 rounded-xl px-3.5 py-2.5">
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-accent-purple/14 text-accent-purple">
-                      <BriefcaseBusiness size={15} />
+                <div className="mb-3 flex items-center justify-between">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">
+                    Selected Impact
+                  </p>
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-accent-cyan">
+                    2024 — 26
+                  </span>
+                </div>
+                <div className="divide-y divide-[var(--theme-hairline)]">
+                  {impactMetrics.slice(0, 3).map((metric) => (
+                    <div key={metric.label} className="flex items-baseline justify-between py-2.5">
+                      <span className="text-[13px] text-white/55">{metric.label}</span>
+                      <span className="num text-lg text-white">{metric.value}</span>
                     </div>
-                    <div>
-                      <p className="text-[9px] font-black uppercase tracking-[0.17em] text-white/28">Experience</p>
-                      <p className="text-[13px] font-bold text-white/90">TCS · 3.9 yrs</p>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </motion.div>
-
-              {/* Floating badge 3: Active intern — bottom-right */}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.2, duration: 0.45 }}
-                className="absolute -right-6 bottom-[22%] z-10 hidden xl:block"
-              >
-                <div style={{ animation: "float-badge-a 6s ease-in-out infinite 2s" }}>
-                  <div className="glass-card flex items-center gap-2 rounded-lg px-3 py-2">
-                    <span className="relative flex h-2 w-2 shrink-0">
-                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-cyan opacity-55" />
-                      <span className="relative inline-flex h-2 w-2 rounded-full bg-accent-cyan" />
-                    </span>
-                    <p className="text-[12px] font-bold text-white/80">Active Intern · 2026</p>
-                  </div>
-                </div>
-              </motion.div>
-
             </div>
           </motion.div>
         </div>
