@@ -46,15 +46,39 @@ export default function RootLayout({
         <Navigation />
         <div className="flex-1">{children}</div>
         <DockNav />
-        <footer className="border-t border-white/6 px-6 py-10">
-          <div className="mx-auto flex max-w-7xl flex-col items-center gap-4 text-center md:flex-row md:justify-between md:text-left">
-            <div>
-              <p className="font-semibold text-white">Rakesh Kumar Behera</p>
-              <p className="mt-0.5 text-sm text-white/35">MBA Candidate · IIM Sambalpur · 2025–2027</p>
+        <footer className="relative border-t border-white/6 px-6 pt-12 pb-8">
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-cyan/18 to-transparent" />
+          <div className="mx-auto max-w-7xl">
+            <div className="mb-8 flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
+              {/* Brand */}
+              <div>
+                <p className="text-base font-bold text-white/88">Rakesh Kumar Behera</p>
+                <p className="mt-1 text-sm text-white/32">MBA Candidate · IIM Sambalpur · 2025–2027</p>
+                <p className="mt-2 text-xs text-white/22">Strategy · Execution · Measurable Growth</p>
+              </div>
+              {/* Nav links */}
+              <nav className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/38">
+                {[
+                  ["About",        "/about"],
+                  ["Experience",   "/experience"],
+                  ["Case Studies", "/case-studies"],
+                  ["Skills",       "/skills"],
+                  ["Contact",      "/contact"],
+                ].map(([label, href]) => (
+                  <a key={label} href={href} className="transition-colors hover:text-white/72">{label}</a>
+                ))}
+              </nav>
             </div>
-            <p className="text-sm text-white/28">
-              &copy; {new Date().getFullYear()} · All rights reserved
-            </p>
+            <div className="flex flex-col items-start gap-2 border-t border-white/5 pt-6 md:flex-row md:items-center md:justify-between">
+              <p className="text-xs text-white/22">
+                &copy; {new Date().getFullYear()} Rakesh Kumar Behera · All rights reserved
+              </p>
+              <div className="flex items-center gap-4 text-xs text-white/22">
+                <a href="mailto:rk821604@gmail.com" className="transition-colors hover:text-white/50">rk821604@gmail.com</a>
+                <a href="https://www.linkedin.com/in/rakesh-kumar-behera-rk821604" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-white/50">LinkedIn</a>
+                <a href="/Profile.pdf" className="transition-colors hover:text-white/50">Resume</a>
+              </div>
+            </div>
           </div>
         </footer>
       </body>

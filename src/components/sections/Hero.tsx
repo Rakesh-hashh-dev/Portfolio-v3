@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, BarChart3, Download } from "lucide-react";
+import { ArrowRight, BarChart3, BriefcaseBusiness, Download, GraduationCap } from "lucide-react";
 import { impactMetrics, profile, stats } from "@/lib/profile";
 
 const container = {
@@ -20,10 +20,40 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen overflow-hidden px-6 pt-24 pb-20 md:pt-32 md:pb-24">
 
-      {/* Section-level spotlight */}
+      {/* Section-level background elements */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute -top-32 left-1/4 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-primary/8 blur-[120px]" />
         <div className="absolute top-40 right-1/4 h-[400px] w-[400px] translate-x-1/2 rounded-full bg-accent-purple/8 blur-[100px]" />
+
+        {/* Decorative concentric rings — right side */}
+        <div className="absolute right-0 top-0 h-full w-1/2 opacity-[0.055]">
+          <svg
+            className="absolute right-[-12%] top-[4%] h-[700px] w-[700px]"
+            viewBox="0 0 700 700"
+            fill="none"
+            aria-hidden="true"
+          >
+            <circle cx="350" cy="350" r="310" stroke="url(#hero-rings)" strokeWidth="1.5" />
+            <circle cx="350" cy="350" r="230" stroke="url(#hero-rings)" strokeWidth="1" />
+            <circle cx="350" cy="350" r="152" stroke="url(#hero-rings)" strokeWidth="0.8" />
+            <circle cx="350" cy="350" r="76"  stroke="url(#hero-rings)" strokeWidth="0.5" />
+            <defs>
+              <linearGradient id="hero-rings" x1="0" y1="0" x2="700" y2="700" gradientUnits="userSpaceOnUse">
+                <stop stopColor="#93c5fd" />
+                <stop offset="1" stopColor="#c084fc" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+
+        {/* Dot accent grid */}
+        <div
+          className="absolute inset-0 opacity-[0.038]"
+          style={{
+            backgroundImage: "radial-gradient(circle, #93c5fd 1px, transparent 1px)",
+            backgroundSize: "32px 32px",
+          }}
+        />
       </div>
 
       <div className="relative mx-auto max-w-7xl">
@@ -31,6 +61,17 @@ export default function Hero() {
 
           {/* ── Left: text ──────────────────────────────────── */}
           <motion.div variants={container} initial="hidden" animate="show">
+
+            {/* Availability badge */}
+            <motion.div variants={fadeUp} className="mb-7">
+              <span className="inline-flex items-center gap-2.5 rounded-full border border-accent-cyan/22 bg-accent-cyan/8 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.2em] text-accent-cyan shadow-sm shadow-accent-cyan/8">
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-cyan opacity-55" />
+                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent-cyan" />
+                </span>
+                Open to Internships · Summer 2026
+              </span>
+            </motion.div>
 
             <motion.p variants={fadeUp} className="eyebrow mb-8">
               MBA Candidate · IIM Sambalpur · 2025–2027
@@ -78,14 +119,16 @@ export default function Hero() {
             {/* Stats strip */}
             <motion.div
               variants={fadeUp}
-              className="mt-14 grid grid-cols-2 gap-y-8 gap-x-8 border-t border-white/8 pt-10 sm:grid-cols-4"
+              className="mt-14 border-t border-white/8 pt-10"
             >
-              {stats.map((stat) => (
-                <div key={stat.label}>
-                  <p className="text-gradient-cyan text-3xl font-black tracking-tight">{stat.value}</p>
-                  <p className="mt-2 text-xs leading-5 text-white/38">{stat.label}</p>
-                </div>
-              ))}
+              <div className="grid grid-cols-2 gap-y-8 sm:grid-cols-4">
+                {stats.map((stat, i) => (
+                  <div key={stat.label} className={`${i > 0 ? "sm:border-l sm:border-white/6 sm:pl-8" : ""}`}>
+                    <p className="text-gradient-cyan text-3xl font-black tracking-tight">{stat.value}</p>
+                    <p className="mt-2 text-xs leading-5 text-white/38">{stat.label}</p>
+                  </div>
+                ))}
+              </div>
             </motion.div>
           </motion.div>
 
@@ -99,46 +142,109 @@ export default function Hero() {
             {/* Ambient glow behind photo */}
             <div className="absolute -inset-8 rounded-3xl bg-gradient-to-br from-primary/18 via-transparent to-accent-purple/14 blur-2xl" />
 
-            {/* Photo */}
-            <div className="relative mx-auto aspect-[3/4] max-w-[390px] overflow-hidden rounded-3xl border border-white/10 shadow-2xl shadow-black/60">
-              <Image
-                src="/DP-optimized.webp"
-                alt="Rakesh Kumar Behera"
-                fill
-                priority
-                quality={88}
-                sizes="(min-width: 1024px) 390px, 90vw"
-                className="object-cover object-top"
-              />
-              <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-surface via-surface/65 to-transparent" />
+            {/* Photo + floating badges wrapper */}
+            <div className="relative mx-auto max-w-[390px]">
 
-              {/* Floating impact card */}
-              <div className="absolute inset-x-4 bottom-4 glass-card rounded-2xl p-4">
-                <div className="mb-3.5 flex items-center justify-between">
-                  <p className="text-[10px] font-black uppercase tracking-[0.18em] text-white/32">Impact Snapshot</p>
-                  <div className="rounded-lg bg-accent-purple/15 p-1.5 text-accent-purple">
-                    <BarChart3 size={14} />
+              {/* Photo */}
+              <div className="relative aspect-[3/4] overflow-hidden rounded-3xl border border-white/10 shadow-2xl shadow-black/60">
+                <Image
+                  src="/DP-optimized.webp"
+                  alt="Rakesh Kumar Behera"
+                  fill
+                  priority
+                  quality={88}
+                  sizes="(min-width: 1024px) 390px, 90vw"
+                  className="object-cover object-top"
+                />
+                <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-surface via-surface/65 to-transparent" />
+
+                {/* Floating impact card */}
+                <div className="absolute inset-x-4 bottom-4 glass-card rounded-2xl p-4">
+                  <div className="mb-3.5 flex items-center justify-between">
+                    <p className="text-[10px] font-black uppercase tracking-[0.18em] text-white/32">Impact Snapshot</p>
+                    <div className="rounded-lg bg-accent-purple/15 p-1.5 text-accent-purple">
+                      <BarChart3 size={14} />
+                    </div>
+                  </div>
+                  <div className="space-y-2.5">
+                    {impactMetrics.slice(0, 3).map((metric) => (
+                      <div key={metric.label}>
+                        <div className="mb-1.5 flex justify-between text-[11px]">
+                          <span className="text-white/40">{metric.label}</span>
+                          <span className="font-bold text-white/85">{metric.value}</span>
+                        </div>
+                        <div className="h-1 rounded-full bg-white/8">
+                          <motion.div
+                            initial={{ width: 0 }}
+                            animate={{ width: metric.width }}
+                            transition={{ duration: 1.2, delay: 0.7, ease: "easeOut" }}
+                            className="h-full rounded-full bg-gradient-to-r from-accent-cyan to-accent-purple"
+                          />
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
-                <div className="space-y-2.5">
-                  {impactMetrics.slice(0, 3).map((metric) => (
-                    <div key={metric.label}>
-                      <div className="mb-1.5 flex justify-between text-[11px]">
-                        <span className="text-white/40">{metric.label}</span>
-                        <span className="font-bold text-white/85">{metric.value}</span>
-                      </div>
-                      <div className="h-1 rounded-full bg-white/8">
-                        <motion.div
-                          initial={{ width: 0 }}
-                          animate={{ width: metric.width }}
-                          transition={{ duration: 1.2, delay: 0.7, ease: "easeOut" }}
-                          className="h-full rounded-full bg-gradient-to-r from-accent-cyan to-accent-purple"
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
               </div>
+
+              {/* Floating badge 1: IIM Sambalpur — top-right */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.9, duration: 0.45 }}
+                className="absolute -right-7 -top-5 z-10 hidden lg:block"
+              >
+                <div style={{ animation: "float-badge-a 4.5s ease-in-out infinite 1.4s" }}>
+                  <div className="glass-card flex items-center gap-2.5 rounded-xl px-3.5 py-2.5">
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-accent-cyan/14 text-accent-cyan">
+                      <GraduationCap size={15} />
+                    </div>
+                    <div>
+                      <p className="text-[9px] font-black uppercase tracking-[0.17em] text-white/28">Program</p>
+                      <p className="text-[13px] font-bold text-white/90">IIM Sambalpur</p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Floating badge 2: TCS — left-side */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.05, duration: 0.45 }}
+                className="absolute -left-10 top-[30%] z-10 hidden lg:block"
+              >
+                <div style={{ animation: "float-badge-b 5.5s ease-in-out infinite 1.6s" }}>
+                  <div className="glass-card flex items-center gap-2.5 rounded-xl px-3.5 py-2.5">
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-accent-purple/14 text-accent-purple">
+                      <BriefcaseBusiness size={15} />
+                    </div>
+                    <div>
+                      <p className="text-[9px] font-black uppercase tracking-[0.17em] text-white/28">Experience</p>
+                      <p className="text-[13px] font-bold text-white/90">TCS · 3.9 yrs</p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Floating badge 3: Active intern — bottom-right */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.2, duration: 0.45 }}
+                className="absolute -right-6 bottom-[22%] z-10 hidden xl:block"
+              >
+                <div style={{ animation: "float-badge-a 6s ease-in-out infinite 2s" }}>
+                  <div className="glass-card flex items-center gap-2 rounded-lg px-3 py-2">
+                    <span className="relative flex h-2 w-2 shrink-0">
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-cyan opacity-55" />
+                      <span className="relative inline-flex h-2 w-2 rounded-full bg-accent-cyan" />
+                    </span>
+                    <p className="text-[12px] font-bold text-white/80">Active Intern · 2026</p>
+                  </div>
+                </div>
+              </motion.div>
+
             </div>
           </motion.div>
         </div>

@@ -249,6 +249,21 @@ body::after {
   70%  { transform: translate(54%, 46%) scale(0.94); }
 }
 
+@keyframes float-badge-a {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+@keyframes float-badge-b {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-6px); }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
 .noise-overlay {
   position: fixed;
   inset: 0;
