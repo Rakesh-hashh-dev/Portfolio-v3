@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function SkillsPage() {
   return (
-    <main className="min-h-screen bg-surface text-white">
+    <main className="min-h-screen text-white">
       <PageIntro
         eyebrow="Skills"
         title={

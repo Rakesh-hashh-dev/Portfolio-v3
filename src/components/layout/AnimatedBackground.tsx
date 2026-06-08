@@ -8,9 +8,8 @@ type ParticleTheme = {
   lineAlpha: number;
 };
 
-const CONNECT_DIST = 118;      // particle ↔ particle link distance
-const CURSOR_RADIUS = 210;     // cursor influence radius
-const REPEL_RADIUS = 150;
+const CONNECT_DIST = 118; // particle ↔ particle link distance
+const REPEL_RADIUS = 130; // gentle cursor influence
 
 class Particle {
   x: number;
@@ -38,8 +37,8 @@ class Particle {
 
     if (distance < REPEL_RADIUS && distance > 0) {
       const force = (REPEL_RADIUS - distance) / REPEL_RADIUS;
-      this.x -= (dx / distance) * force * 1.5;
-      this.y -= (dy / distance) * force * 1.5;
+      this.x -= (dx / distance) * force * 1.2;
+      this.y -= (dy / distance) * force * 1.2;
     } else {
       this.x -= (this.x - this.baseX) * 0.02;
       this.y -= (this.y - this.baseY) * 0.02;
@@ -52,12 +51,10 @@ class Particle {
     if (this.baseY < 0 || this.baseY > height) this.vy *= -1;
   }
 
-  draw(ctx: CanvasRenderingContext2D, theme: ParticleTheme, glow: number) {
-    const size = this.size * (1 + glow * 2.2);
-    const alpha = Math.min(1, theme.particleAlpha * (1 + glow * 3.4));
+  draw(ctx: CanvasRenderingContext2D, theme: ParticleTheme) {
     ctx.beginPath();
-    ctx.arc(this.x, this.y, size, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(${theme.particleRgb}, ${alpha})`;
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(${theme.particleRgb}, ${theme.particleAlpha})`;
     ctx.fill();
   }
 }
@@ -81,9 +78,6 @@ export default function AnimatedBackground() {
     let particles: Particle[] = [];
     let mouseX = -1000;
     let mouseY = -1000;
-    // Smoothed pointer for the trailing glow halo
-    let glowX = -1000;
-    let glowY = -1000;
     const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
     const theme: ParticleTheme = {
       particleRgb: "173, 198, 255",
@@ -100,7 +94,8 @@ export default function AnimatedBackground() {
 
     function initParticles(width: number, height: number) {
       particles = [];
-      const count = Math.min((width * height) / 9000, 150);
+      const isMobile = width < 768;
+      const count = Math.min((width * height) / (isMobile ? 16000 : 9000), isMobile ? 55 : 150);
 
       for (let index = 0; index < count; index += 1) {
         particles.push(new Particle(Math.random() * width, Math.random() * height));
@@ -122,10 +117,6 @@ export default function AnimatedBackground() {
     function handleMouseMove(event: MouseEvent) {
       mouseX = event.clientX;
       mouseY = event.clientY;
-      if (glowX < -500) {
-        glowX = mouseX;
-        glowY = mouseY;
-      }
     }
 
     function handleMouseLeave() {
@@ -138,25 +129,6 @@ export default function AnimatedBackground() {
       const height = window.innerHeight;
       renderCtx.clearRect(0, 0, width, height);
 
-      const pointerActive = mouseX > -500;
-
-      // Trailing glow halo that eases toward the cursor
-      if (pointerActive) {
-        glowX += (mouseX - glowX) * 0.12;
-        glowY += (mouseY - glowY) * 0.12;
-        const halo = renderCtx.createRadialGradient(glowX, glowY, 0, glowX, glowY, CURSOR_RADIUS);
-        halo.addColorStop(0, `rgba(${theme.particleRgb}, ${theme.lineAlpha * 1.15})`);
-        halo.addColorStop(1, `rgba(${theme.particleRgb}, 0)`);
-        renderCtx.fillStyle = halo;
-        renderCtx.fillRect(
-          glowX - CURSOR_RADIUS,
-          glowY - CURSOR_RADIUS,
-          CURSOR_RADIUS * 2,
-          CURSOR_RADIUS * 2,
-        );
-      }
-
-      // Particle ↔ particle links (use pre-update positions for stability)
       for (let i = 0; i < particles.length; i += 1) {
         for (let j = i + 1; j < particles.length; j += 1) {
           const dx = particles[i].x - particles[j].x;
@@ -172,34 +144,21 @@ export default function AnimatedBackground() {
             renderCtx.stroke();
           }
         }
-      }
 
-      // Cursor links + glow factor, then update & draw each particle
-      for (let i = 0; i < particles.length; i += 1) {
-        const p = particles[i];
-        let glow = 0;
-
-        if (pointerActive) {
-          const dx = mouseX - p.x;
-          const dy = mouseY - p.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-
-          if (distance < CURSOR_RADIUS) {
-            glow = 1 - distance / CURSOR_RADIUS;
-            renderCtx.beginPath();
-            renderCtx.moveTo(p.x, p.y);
-            renderCtx.lineTo(mouseX, mouseY);
-            renderCtx.strokeStyle = `rgba(${theme.particleRgb}, ${Math.min(0.6, theme.lineAlpha * 4.5) * glow})`;
-            renderCtx.lineWidth = 1 + glow * 0.7;
-            renderCtx.stroke();
-          }
-        }
-
-        p.update(mouseX, mouseY, width, height);
-        p.draw(renderCtx, theme, glow);
+        particles[i].update(mouseX, mouseY, width, height);
+        particles[i].draw(renderCtx, theme);
       }
 
       animationFrameId = requestAnimationFrame(animate);
+    }
+
+    function handleVisibility() {
+      if (document.hidden) {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = 0;
+      } else if (!animationFrameId) {
+        animate();
+      }
     }
 
     syncTheme();
@@ -210,12 +169,14 @@ export default function AnimatedBackground() {
     window.addEventListener("themechange", syncTheme);
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
     window.addEventListener("mouseleave", handleMouseLeave);
+    document.addEventListener("visibilitychange", handleVisibility);
 
     return () => {
       window.removeEventListener("resize", resize);
       window.removeEventListener("themechange", syncTheme);
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseleave", handleMouseLeave);
+      document.removeEventListener("visibilitychange", handleVisibility);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);

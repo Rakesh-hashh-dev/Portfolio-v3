@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-surface text-white">
+    <main className="min-h-screen text-white">
       <PageIntro
         eyebrow="Contact"
         title={
