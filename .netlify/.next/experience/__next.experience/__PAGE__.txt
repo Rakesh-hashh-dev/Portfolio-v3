@@ -1,0 +1,7 @@
+1:"$Sreact.fragment"
+2:I[8528,["404","static/chunks/404-e7a32dee33924e27.js","718","static/chunks/718-5bd8ab8ad19b8c56.js","127","static/chunks/app/experience/page-b90a3180703ba53a.js"],"PageIntro"]
+3:I[8733,["404","static/chunks/404-e7a32dee33924e27.js","718","static/chunks/718-5bd8ab8ad19b8c56.js","127","static/chunks/app/experience/page-b90a3180703ba53a.js"],"default"]
+4:I[484,[],"OutletBoundary"]
+5:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[["$","main",null,{"className":"min-h-screen text-white","children":[["$","$L2",null,{"eyebrow":"Experience","title":["Professional and leadership roles with"," ",["$","span",null,{"className":"text-gradient-cyan","children":"measurable execution"}]," ","responsibility."],"children":"From Tata Consultancy Services to IIM Sambalpur leadership roles, this timeline highlights technical delivery, consulting exposure, marketing execution, and stakeholder management."}],["$","$L3",null,{}]]}],null,["$","$L4",null,{"children":["$","$5",null,{"name":"Next.MetadataOutlet","children":"$@6"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"BDitK83Ho5f7v3iL_UIQR"}
+6:null

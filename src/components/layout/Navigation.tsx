@@ -9,6 +9,7 @@ import ThemeToggle from "./ThemeToggle";
 import { useEffect, useState } from "react";
 
 const links = [
+  { name: "Home",         href: "/" },
   { name: "About",        href: "/about" },
   { name: "Experience",   href: "/experience" },
   { name: "Case Studies", href: "/case-studies" },

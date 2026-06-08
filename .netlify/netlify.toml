@@ -1,0 +1,93 @@
+redirectsOrigin = "config"
+headers = []
+
+[functions]
+
+[functions."*"]
+
+[[plugins]]
+origin = "default"
+package = "@netlify/plugin-nextjs"
+
+[plugins.inputs]
+
+[build]
+publish = "F:\\Web Dev\\Antigravity\\Portfolio v3\\out"
+publishOrigin = "config"
+commandOrigin = "ui"
+command = "npm run build"
+
+[build.environment]
+NETLIFY_NEXT_PLUGIN_SKIP = "true"
+
+[build.processing]
+
+[build.processing.css]
+
+[build.processing.html]
+
+[build.processing.images]
+
+[build.processing.js]
+
+[build.services]
+
+[[redirects]]
+from = "/about/__next.about.__PAGE__.txt"
+to = "/about/__next.about/__PAGE__.txt"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/contact/__next.contact.__PAGE__.txt"
+to = "/contact/__next.contact/__PAGE__.txt"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/skills/__next.skills.__PAGE__.txt"
+to = "/skills/__next.skills/__PAGE__.txt"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/experience/__next.experience.__PAGE__.txt"
+to = "/experience/__next.experience/__PAGE__.txt"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
+from = "/case-studies/__next.case-studies.__PAGE__.txt"
+to = "/case-studies/__next.case-studies/__PAGE__.txt"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]

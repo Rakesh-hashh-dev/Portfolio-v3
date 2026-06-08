@@ -1,0 +1,7 @@
+1:"$Sreact.fragment"
+2:I[8528,["404","static/chunks/404-e7a32dee33924e27.js","718","static/chunks/718-5bd8ab8ad19b8c56.js","501","static/chunks/app/skills/page-4fff9af631c6087c.js"],"PageIntro"]
+3:I[7547,["404","static/chunks/404-e7a32dee33924e27.js","718","static/chunks/718-5bd8ab8ad19b8c56.js","501","static/chunks/app/skills/page-4fff9af631c6087c.js"],"default"]
+4:I[484,[],"OutletBoundary"]
+5:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[["$","main",null,{"className":"min-h-screen text-white","children":[["$","$L2",null,{"eyebrow":"Skills","title":["MBA capabilities supported by"," ",["$","span",null,{"className":"text-gradient-cyan","children":"analytical and technical"}]," ","foundations."],"children":"The profile is organized around business strategy, execution, analytics, and certifications that support structured problem solving."}],["$","$L3",null,{}]]}],null,["$","$L4",null,{"children":["$","$5",null,{"name":"Next.MetadataOutlet","children":"$@6"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"BDitK83Ho5f7v3iL_UIQR"}
+6:null

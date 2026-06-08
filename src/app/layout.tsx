@@ -5,6 +5,7 @@ import AnimatedBackground from "@/components/layout/AnimatedBackground";
 import Navigation from "@/components/layout/Navigation";
 import DockNav from "@/components/layout/DockNav";
 import ScrollProgress from "@/components/layout/ScrollProgress";
+import PageTransition from "@/components/layout/PageTransition";
 import "./globals.css";
 
 const inter = Inter({
@@ -66,7 +67,9 @@ export default function RootLayout({
         <ScrollProgress />
         <AnimatedBackground />
         <Navigation />
-        <div id="main" tabIndex={-1} className="flex-1 outline-none">{children}</div>
+        <PageTransition>
+          <div id="main" tabIndex={-1} className="outline-none">{children}</div>
+        </PageTransition>
         <DockNav />
 
         <footer className="content-section border-t border-[var(--theme-hairline)] px-6 pt-16 pb-10">
