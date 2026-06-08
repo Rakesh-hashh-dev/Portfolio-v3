@@ -4,6 +4,7 @@ import { Inter, Fraunces } from "next/font/google";
 import AnimatedBackground from "@/components/layout/AnimatedBackground";
 import Navigation from "@/components/layout/Navigation";
 import DockNav from "@/components/layout/DockNav";
+import ScrollProgress from "@/components/layout/ScrollProgress";
 import "./globals.css";
 
 const inter = Inter({
@@ -61,9 +62,11 @@ export default function RootLayout({
         <Script id="theme-init" strategy="beforeInteractive">
           {themeScript}
         </Script>
+        <a href="#main" className="skip-link">Skip to content</a>
+        <ScrollProgress />
         <AnimatedBackground />
         <Navigation />
-        <div className="flex-1">{children}</div>
+        <div id="main" tabIndex={-1} className="flex-1 outline-none">{children}</div>
         <DockNav />
 
         <footer className="content-section border-t border-[var(--theme-hairline)] px-6 pt-16 pb-10">

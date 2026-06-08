@@ -44,8 +44,8 @@
   --theme-section-border: rgba(28, 27, 23, 0.08);
   --theme-hairline: rgba(28, 27, 23, 0.12);
   --theme-particle-rgb: 26, 58, 95;
-  --theme-particle-alpha: 0.05;
-  --theme-particle-line-alpha: 0.025;
+  --theme-particle-alpha: 0.22;
+  --theme-particle-line-alpha: 0.07;
   --theme-bg-glow-primary: rgba(26, 58, 95, 0.06);
   --theme-bg-glow-secondary: rgba(168, 96, 47, 0.05);
   --theme-noise-opacity: 0.03;
@@ -80,14 +80,42 @@
   --theme-section-border: rgba(242, 239, 231, 0.07);
   --theme-hairline: rgba(242, 239, 231, 0.14);
   --theme-particle-rgb: 141, 185, 217;
-  --theme-particle-alpha: 0.16;
-  --theme-particle-line-alpha: 0.07;
+  --theme-particle-alpha: 0.24;
+  --theme-particle-line-alpha: 0.08;
   --theme-bg-glow-primary: rgba(111, 163, 208, 0.1);
   --theme-bg-glow-secondary: rgba(213, 159, 111, 0.08);
   --theme-noise-opacity: 0.022;
 }
 
 html { scroll-behavior: smooth; }
+
+/* Keyboard focus ring */
+:focus-visible {
+  outline: 2px solid var(--color-accent-cyan);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* Skip to content (visible only on keyboard focus) */
+.skip-link {
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
+  z-index: 100;
+  transform: translateY(-150%);
+  border-radius: 0.5rem;
+  background: var(--theme-primary);
+  color: var(--theme-on-primary);
+  padding: 0.6rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: 0 8px 22px color-mix(in srgb, var(--theme-primary) 30%, transparent);
+  transition: transform 0.2s ease;
+}
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline-offset: 2px;
+}
 
 body {
   background: var(--theme-background);
@@ -292,7 +320,7 @@ body::after {
   position: absolute;
   inset: 0;
   display: block;
-  opacity: 0.5;
+  opacity: 0.55;
 }
 
 .animated-bg__glow {
@@ -357,12 +385,13 @@ body::after {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
   body::before, body::after, .animated-bg__glow { animation: none; }
   .animated-bg__canvas { display: none; }
 }
 
 @media (max-width: 768px) {
-  .animated-bg__canvas { opacity: 0.35; }
+  .animated-bg__canvas { opacity: 0.45; }
   .glass-card {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
