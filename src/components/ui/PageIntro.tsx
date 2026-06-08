@@ -5,12 +5,12 @@ import { ReactNode } from "react";
 
 const stagger: Variants = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.11 } },
+  show: { transition: { staggerChildren: 0.1 } },
 };
 
 const up: Variants = {
-  hidden: { opacity: 0, y: 28 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.65 } },
+  hidden: { opacity: 0, y: 22 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 0.61, 0.36, 1] } },
 };
 
 type PageIntroProps = {
@@ -25,45 +25,31 @@ export function PageIntro({ eyebrow, title, children }: PageIntroProps) {
       variants={stagger}
       initial="hidden"
       animate="show"
-      className="relative overflow-hidden px-6 pt-36 pb-16 md:pt-52 md:pb-20"
+      className="relative px-6 pt-32 pb-12 md:pt-40 md:pb-16"
     >
-      {/* Multi-layer glows */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-32 left-[20%] h-[700px] w-[700px] -translate-x-1/2 rounded-full bg-primary/11 blur-[160px]" />
-        <div className="absolute top-0 right-[15%] h-[450px] w-[550px] translate-x-1/4 rounded-full bg-accent-purple/8 blur-[130px]" />
-        <div className="absolute bottom-0 left-1/2 h-[200px] w-[800px] -translate-x-1/2 rounded-full bg-accent-cyan/4 blur-[80px]" />
-      </div>
-
-      {/* Subtle grid overlay fade */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-surface/60" />
-
       <div className="relative mx-auto max-w-7xl">
-        <motion.p variants={up} className="eyebrow mb-8">
-          {eyebrow}
-        </motion.p>
+        {/* Masthead row */}
+        <motion.div
+          variants={up}
+          className="mb-10 flex items-center justify-between border-b border-[var(--theme-hairline)] pb-4 text-[11px] font-semibold uppercase tracking-[0.24em] text-white/40"
+        >
+          <span>{eyebrow}</span>
+          <span className="hidden sm:inline">Rakesh Kumar Behera</span>
+        </motion.div>
 
         <motion.h1
           variants={up}
-          className="max-w-5xl text-[clamp(2.75rem,7vw,6.5rem)] font-black leading-[1.0] tracking-tight"
+          className="display max-w-5xl text-[clamp(2.5rem,6vw,5rem)] text-white"
         >
           {title}
         </motion.h1>
 
-        <motion.div variants={up} className="mt-4">
-          <div className="h-px w-24 bg-gradient-to-r from-accent-cyan/70 to-transparent" />
-        </motion.div>
-
         <motion.p
           variants={up}
-          className="mt-6 max-w-xl pl-6 text-lg leading-[1.85] text-white/42 border-l-2 border-white/10"
+          className="mt-8 max-w-2xl border-l-2 border-accent-cyan/40 pl-6 text-lg leading-[1.85] text-white/55"
         >
           {children}
         </motion.p>
-
-        <motion.div
-          variants={up}
-          className="mt-14 h-px bg-gradient-to-r from-accent-cyan/20 via-accent-cyan/6 to-transparent"
-        />
       </div>
     </motion.header>
   );

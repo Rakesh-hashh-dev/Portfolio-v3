@@ -32,7 +32,7 @@ export default function DockNav() {
         transition={{ delay: 0.3, duration: 0.55 }}
         className="fixed bottom-5 left-1/2 z-50 -translate-x-1/2 lg:hidden"
       >
-        <div className="relative flex items-end gap-0.5 overflow-hidden rounded-2xl border border-white/10 bg-surface/92 px-2.5 py-2 shadow-2xl shadow-black/30 backdrop-blur-2xl">
+        <div className="relative flex items-end gap-0.5 overflow-hidden rounded-xl border border-[var(--theme-hairline)] bg-surface/90 px-2.5 py-2 shadow-xl shadow-black/15 backdrop-blur-2xl">
           {/* Top accent line */}
           <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-cyan/30 to-transparent" />
 
@@ -84,7 +84,7 @@ export default function DockNav() {
         transition={{ delay: 0.5, duration: 0.5 }}
         className="fixed right-5 top-1/2 z-50 hidden -translate-y-1/2 flex-col gap-2 xl:flex"
       >
-        <div className="relative overflow-hidden rounded-2xl border border-white/8 bg-surface/82 p-2 shadow-xl shadow-black/20 backdrop-blur-xl">
+        <div className="relative overflow-hidden rounded-xl border border-[var(--theme-hairline)] bg-surface/82 p-2 shadow-lg shadow-black/12 backdrop-blur-xl">
           <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/12 to-transparent" />
           {socialItems.map((item) => (
             <motion.a

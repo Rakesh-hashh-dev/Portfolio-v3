@@ -6,94 +6,74 @@ import { experience } from "@/lib/profile";
 
 export default function Experience() {
   return (
-    <section className="content-section relative mx-auto max-w-4xl px-6 py-12 pb-28">
-
-      {/* Ambient glows */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -left-20 top-12 h-96 w-96 rounded-full bg-accent-cyan/5 blur-[110px]" />
-        <div className="absolute -right-10 bottom-1/4 h-80 w-80 rounded-full bg-accent-purple/5 blur-[95px]" />
-      </div>
-
-      <div className="relative space-y-5">
+    <section className="content-section relative mx-auto max-w-4xl px-6 py-8 pb-28">
+      <div className="relative border-t border-[var(--theme-hairline)] pt-12">
         {experience.map((item, index) => {
           const isCurrent = item.period.includes("Present");
-          const fromLeft = index % 2 === 0;
+          const isLast = index === experience.length - 1;
 
           return (
             <motion.div
               key={`${item.company}-${item.role}`}
-              initial={{ opacity: 0, x: fromLeft ? -32 : 32 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.13, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-              whileHover={{ y: -3, transition: { duration: 0.2 } }}
-              className={`group relative cursor-default overflow-hidden rounded-2xl border p-7 md:p-8 transition-all duration-300 ${
-                isCurrent
-                  ? "border-accent-cyan/28 bg-gradient-to-br from-accent-cyan/[0.08] via-accent-cyan/[0.03] to-transparent shadow-lg shadow-accent-cyan/8"
-                  : "border-white/8 bg-white/[0.03] hover:border-white/14 hover:bg-white/[0.045]"
-              }`}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ delay: index * 0.08, duration: 0.55, ease: [0.22, 0.61, 0.36, 1] }}
+              className="group grid gap-3 border-b border-[var(--theme-hairline)] pb-9 last:border-b-0 md:grid-cols-[120px_1fr] md:gap-0 md:border-b-0"
             >
-              {/* Top gradient line */}
+              {/* Left rail: index + period */}
+              <div className="flex items-start justify-between md:block md:pt-0.5">
+                <span className="num text-2xl text-accent-cyan/40">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <span className="text-sm font-medium tabular-nums text-white/45 md:mt-2 md:block">
+                  {item.period}
+                </span>
+              </div>
+
+              {/* Timeline line + node + detail */}
               <div
-                className={`absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent ${
-                  isCurrent ? "via-accent-cyan/70" : "via-white/14"
-                } to-transparent`}
-              />
-              {/* Left accent bar */}
-              <div
-                className={`absolute inset-y-0 left-0 w-[3px] rounded-l-2xl bg-gradient-to-b ${
-                  isCurrent
-                    ? "from-accent-cyan via-accent-cyan/45 to-transparent"
-                    : "from-white/18 via-white/6 to-transparent"
+                className={`relative md:border-l md:border-[var(--theme-hairline)] md:pl-9 ${
+                  isLast ? "md:pb-2" : "md:pb-12"
                 }`}
-              />
-
-              {/* Faint ordinal */}
-              <span className="pointer-events-none absolute right-6 top-3 select-none text-[6rem] font-black leading-none text-white/[0.032]">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-
-              <div className="relative">
-                {/* Active indicator */}
-                {isCurrent && (
-                  <div className="mb-3.5 flex items-center gap-2.5">
-                    <span className="relative flex h-2 w-2">
-                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-cyan opacity-60" />
-                      <span className="relative inline-flex h-2 w-2 rounded-full bg-accent-cyan" />
+              >
+                {/* Node marker (md+) */}
+                <span className="absolute left-0 top-1.5 hidden -translate-x-1/2 md:block">
+                  {isCurrent ? (
+                    <span className="relative flex h-3 w-3">
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-purple opacity-60" />
+                      <span className="relative inline-flex h-3 w-3 rounded-full bg-accent-purple ring-4 ring-surface" />
                     </span>
-                    <span className="text-[10px] font-black uppercase tracking-[0.22em] text-accent-cyan">
-                      Currently active
-                    </span>
-                  </div>
+                  ) : (
+                    <span className="block h-2.5 w-2.5 rounded-full bg-accent-cyan/45 ring-4 ring-surface" />
+                  )}
+                </span>
+
+                {/* Terminal cap on the last entry */}
+                {isLast && (
+                  <span className="absolute -bottom-px left-0 hidden h-px w-3 -translate-x-1/2 bg-[var(--theme-hairline)] md:block" />
                 )}
 
-                {/* Role title + period */}
-                <div className="mb-4 flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
-                  <h3 className={`text-2xl font-bold leading-snug ${isCurrent ? "text-white" : "text-white/88"}`}>
-                    {item.role}
-                  </h3>
-                  <span
-                    className={`shrink-0 text-sm font-semibold tabular-nums ${
-                      isCurrent ? "text-accent-cyan/80" : "text-white/28"
-                    }`}
-                  >
-                    {item.period}
+                {isCurrent && (
+                  <span className="mb-2.5 inline-block text-[10px] font-bold uppercase tracking-[0.22em] text-accent-purple">
+                    Currently active
                   </span>
-                </div>
+                )}
 
-                {/* Company + location */}
-                <div className="mb-5 flex flex-wrap items-center gap-5">
-                  <span className="flex items-center gap-2 text-sm font-semibold text-white/55">
-                    <Building2 size={13} className="text-white/28" />
+                <h3 className="display text-2xl text-white md:text-[1.7rem]">{item.role}</h3>
+
+                <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-1.5">
+                  <span className="flex items-center gap-2 text-sm font-semibold text-white/65">
+                    <Building2 size={14} className="text-white/35" />
                     {item.company}
                   </span>
-                  <span className="flex items-center gap-2 text-sm text-white/36">
-                    <MapPin size={13} className="text-white/22" />
+                  <span className="flex items-center gap-2 text-sm text-white/45">
+                    <MapPin size={14} className="text-white/30" />
                     {item.location}
                   </span>
                 </div>
 
-                {/* Detail */}
-                <p className="text-[0.9375rem] leading-[1.92] text-white/42">{item.detail}</p>
+                <p className="mt-3.5 max-w-2xl text-[0.9375rem] leading-[1.85] text-white/50">{item.detail}</p>
               </div>
             </motion.div>
           );
