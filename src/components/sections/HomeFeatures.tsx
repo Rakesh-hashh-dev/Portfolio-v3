@@ -5,15 +5,49 @@ import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
 import { homeCards, profile, recruiterFit } from "@/lib/profile";
 
+const credentials = [
+  { org: "TCS", label: "44 months · Fortune 500 delivery" },
+  { org: "IIM Sambalpur", label: "MBA · 2025 – 27" },
+  { org: "Grant Thornton", label: "Lean Six Sigma Green Belt" },
+  { org: "Microsoft", label: "Azure Certified · AZ-104" },
+];
+
 const signals = [
-  "Available for internships and live projects",
-  "Résumé and LinkedIn one click away",
+  "Résumé and LinkedIn accessible in one click",
   "Pages structured around recruiter review flow",
+  "Final Placements 2027 · IIM Sambalpur MBA",
 ];
 
 export default function HomeFeatures() {
   return (
     <>
+      {/* ── Credential trust strip ───────────────────── */}
+      <section className="content-section section-raised">
+        <div className="mx-auto flex max-w-7xl items-center gap-5 overflow-x-auto px-6 py-7 md:py-8">
+          <span className="hidden shrink-0 items-center gap-3 whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.22em] text-white/45 md:inline-flex after:h-3 after:w-px after:bg-[var(--theme-hairline)]">
+            Backed by
+          </span>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45 }}
+            className="flex min-w-max items-center gap-2.5 md:min-w-0 md:flex-wrap"
+          >
+            {credentials.map((c, i) => (
+              <div key={c.org} className="flex items-center gap-2.5">
+                {i > 0 && <span className="hidden h-3 w-px bg-white/15 md:block" />}
+                <div className="flex items-center gap-2 rounded-full border border-[var(--theme-hairline)] bg-surface/50 px-4 py-1.5 backdrop-blur-sm">
+                  <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-accent-cyan">{c.org}</span>
+                  <span className="h-2.5 w-px bg-white/20" />
+                  <span className="whitespace-nowrap text-[11px] text-white/65">{c.label}</span>
+                </div>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
       {/* ── What I bring ─────────────────────────────── */}
       <section className="content-section section-band mx-auto max-w-7xl px-6 pb-24 pt-16">
 
@@ -30,7 +64,7 @@ export default function HomeFeatures() {
               What I bring to the table.
             </h2>
           </div>
-          <p className="max-w-xs text-sm leading-7 text-white/50 md:text-right">
+          <p className="max-w-xs text-sm leading-7 text-white/65 md:text-right">
             Engineering foundations, MBA training, and hands-on execution across
             consulting, operations, and marketing.
           </p>
@@ -44,13 +78,13 @@ export default function HomeFeatures() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ delay: i * 0.07, duration: 0.5 }}
-              className="group relative bg-surface p-8 transition-colors hover:bg-white/[0.02]"
+              className="group relative bg-surface p-8 transition-all duration-200 hover:bg-white/[0.05] hover:border-accent-cyan/20"
             >
               <div className="mb-6 flex items-center justify-between">
-                <span className="num text-3xl text-accent-cyan/40">
+                <span className="num text-3xl text-accent-cyan/65">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <div className="flex h-10 w-10 items-center justify-center rounded-md border border-[var(--theme-hairline)] text-accent-cyan transition-colors group-hover:border-accent-cyan/40">
+                <div className="flex h-10 w-10 items-center justify-center rounded-md border border-[var(--theme-hairline)] text-accent-cyan transition-colors duration-200 group-hover:border-accent-cyan/40 group-hover:bg-accent-cyan/[0.06]">
                   <item.icon size={18} />
                 </div>
               </div>
@@ -98,7 +132,7 @@ export default function HomeFeatures() {
               >
                 <Link
                   href={card.href}
-                  className="card-glow group relative flex h-full flex-col rounded-lg border border-[var(--theme-hairline)] bg-surface p-7"
+                  className="card-glow group relative flex h-full flex-col rounded-lg border border-[var(--theme-hairline)] bg-surface p-7 cursor-pointer"
                 >
                   <div className="mb-6 flex h-11 w-11 items-center justify-center rounded-md border border-[var(--theme-hairline)] text-accent-cyan transition-all duration-200 group-hover:border-accent-cyan/45 group-hover:bg-accent-cyan/[0.06]">
                     <card.icon size={20} />
@@ -123,7 +157,7 @@ export default function HomeFeatures() {
             className="mt-5 grid divide-y divide-[var(--theme-hairline)] overflow-hidden rounded-lg border border-[var(--theme-hairline)] md:grid-cols-3 md:divide-x md:divide-y-0"
           >
             {signals.map((text) => (
-              <div key={text} className="flex items-center gap-3 px-6 py-4 text-sm text-white/55">
+              <div key={text} className="flex items-center gap-3 px-6 py-4 text-sm text-white/65">
                 <Check size={15} className="shrink-0 text-accent-cyan" />
                 {text}
               </div>

@@ -22,7 +22,7 @@ const fadeUp = {
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden px-6 pt-28 pb-20 md:pt-32 md:pb-28">
+    <section className="relative overflow-hidden px-6 pt-28 pb-12 md:pt-32 md:pb-14">
       <div className="relative mx-auto max-w-7xl">
 
         {/* ── Masthead row ─────────────────────────────── */}
@@ -30,7 +30,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
-          className="mb-12 flex items-center justify-between border-b border-[var(--theme-hairline)] pb-4 text-[11px] font-semibold uppercase tracking-[0.24em] text-white/55"
+          className="mb-6 flex items-center justify-between border-b border-[var(--theme-hairline)] pb-4 text-[11px] font-semibold uppercase tracking-[0.24em] text-white/55"
         >
           <span>Portfolio — MBA 2025/27</span>
           <span className="hidden sm:inline">Bhubaneswar · India</span>
@@ -45,8 +45,8 @@ export default function Hero() {
             <motion.div variants={fadeUp} className="mb-7">
               <span className="inline-flex items-center gap-2.5 rounded-full border border-[var(--theme-hairline)] px-3.5 py-1.5 text-[11px] font-semibold tracking-wide text-white/60">
                 <span className="relative flex h-1.5 w-1.5">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-purple opacity-60" />
-                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent-purple" />
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-signal opacity-60" />
+                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-signal" />
                 </span>
                 Open to Final Placements · 2027
               </span>
@@ -80,14 +80,14 @@ export default function Hero() {
             {/* Lede */}
             <motion.p
               variants={fadeUp}
-              className="mt-4 max-w-xl text-[1.0625rem] leading-[1.85] text-white/55"
+              className="mt-4 max-w-[52ch] text-[1.0625rem] leading-[1.85] text-white/55"
             >
               {profile.summary}
             </motion.p>
 
             {/* CTAs */}
             <motion.div variants={fadeUp} className="mt-9 flex flex-wrap items-center gap-3">
-              <Link href="/case-studies" className="btn-primary group">
+              <Link href="/case-studies" className="btn-accent group">
                 View Case Studies
                 <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
               </Link>
@@ -105,7 +105,7 @@ export default function Hero() {
                     key={stat.label}
                     className={i > 0 ? "sm:border-l sm:border-[var(--theme-hairline)] sm:pl-6" : ""}
                   >
-                    <p className="num text-3xl text-white md:text-[2rem]">{stat.value}</p>
+                    <p className="num text-4xl text-accent-purple md:text-5xl">{stat.value}</p>
                     <p className="mt-2 text-xs leading-5 text-white/60">{stat.label}</p>
                   </div>
                 ))}
@@ -125,8 +125,8 @@ export default function Hero() {
               <div className="pointer-events-none absolute -bottom-4 -right-4 h-full w-full rounded-sm border border-primary/30" />
 
               {/* Registration ticks (diagonal pair) */}
-              <span className="pointer-events-none absolute -right-2 -top-2 z-20 h-4 w-4 border-r border-t border-accent-cyan/55" />
-              <span className="pointer-events-none absolute -bottom-2 -left-2 z-20 h-4 w-4 border-b border-l border-accent-cyan/55" />
+              <span className="pointer-events-none absolute -right-2 -top-2 z-20 h-4 w-4 border-r border-t border-accent-cyan/90" />
+              <span className="pointer-events-none absolute -bottom-2 -left-2 z-20 h-4 w-4 border-b border-l border-accent-cyan/90" />
 
               {/* Portrait */}
               <div className="group relative aspect-[4/5] overflow-hidden rounded-sm border border-[var(--theme-hairline)] shadow-xl shadow-black/10">
@@ -135,7 +135,6 @@ export default function Hero() {
                   alt="Rakesh Kumar Behera"
                   fill
                   priority
-                  quality={90}
                   sizes="(min-width: 1024px) 400px, 90vw"
                   className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                 />
@@ -152,7 +151,7 @@ export default function Hero() {
               >
                 <div style={{ animation: "float-badge-a 5s ease-in-out infinite 1.2s" }}>
                   <div className="glass-card flex items-center gap-2.5 rounded-lg px-3.5 py-2.5">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-md bg-white p-1">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-md bg-[#ffffff] p-1">
                       <Image
                         src="/iim-sambalpur-logo.png"
                         alt="IIM Sambalpur"
@@ -188,7 +187,7 @@ export default function Hero() {
                   {impactMetrics.slice(0, 3).map((metric) => (
                     <div key={metric.label} className="flex items-baseline justify-between py-2.5">
                       <span className="text-[13px] text-white/70">{metric.label}</span>
-                      <span className="num text-lg text-white">{metric.value}</span>
+                      <span className="num text-lg text-accent-purple">{metric.value}</span>
                     </div>
                   ))}
                 </div>

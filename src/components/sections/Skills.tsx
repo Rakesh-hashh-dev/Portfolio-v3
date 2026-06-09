@@ -17,6 +17,7 @@ export default function Skills() {
           <div className="grid gap-4 sm:grid-cols-2">
             {skillGroups.map((group, i) => {
               const lastOdd = isOdd && i === skillGroups.length - 1;
+              const isCore = group.title === "Business Strategy" || group.title === "Operations & Process";
               return (
                 <motion.div
                   key={group.title}
@@ -24,15 +25,29 @@ export default function Skills() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ delay: i * 0.08, duration: 0.5 }}
-                  className={`group rounded-lg border border-[var(--theme-hairline)] bg-surface p-6 transition-colors hover:border-accent-cyan/30 ${lastOdd ? "sm:col-span-2" : ""}`}
+                  className={`group rounded-lg border bg-surface p-6 transition-colors ${
+                    isCore
+                      ? "border-accent-purple/30 hover:border-accent-purple/50"
+                      : "border-[var(--theme-hairline)] hover:border-accent-cyan/30"
+                  } ${lastOdd ? "sm:col-span-2" : ""}`}
                 >
                   <div className="mb-5 flex items-center justify-between">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-md border border-[var(--theme-hairline)] text-accent-cyan transition-colors group-hover:border-accent-cyan/40">
+                    <div className={`flex h-11 w-11 items-center justify-center rounded-md border transition-colors ${
+                      isCore
+                        ? "border-accent-purple/35 text-accent-purple group-hover:border-accent-purple/55"
+                        : "border-[var(--theme-hairline)] text-accent-cyan group-hover:border-accent-cyan/40"
+                    }`}>
                       <group.icon size={20} />
                     </div>
-                    <span className="text-xs font-medium uppercase tracking-[0.16em] text-white/55">
-                      {group.skills.length} skills
-                    </span>
+                    {isCore ? (
+                      <span className="rounded-full border border-accent-purple/35 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-accent-purple">
+                        Core
+                      </span>
+                    ) : (
+                      <span className="text-xs font-medium uppercase tracking-[0.16em] text-white/55">
+                        {group.skills.length} skills
+                      </span>
+                    )}
                   </div>
 
                   <h3 className="display text-xl text-white">{group.title}</h3>

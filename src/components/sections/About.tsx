@@ -1,8 +1,8 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
-import { GraduationCap, MapPin, Target } from "lucide-react";
-import { education, impactMetrics, profile, stats } from "@/lib/profile";
+import { GraduationCap, MapPin, Quote, Target } from "lucide-react";
+import { education, impactMetrics, philosophy, profile, stats } from "@/lib/profile";
 
 const stagger: Variants = {
   hidden: {},
@@ -34,7 +34,7 @@ export default function About() {
             transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1] }}
           >
             <p className="eyebrow mb-6">Profile</p>
-            <h2 className="display text-4xl text-white md:text-5xl">
+            <h2 className="display text-5xl text-white md:text-[3.5rem]">
               Fortune 500 delivery experience meets{" "}
               <em className="italic text-gradient-cyan">MBA strategy.</em>
             </h2>
@@ -70,6 +70,31 @@ export default function About() {
         </div>
       </section>
 
+      {/* ── Personal philosophy ────────────────────────── */}
+      <section className="mx-auto max-w-7xl px-6 pb-16">
+        <motion.figure
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.55, ease: [0.22, 0.61, 0.36, 1] }}
+          className="relative overflow-hidden rounded-lg border border-[var(--theme-hairline)] bg-surface p-8 md:p-12"
+        >
+          <Quote
+            size={120}
+            className="pointer-events-none absolute -right-4 -top-6 text-accent-cyan/[0.06]"
+            aria-hidden
+          />
+          <p className="eyebrow mb-6">{philosophy.eyebrow}</p>
+          <blockquote className="display max-w-3xl text-2xl leading-[1.5] text-white/90 md:text-[2rem] md:leading-[1.45]">
+            &ldquo;{philosophy.quote}&rdquo;
+          </blockquote>
+          <figcaption className="mt-7 flex items-center gap-3 text-sm font-semibold text-white/70">
+            <span className="h-px w-8 bg-accent-cyan/60" />
+            {profile.name}
+          </figcaption>
+        </motion.figure>
+      </section>
+
       {/* ── Stats band ─────────────────────────────────── */}
       <section className="mx-auto max-w-7xl px-6 pb-16">
         <div className="grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-[var(--theme-hairline)] bg-[var(--theme-hairline)] md:grid-cols-4">
@@ -82,7 +107,7 @@ export default function About() {
               transition={{ delay: i * 0.07, duration: 0.45 }}
               className="bg-surface p-6"
             >
-              <p className="num text-4xl text-white">{stat.value}</p>
+              <p className="num text-4xl text-accent-purple">{stat.value}</p>
               <p className="mt-2 text-xs leading-5 text-white/60">{stat.label}</p>
             </motion.div>
           ))}
@@ -126,10 +151,21 @@ export default function About() {
               className="rounded-lg border border-[var(--theme-hairline)] bg-surface p-7"
             >
               <div className="divide-y divide-[var(--theme-hairline)]">
-                {impactMetrics.map((metric) => (
-                  <div key={metric.label} className="flex items-baseline justify-between gap-3 py-4 first:pt-0 last:pb-0">
-                    <span className="text-sm text-white/70">{metric.label}</span>
-                    <span className="num text-2xl text-white">{metric.value}</span>
+                {impactMetrics.map((metric, i) => (
+                  <div key={metric.label} className="py-4 first:pt-0 last:pb-0">
+                    <div className="mb-2.5 flex items-center justify-between gap-3">
+                      <span className="text-sm text-white/70">{metric.label}</span>
+                      <span className="num text-xl font-semibold text-accent-purple">{metric.value}</span>
+                    </div>
+                    <div className="h-1 w-full overflow-hidden rounded-full bg-white/[0.08]">
+                      <motion.div
+                        initial={{ width: 0 }}
+                        whileInView={{ width: metric.width }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1.0, ease: [0.22, 0.61, 0.36, 1], delay: i * 0.12 + 0.2 }}
+                        className="h-full rounded-full bg-gradient-to-r from-accent-cyan to-accent-purple"
+                      />
+                    </div>
                   </div>
                 ))}
               </div>

@@ -4,6 +4,8 @@ import { Inter, Fraunces } from "next/font/google";
 import AnimatedBackground from "@/components/layout/AnimatedBackground";
 import Navigation from "@/components/layout/Navigation";
 import DockNav from "@/components/layout/DockNav";
+import Providers from "@/components/layout/Providers";
+import Footer from "@/components/layout/Footer";
 import ScrollProgress from "@/components/layout/ScrollProgress";
 import PageTransition from "@/components/layout/PageTransition";
 import "./globals.css";
@@ -34,18 +36,33 @@ try {
 `;
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
   title: "Rakesh Kumar Behera | MBA Portfolio",
   description:
     "MBA candidate at IIM Sambalpur focused on business strategy, consulting, execution, and analytics.",
+  openGraph: {
+    title: "Rakesh Kumar Behera | MBA Portfolio",
+    description:
+      "MBA candidate at IIM Sambalpur with Fortune 500 delivery experience — targeting consulting, strategy & operations, and product management.",
+    type: "website",
+    images: [
+      {
+        url: "/DP-optimized.webp",
+        width: 800,
+        height: 1000,
+        alt: "Rakesh Kumar Behera — MBA Portfolio",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Rakesh Kumar Behera | MBA Portfolio",
+    description:
+      "MBA candidate at IIM Sambalpur with Fortune 500 delivery experience — targeting consulting, strategy & operations, and product management.",
+    images: ["/DP-optimized.webp"],
+  },
 };
 
-const footerLinks = [
-  ["About", "/about"],
-  ["Experience", "/experience"],
-  ["Case Studies", "/case-studies"],
-  ["Skills", "/skills"],
-  ["Contact", "/contact"],
-];
 
 export default function RootLayout({
   children,
@@ -64,76 +81,17 @@ export default function RootLayout({
           {themeScript}
         </Script>
         <a href="#main" className="skip-link">Skip to content</a>
-        <ScrollProgress />
-        <AnimatedBackground />
-        <Navigation />
-        <PageTransition>
-          <div id="main" tabIndex={-1} className="outline-none">{children}</div>
-        </PageTransition>
-        <DockNav />
+        <Providers>
+          <ScrollProgress />
+          <AnimatedBackground />
+          <Navigation />
+          <PageTransition>
+            <div id="main" tabIndex={-1} className="pb-20 outline-none lg:pb-0">{children}</div>
+          </PageTransition>
+          <DockNav />
+        </Providers>
 
-        <footer className="content-section footer-band px-6 pt-16 pb-10">
-          <div className="mx-auto max-w-7xl">
-            <div className="grid gap-10 md:grid-cols-[1.4fr_1fr] md:gap-16">
-              {/* Brand */}
-              <div>
-                <p className="display text-2xl text-white">Rakesh Kumar Behera</p>
-                <p className="mt-2 max-w-sm text-sm leading-7 text-white/50">
-                  MBA Candidate at IIM Sambalpur. Turning structured analysis and
-                  hands-on execution into measurable business outcomes.
-                </p>
-                <a
-                  href="mailto:rk821604@gmail.com"
-                  className="link-underline mt-5 inline-block text-sm font-medium text-accent-cyan"
-                >
-                  rk821604@gmail.com
-                </a>
-              </div>
-
-              {/* Nav + social */}
-              <div className="grid grid-cols-2 gap-8">
-                <div>
-                  <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.22em] text-white/55">
-                    Explore
-                  </p>
-                  <nav className="flex flex-col gap-2.5 text-sm text-white/65">
-                    {footerLinks.map(([label, href]) => (
-                      <a key={label} href={href} className="link-underline w-fit hover:text-white">
-                        {label}
-                      </a>
-                    ))}
-                  </nav>
-                </div>
-                <div>
-                  <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.22em] text-white/55">
-                    Connect
-                  </p>
-                  <nav className="flex flex-col gap-2.5 text-sm text-white/65">
-                    <a
-                      href="https://www.linkedin.com/in/rakesh-kumar-behera-rk821604"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="link-underline w-fit hover:text-white"
-                    >
-                      LinkedIn
-                    </a>
-                    <a href="/Profile.pdf" className="link-underline w-fit hover:text-white">
-                      Résumé
-                    </a>
-                    <a href="mailto:rk821604@gmail.com" className="link-underline w-fit hover:text-white">
-                      Email
-                    </a>
-                  </nav>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-12 flex flex-col items-start gap-2 border-t border-[var(--theme-hairline)] pt-6 text-xs text-white/50 md:flex-row md:items-center md:justify-between">
-              <p>&copy; {new Date().getFullYear()} Rakesh Kumar Behera · All rights reserved</p>
-              <p className="tracking-[0.14em] uppercase">Strategy · Execution · Measurable Growth</p>
-            </div>
-          </div>
-        </footer>
+        <Footer />
       </body>
     </html>
   );

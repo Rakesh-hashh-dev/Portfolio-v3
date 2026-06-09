@@ -60,7 +60,7 @@ export default function Experience() {
                   </span>
                 )}
 
-                <h3 className="display text-2xl text-white md:text-[1.7rem]">{item.role}</h3>
+                <h3 className="display text-[1.85rem] text-white md:text-[2.1rem]">{item.role}</h3>
 
                 <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-1.5">
                   <span className="flex items-center gap-2 text-sm font-semibold text-white/80">

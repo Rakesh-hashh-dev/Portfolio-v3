@@ -92,7 +92,7 @@ export default function Navigation() {
             href="mailto:rk821604@gmail.com"
             whileHover={{ y: -1 }}
             whileTap={{ scale: 0.97 }}
-            className="btn-primary group !px-4 !py-2 !text-[13px]"
+            className="btn-accent group !px-4 !py-2 !text-[13px]"
           >
             Connect
             <ArrowUpRight

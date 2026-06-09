@@ -86,6 +86,12 @@ export const education = [
   },
 ];
 
+export const philosophy = {
+  eyebrow: "Personal Philosophy & Leadership",
+  quote:
+    "Great strategy is nothing without execution. I believe in data-driven decisions, empowering teams, and creating sustainable value through continuous improvement.",
+};
+
 export const stats = [
   { value: "90K+", label: "Users on Fortune 500 product supported" },
   { value: "100%", label: "SLA hit across all incident resolutions" },
@@ -155,30 +161,43 @@ export const caseStudies = [
 export const skillGroups = [
   {
     title: "Business Strategy",
+    short: "Strategy",
+    level: 88,
     icon: Target,
     skills: ["Strategic planning", "Consulting frameworks", "Client relationship management", "Market research", "Performance management"],
   },
   {
     title: "Operations & Process",
+    short: "Operations",
+    level: 92,
     icon: BriefcaseBusiness,
     skills: ["Operations management", "Lean Six Sigma (Green Belt)", "SLA & incident management", "Process improvement", "Project management"],
   },
   {
     title: "Marketing",
+    short: "Marketing",
+    level: 80,
     icon: Megaphone,
     skills: ["Marketing strategy", "Multi-platform campaigns", "Stakeholder engagement", "Event marketing", "Brand visibility"],
   },
   {
     title: "Analytics & Technology",
+    short: "Analytics",
+    level: 85,
     icon: BarChart3,
     skills: ["Microsoft Power BI (PL-300)", "Azure cloud administration (AZ-104)", "Data analysis", "Financial analysis", "Data-driven decisions"],
   },
   {
     title: "Product Management",
+    short: "Product",
+    level: 82,
     icon: TrendingUp,
     skills: ["Product strategy", "User research", "Roadmapping", "Go-to-market planning", "Feature prioritization"],
   },
 ];
+
+export const radarMethodology =
+  "Competency is gauged across core domains using a blend of Fortune 500 delivery experience, measurable project impact, and continuous certification-backed learning.";
 
 export const certifications = [
   "Lean Six Sigma Green Belt — Grant Thornton (2026)",
