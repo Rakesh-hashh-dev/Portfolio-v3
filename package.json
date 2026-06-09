@@ -1,11 +1,11 @@
 {
-  "name": "portfolio-v2",
+  "name": "portfolio-v3",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev --webpack",
     "build": "next build --webpack",
-    "start": "next start",
+    "preview": "npx serve@latest out",
     "lint": "eslint"
   },
   "dependencies": {

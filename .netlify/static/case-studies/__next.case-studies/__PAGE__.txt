@@ -1,7 +1,0 @@
-1:"$Sreact.fragment"
-2:I[8528,["404","static/chunks/404-e7a32dee33924e27.js","718","static/chunks/718-5bd8ab8ad19b8c56.js","979","static/chunks/app/case-studies/page-6d90f5d2a211973d.js"],"PageIntro"]
-3:I[5576,["404","static/chunks/404-e7a32dee33924e27.js","718","static/chunks/718-5bd8ab8ad19b8c56.js","979","static/chunks/app/case-studies/page-6d90f5d2a211973d.js"],"default"]
-4:I[484,[],"OutletBoundary"]
-5:"$Sreact.suspense"
-0:{"rsc":["$","$1","c",{"children":[["$","main",null,{"className":"min-h-screen text-white","children":[["$","$L2",null,{"eyebrow":"Case Studies","title":["Business execution examples across"," ",["$","span",null,{"className":"text-gradient-cyan","children":"operations, marketing,"}]," ","and strategy."],"children":"These case studies summarize the kind of work that best represents the profile: structured planning, cross-functional coordination, promotional execution, and measurable outcomes."}],["$","$L3",null,{}]]}],null,["$","$L4",null,{"children":["$","$5",null,{"name":"Next.MetadataOutlet","children":"$@6"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"BDitK83Ho5f7v3iL_UIQR"}
-6:null

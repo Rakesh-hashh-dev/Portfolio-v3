@@ -1,7 +1,0 @@
-1:"$Sreact.fragment"
-2:I[8528,["404","static/chunks/404-e7a32dee33924e27.js","718","static/chunks/718-5bd8ab8ad19b8c56.js","977","static/chunks/app/contact/page-160125530424876a.js"],"PageIntro"]
-3:I[2321,["404","static/chunks/404-e7a32dee33924e27.js","718","static/chunks/718-5bd8ab8ad19b8c56.js","977","static/chunks/app/contact/page-160125530424876a.js"],"default"]
-4:I[484,[],"OutletBoundary"]
-5:"$Sreact.suspense"
-0:{"rsc":["$","$1","c",{"children":[["$","main",null,{"className":"min-h-screen text-white","children":[["$","$L2",null,{"eyebrow":"Contact","title":["Open to roles in"," ",["$","span",null,{"className":"text-gradient-cyan","children":"consulting, operations,"}]," ","strategy, and marketing."],"children":"Reach out for internships, live projects, case competitions, or opportunities where disciplined execution and business problem solving matter."}],["$","$L3",null,{}]]}],null,["$","$L4",null,{"children":["$","$5",null,{"name":"Next.MetadataOutlet","children":"$@6"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"BDitK83Ho5f7v3iL_UIQR"}
-6:null

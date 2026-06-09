@@ -1,7 +1,0 @@
-1:"$Sreact.fragment"
-2:I[8528,["404","static/chunks/404-e7a32dee33924e27.js","718","static/chunks/718-5bd8ab8ad19b8c56.js","220","static/chunks/app/about/page-5e12c163f5e43a7a.js"],"PageIntro"]
-3:I[4332,["404","static/chunks/404-e7a32dee33924e27.js","718","static/chunks/718-5bd8ab8ad19b8c56.js","220","static/chunks/app/about/page-5e12c163f5e43a7a.js"],"default"]
-4:I[484,[],"OutletBoundary"]
-5:"$Sreact.suspense"
-0:{"rsc":["$","$1","c",{"children":[["$","main",null,{"className":"min-h-screen text-white","children":[["$","$L2",null,{"eyebrow":"About","title":["A business profile shaped by"," ",["$","span",null,{"className":"text-gradient-cyan","children":"engineering, MBA training,"}]," ","and execution leadership."],"children":"Rakesh brings together technical depth, structured problem solving, and MBA learning across operations, marketing, and strategy."}],["$","$L3",null,{}]]}],null,["$","$L4",null,{"children":["$","$5",null,{"name":"Next.MetadataOutlet","children":"$@6"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"BDitK83Ho5f7v3iL_UIQR"}
-6:null
