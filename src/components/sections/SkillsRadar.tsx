@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { radarMethodology, skillGroups } from "@/lib/profile";
 
 /* ── Geometry helpers ─────────────────────────────── */
@@ -30,7 +30,7 @@ export default function SkillsRadar() {
     <section className="content-section section-band">
       <div className="mx-auto max-w-7xl px-6 py-20">
 
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
@@ -44,12 +44,12 @@ export default function SkillsRadar() {
           <p className="max-w-xs text-sm leading-7 text-white/65 md:text-right">
             Select a domain to explore the sub-skills behind it.
           </p>
-        </motion.div>
+        </m.div>
 
         <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
 
           {/* ── Radar chart ──────────────────────────── */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, scale: 0.94 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: "-50px" }}
@@ -90,7 +90,7 @@ export default function SkillsRadar() {
               })}
 
               {/* Data polygon */}
-              <motion.polygon
+              <m.polygon
                 points={polygon(dataRadii)}
                 fill="var(--color-accent-cyan)"
                 fillOpacity={0.16}
@@ -154,10 +154,10 @@ export default function SkillsRadar() {
                 );
               })}
             </svg>
-          </motion.div>
+          </m.div>
 
           {/* ── Methodology + sub-skills panel ───────── */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
@@ -180,7 +180,7 @@ export default function SkillsRadar() {
               <span className="num ml-auto text-2xl text-accent-purple">{active.level}</span>
             </div>
 
-            <motion.div
+            <m.div
               key={active.title}
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
@@ -195,8 +195,8 @@ export default function SkillsRadar() {
                   {skill}
                 </span>
               ))}
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </div>
       </div>
     </section>

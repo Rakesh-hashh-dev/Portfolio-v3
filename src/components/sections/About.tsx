@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
+import { m, type Variants } from "framer-motion";
 import { GraduationCap, MapPin, Quote, Target } from "lucide-react";
 import { education, impactMetrics, philosophy, profile, stats } from "@/lib/profile";
 
@@ -28,7 +28,7 @@ export default function About() {
       <section className="mx-auto max-w-7xl px-6 pt-8 pb-16">
         <div className="grid gap-12 border-t border-[var(--theme-hairline)] pt-12 lg:grid-cols-[1fr_340px] lg:items-start">
           {/* Left: headline + summary */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1] }}
@@ -45,17 +45,17 @@ export default function About() {
               Targeting management consulting, strategy & operations, and product management roles —
               where enterprise delivery experience and MBA analytical frameworks create measurable business impact.
             </p>
-          </motion.div>
+          </m.div>
 
           {/* Right: quick fact rows */}
-          <motion.div
+          <m.div
             variants={stagger}
             initial="hidden"
             animate="show"
             className="divide-y divide-[var(--theme-hairline)] overflow-hidden rounded-lg border border-[var(--theme-hairline)]"
           >
             {quickFacts.map((f) => (
-              <motion.div key={f.label} variants={up} className="flex items-center gap-4 bg-surface p-5">
+              <m.div key={f.label} variants={up} className="flex items-center gap-4 bg-surface p-5">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md border border-[var(--theme-hairline)] text-accent-cyan">
                   <f.icon size={18} />
                 </div>
@@ -64,15 +64,15 @@ export default function About() {
                   <p className="mt-0.5 font-semibold text-white/90">{f.value}</p>
                   {f.sub && <p className="text-xs text-white/60">{f.sub}</p>}
                 </div>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
       {/* ── Personal philosophy ────────────────────────── */}
       <section className="mx-auto max-w-7xl px-6 pb-16">
-        <motion.figure
+        <m.figure
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
@@ -92,14 +92,14 @@ export default function About() {
             <span className="h-px w-8 bg-accent-cyan/60" />
             {profile.name}
           </figcaption>
-        </motion.figure>
+        </m.figure>
       </section>
 
       {/* ── Stats band ─────────────────────────────────── */}
       <section className="mx-auto max-w-7xl px-6 pb-16">
         <div className="grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-[var(--theme-hairline)] bg-[var(--theme-hairline)] md:grid-cols-4">
           {stats.map((stat, i) => (
-            <motion.div
+            <m.div
               key={stat.label}
               initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -109,7 +109,7 @@ export default function About() {
             >
               <p className="num text-4xl text-accent-purple">{stat.value}</p>
               <p className="mt-2 text-xs leading-5 text-white/60">{stat.label}</p>
-            </motion.div>
+            </m.div>
           ))}
         </div>
       </section>
@@ -123,7 +123,7 @@ export default function About() {
             <p className="eyebrow mb-8">Education</p>
             <div className="space-y-4">
               {education.map((item, i) => (
-                <motion.div
+                <m.div
                   key={item.program}
                   initial={{ opacity: 0, y: 18 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -135,7 +135,7 @@ export default function About() {
                   <h4 className="mt-3 text-xl font-semibold text-white">{item.program}</h4>
                   <p className="mt-1 font-medium text-white/70">{item.school}</p>
                   <p className="mt-3 text-sm leading-[1.8] text-white/60">{item.detail}</p>
-                </motion.div>
+                </m.div>
               ))}
             </div>
           </div>
@@ -143,7 +143,7 @@ export default function About() {
           {/* Impact metrics */}
           <div>
             <p className="eyebrow mb-8">Impact Metrics</p>
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
@@ -158,7 +158,7 @@ export default function About() {
                       <span className="num text-xl font-semibold text-accent-purple">{metric.value}</span>
                     </div>
                     <div className="h-1 w-full overflow-hidden rounded-full bg-white/[0.08]">
-                      <motion.div
+                      <m.div
                         initial={{ width: 0 }}
                         whileInView={{ width: metric.width }}
                         viewport={{ once: true }}
@@ -169,7 +169,7 @@ export default function About() {
                   </div>
                 ))}
               </div>
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </section>

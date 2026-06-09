@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowUpRight } from "lucide-react";
@@ -28,7 +28,7 @@ export default function Navigation() {
   }, []);
 
   return (
-    <motion.nav
+    <m.nav
       initial={{ opacity: 0, y: -8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45, ease: "easeOut" }}
@@ -48,7 +48,7 @@ export default function Navigation() {
         {/* ── Wordmark ──────────────────────────────── */}
         <Link href="/" className="group flex shrink-0 items-center gap-3">
           <div className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-md ring-1 ring-[var(--theme-hairline)] transition-all duration-200 group-hover:ring-accent-cyan/45">
-            <Image src="/logo.png" alt="RK" width={32} height={32} className="object-cover" />
+            <Image src="/logo.webp" alt="RK" width={32} height={32} className="object-cover" />
           </div>
           <div className="hidden leading-tight sm:block">
             <p className="display text-[15px] text-white transition-colors group-hover:text-accent-cyan">
@@ -73,7 +73,7 @@ export default function Navigation() {
                 }`}
               >
                 {active && (
-                  <motion.span
+                  <m.span
                     layoutId="nav-line"
                     className="absolute inset-x-3.5 -bottom-0.5 h-px bg-accent-cyan"
                     transition={{ type: "spring", stiffness: 500, damping: 42 }}
@@ -88,7 +88,7 @@ export default function Navigation() {
         {/* ── Right actions ─────────────────────────── */}
         <div className="flex shrink-0 items-center gap-2.5">
           <ThemeToggle />
-          <motion.a
+          <m.a
             href="mailto:rk821604@gmail.com"
             whileHover={{ y: -1 }}
             whileTap={{ scale: 0.97 }}
@@ -99,9 +99,9 @@ export default function Navigation() {
               size={13}
               className="transition-transform duration-150 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
             />
-          </motion.a>
+          </m.a>
         </div>
       </div>
-    </motion.nav>
+    </m.nav>
   );
 }

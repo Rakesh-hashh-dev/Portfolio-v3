@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
+import { m, type Variants } from "framer-motion";
 import { ArrowUpRight, Mail, MapPin, Send, UserRound } from "lucide-react";
 import { profile } from "@/lib/profile";
 
@@ -17,14 +17,14 @@ const up: Variants = {
 export default function Contact() {
   return (
     <section className="content-section section-raised relative mx-auto max-w-4xl px-6 py-8 pb-28">
-      <motion.div
+      <m.div
         variants={stagger}
         initial="hidden"
         animate="show"
         className="border-t border-[var(--theme-hairline)] pt-12"
       >
         {/* Availability */}
-        <motion.div variants={up} className="mb-8">
+        <m.div variants={up} className="mb-8">
           <span className="inline-flex items-center gap-2.5 rounded-full border border-[var(--theme-hairline)] px-3.5 py-1.5 text-[11px] font-semibold tracking-wide text-white/60">
             <span className="relative flex h-1.5 w-1.5">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-signal opacity-60" />
@@ -32,19 +32,19 @@ export default function Contact() {
             </span>
             Open to Final Placements · 2027
           </span>
-        </motion.div>
+        </m.div>
 
         {/* Headline */}
-        <motion.h2 variants={up} className="display text-6xl text-white md:text-8xl">
+        <m.h2 variants={up} className="display text-6xl text-white md:text-8xl">
           Let&rsquo;s talk.
-        </motion.h2>
+        </m.h2>
 
-        <motion.p variants={up} className="mt-6 max-w-md text-lg leading-[1.85] text-white/70">
+        <m.p variants={up} className="mt-6 max-w-md text-lg leading-[1.85] text-white/70">
           Targeting management consulting, strategy & operations, and product management — available for final placements in 2027.
-        </motion.p>
+        </m.p>
 
         {/* Email */}
-        <motion.a
+        <m.a
           variants={up}
           href={`mailto:${profile.email}`}
           className="group mt-10 inline-flex items-center gap-3 text-2xl font-medium text-white/80 transition-colors hover:text-accent-cyan md:text-3xl"
@@ -54,10 +54,10 @@ export default function Contact() {
             size={24}
             className="text-white/50 transition-all group-hover:text-accent-cyan group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
           />
-        </motion.a>
+        </m.a>
 
         {/* Contact cards */}
-        <motion.div variants={up} className="mt-12 grid gap-px overflow-hidden rounded-lg border border-[var(--theme-hairline)] bg-[var(--theme-hairline)] sm:grid-cols-2">
+        <m.div variants={up} className="mt-12 grid gap-px overflow-hidden rounded-lg border border-[var(--theme-hairline)] bg-[var(--theme-hairline)] sm:grid-cols-2">
           <a
             href={profile.linkedin}
             target="_blank"
@@ -85,10 +85,10 @@ export default function Contact() {
               <p className="mt-0.5 text-sm font-semibold text-white/75">{profile.location}</p>
             </div>
           </div>
-        </motion.div>
+        </m.div>
 
         {/* CTAs */}
-        <motion.div variants={up} className="mt-8 flex flex-col gap-3 sm:flex-row">
+        <m.div variants={up} className="mt-8 flex flex-col gap-3 sm:flex-row">
           <a
             href={`mailto:${profile.email}?subject=Portfolio%20Conversation&body=Hi%20Rakesh%2C%0A%0AI%20came%20across%20your%20portfolio%20and%20would%20like%20to%20connect%20regarding...`}
             className="btn-primary"
@@ -100,8 +100,8 @@ export default function Contact() {
             <Send size={16} />
             Download résumé
           </a>
-        </motion.div>
-      </motion.div>
+        </m.div>
+      </m.div>
     </section>
   );
 }

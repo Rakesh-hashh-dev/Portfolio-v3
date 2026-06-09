@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { useState } from "react";
 import { caseStudies } from "@/lib/profile";
 
@@ -28,23 +28,23 @@ export default function Projects() {
             {cat}
           </button>
         ))}
-        <motion.span
+        <m.span
           key={filtered.length}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           className="ml-auto text-xs font-medium uppercase tracking-[0.18em] text-white/55"
         >
           {filtered.length} {filtered.length === 1 ? "study" : "studies"}
-        </motion.span>
+        </m.span>
       </div>
 
       {/* ── Cards ──────────────────────────────────────── */}
-      <motion.div layout className="grid gap-5 md:grid-cols-2">
+      <m.div layout className="grid gap-5 md:grid-cols-2">
         <AnimatePresence mode="popLayout">
           {filtered.map((project, idx) => {
             const isFeatured = project.id === 1;
             return (
-              <motion.div
+              <m.div
                 layout
                 key={project.id}
                 initial={{ opacity: 0, y: 18, scale: 0.98 }}
@@ -109,11 +109,11 @@ export default function Projects() {
                     </div>
                   </>
                 )}
-              </motion.div>
+              </m.div>
             );
           })}
         </AnimatePresence>
-      </motion.div>
+      </m.div>
     </section>
   );
 }

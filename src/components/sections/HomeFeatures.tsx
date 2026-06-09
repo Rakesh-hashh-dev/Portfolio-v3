@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
 import { homeCards, profile, recruiterFit } from "@/lib/profile";
@@ -27,7 +27,7 @@ export default function HomeFeatures() {
           <span className="hidden shrink-0 items-center gap-3 whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.22em] text-white/45 md:inline-flex after:h-3 after:w-px after:bg-[var(--theme-hairline)]">
             Backed by
           </span>
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -44,14 +44,14 @@ export default function HomeFeatures() {
                 </div>
               </div>
             ))}
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
       {/* ── What I bring ─────────────────────────────── */}
       <section className="content-section section-band mx-auto max-w-7xl px-6 pb-24 pt-16">
 
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
@@ -68,11 +68,11 @@ export default function HomeFeatures() {
             Engineering foundations, MBA training, and hands-on execution across
             consulting, operations, and marketing.
           </p>
-        </motion.div>
+        </m.div>
 
         <div className="grid gap-px overflow-hidden rounded-lg border border-[var(--theme-hairline)] bg-[var(--theme-hairline)] md:grid-cols-2">
           {recruiterFit.map((item, i) => (
-            <motion.div
+            <m.div
               key={item.title}
               initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -90,7 +90,7 @@ export default function HomeFeatures() {
               </div>
               <h3 className="text-lg font-semibold text-white">{item.title}</h3>
               <p className="mt-3 text-sm leading-[1.85] text-white/55">{item.text}</p>
-            </motion.div>
+            </m.div>
           ))}
         </div>
       </section>
@@ -99,7 +99,7 @@ export default function HomeFeatures() {
       <section className="section-band content-section py-20">
         <div className="mx-auto max-w-7xl px-6">
 
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
@@ -119,11 +119,11 @@ export default function HomeFeatures() {
               LinkedIn Profile
               <ArrowUpRight size={15} />
             </a>
-          </motion.div>
+          </m.div>
 
           <div className="grid gap-5 md:grid-cols-3">
             {homeCards.map((card, i) => (
-              <motion.div
+              <m.div
                 key={card.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -144,12 +144,12 @@ export default function HomeFeatures() {
                     <ArrowRight size={14} className="transition-transform duration-200 group-hover:translate-x-1" />
                   </div>
                 </Link>
-              </motion.div>
+              </m.div>
             ))}
           </div>
 
           {/* Signal strip */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -162,7 +162,7 @@ export default function HomeFeatures() {
                 {text}
               </div>
             ))}
-          </motion.div>
+          </m.div>
         </div>
       </section>
     </>

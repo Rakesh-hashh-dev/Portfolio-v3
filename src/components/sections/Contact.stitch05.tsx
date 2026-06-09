@@ -8,7 +8,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, type Variants } from "framer-motion";
+import { m, type Variants } from "framer-motion";
 import { ArrowUpRight, FileText, Mail, MapPin, Send, UserRound } from "lucide-react";
 import { profile } from "@/lib/profile";
 
@@ -73,14 +73,14 @@ export default function ContactStitch05() {
 
   return (
     <section className="content-section section-raised relative mx-auto max-w-6xl px-6 py-8 pb-28">
-      <motion.div
+      <m.div
         variants={stagger}
         initial="hidden"
         animate="show"
         className="grid gap-12 border-t border-[var(--theme-hairline)] pt-12 lg:grid-cols-2"
       >
         {/* ── Form ─────────────────────────────────────── */}
-        <motion.form
+        <m.form
           variants={up}
           onSubmit={handleSubmit}
           className="rounded-lg border border-[var(--theme-hairline)] bg-surface p-6 md:p-8"
@@ -114,10 +114,10 @@ export default function ContactStitch05() {
               Opens in your email client — no data is stored.
             </p>
           </div>
-        </motion.form>
+        </m.form>
 
         {/* ── Info + map ───────────────────────────────── */}
-        <motion.div variants={up} className="flex flex-col">
+        <m.div variants={up} className="flex flex-col">
           <h2 className="display text-4xl text-white md:text-5xl">
             Let&rsquo;s talk{" "}
             <em className="italic text-gradient-cyan">strategy.</em>
@@ -174,8 +174,8 @@ export default function ContactStitch05() {
               <ArrowUpRight size={12} />
             </a>
           </div>
-        </motion.div>
-      </motion.div>
+        </m.div>
+      </m.div>
     </section>
   );
 }

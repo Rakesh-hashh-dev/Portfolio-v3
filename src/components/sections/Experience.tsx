@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Building2, MapPin } from "lucide-react";
 import { experience } from "@/lib/profile";
 
@@ -13,7 +13,7 @@ export default function Experience() {
           const isLast = index === experience.length - 1;
 
           return (
-            <motion.div
+            <m.div
               key={`${item.company}-${item.role}`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -75,7 +75,7 @@ export default function Experience() {
 
                 <p className="mt-3.5 max-w-2xl text-[0.9375rem] leading-[1.85] text-white/70">{item.detail}</p>
               </div>
-            </motion.div>
+            </m.div>
           );
         })}
       </div>

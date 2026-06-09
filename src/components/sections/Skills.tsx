@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Check } from "lucide-react";
 import { certifications, skillGroups } from "@/lib/profile";
 
@@ -19,7 +19,7 @@ export default function Skills() {
               const lastOdd = isOdd && i === skillGroups.length - 1;
               const isCore = group.title === "Business Strategy" || group.title === "Operations & Process";
               return (
-                <motion.div
+                <m.div
                   key={group.title}
                   initial={{ opacity: 0, y: 18 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -62,14 +62,14 @@ export default function Skills() {
                       </span>
                     ))}
                   </div>
-                </motion.div>
+                </m.div>
               );
             })}
           </div>
         </div>
 
         {/* ── Certifications ───────────────────────────── */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
@@ -84,7 +84,7 @@ export default function Skills() {
 
             <div className="space-y-3">
               {certifications.map((cert, i) => (
-                <motion.div
+                <m.div
                   key={cert}
                   initial={{ opacity: 0, x: -12 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -94,11 +94,11 @@ export default function Skills() {
                 >
                   <Check size={15} className="mt-0.5 shrink-0 text-accent-cyan" />
                   {cert}
-                </motion.div>
+                </m.div>
               ))}
             </div>
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

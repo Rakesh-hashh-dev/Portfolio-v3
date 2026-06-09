@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { ArrowRight, Download } from "lucide-react";
 import { impactMetrics, profile, stats } from "@/lib/profile";
 
@@ -26,7 +26,7 @@ export default function Hero() {
       <div className="relative mx-auto max-w-7xl">
 
         {/* ── Masthead row ─────────────────────────────── */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
@@ -34,15 +34,15 @@ export default function Hero() {
         >
           <span>Portfolio — MBA 2025/27</span>
           <span className="hidden sm:inline">Bhubaneswar · India</span>
-        </motion.div>
+        </m.div>
 
         <div className="grid gap-14 lg:grid-cols-[1.12fr_0.88fr] lg:items-center">
 
           {/* ── Left: editorial lede ─────────────────────── */}
-          <motion.div variants={container} initial="hidden" animate="show">
+          <m.div variants={container} initial="hidden" animate="show">
 
             {/* Availability */}
-            <motion.div variants={fadeUp} className="mb-7">
+            <m.div variants={fadeUp} className="mb-7">
               <span className="inline-flex items-center gap-2.5 rounded-full border border-[var(--theme-hairline)] px-3.5 py-1.5 text-[11px] font-semibold tracking-wide text-white/60">
                 <span className="relative flex h-1.5 w-1.5">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-signal opacity-60" />
@@ -50,43 +50,43 @@ export default function Hero() {
                 </span>
                 Open to Final Placements · 2027
               </span>
-            </motion.div>
+            </m.div>
 
             {/* Name kicker */}
-            <motion.p
+            <m.p
               variants={fadeUp}
               className="mb-5 text-[12px] font-bold uppercase tracking-[0.32em] text-accent-cyan"
             >
               Rakesh Kumar Behera
-            </motion.p>
+            </m.p>
 
             {/* Headline */}
-            <motion.h1
+            <m.h1
               variants={fadeUp}
               className="display text-5xl text-white md:text-6xl lg:text-[4.4rem]"
             >
               Strategy that ships{" "}
               <em className="italic text-gradient-cyan">measurable results.</em>
-            </motion.h1>
+            </m.h1>
 
             {/* Role line */}
-            <motion.p
+            <m.p
               variants={fadeUp}
               className="mt-7 text-lg font-medium text-white/70"
             >
               MBA Candidate at IIM Sambalpur · Ex-TCS Team Lead · Fortune 500 delivery
-            </motion.p>
+            </m.p>
 
             {/* Lede */}
-            <motion.p
+            <m.p
               variants={fadeUp}
               className="mt-4 max-w-[52ch] text-[1.0625rem] leading-[1.85] text-white/55"
             >
               {profile.summary}
-            </motion.p>
+            </m.p>
 
             {/* CTAs */}
-            <motion.div variants={fadeUp} className="mt-9 flex flex-wrap items-center gap-3">
+            <m.div variants={fadeUp} className="mt-9 flex flex-wrap items-center gap-3">
               <Link href="/case-studies" className="btn-accent group">
                 View Case Studies
                 <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
@@ -95,10 +95,10 @@ export default function Hero() {
                 Download Résumé
                 <Download size={16} className="transition-transform group-hover:translate-y-0.5" />
               </a>
-            </motion.div>
+            </m.div>
 
             {/* Stat strip */}
-            <motion.div variants={fadeUp} className="mt-14 border-t border-[var(--theme-hairline)] pt-9">
+            <m.div variants={fadeUp} className="mt-14 border-t border-[var(--theme-hairline)] pt-9">
               <div className="grid grid-cols-2 gap-y-8 sm:grid-cols-4">
                 {stats.map((stat, i) => (
                   <div
@@ -110,11 +110,11 @@ export default function Hero() {
                   </div>
                 ))}
               </div>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
 
           {/* ── Right: framed portrait ───────────────────── */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 0.61, 0.36, 1] }}
@@ -143,7 +143,7 @@ export default function Hero() {
               </div>
 
               {/* Credential chip — top-right */}
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8, duration: 0.45 }}
@@ -153,7 +153,7 @@ export default function Hero() {
                   <div className="glass-card flex items-center gap-2.5 rounded-lg px-3.5 py-2.5">
                     <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-md bg-[#ffffff] p-1">
                       <Image
-                        src="/iim-sambalpur-logo.png"
+                        src="/iim-sambalpur-logo.webp"
                         alt="IIM Sambalpur"
                         width={32}
                         height={32}
@@ -166,10 +166,10 @@ export default function Hero() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </m.div>
 
               {/* Selected impact card — overlapping bottom */}
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.55, duration: 0.55 }}
@@ -191,9 +191,9 @@ export default function Hero() {
                     </div>
                   ))}
                 </div>
-              </motion.div>
+              </m.div>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </section>

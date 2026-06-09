@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BriefcaseBusiness, FileText, Home, Mail, Presentation, UserRound, LineChart } from "lucide-react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 const mainDockItems = [
   { icon: Home,              label: "Home",       href: "/" },
@@ -26,7 +26,7 @@ export default function DockNav() {
   return (
     <>
       {/* ── Mobile bottom dock ────────────────────────── */}
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.55 }}
@@ -39,7 +39,7 @@ export default function DockNav() {
           {mainDockItems.map((item) => {
             const active = pathname === item.href;
             return (
-              <motion.div
+              <m.div
                 key={item.label}
                 whileHover={{ scale: 1.18, y: -5 }}
                 whileTap={{ scale: 0.9 }}
@@ -53,7 +53,7 @@ export default function DockNav() {
                   aria-label={item.label}
                 >
                   {active && (
-                    <motion.div
+                    <m.div
                       layoutId="dock-active"
                       className="absolute inset-0 rounded-xl bg-accent-cyan/10"
                       transition={{ type: "spring", stiffness: 380, damping: 28 }}
@@ -71,14 +71,14 @@ export default function DockNav() {
                     {item.label}
                   </span>
                 </Link>
-              </motion.div>
+              </m.div>
             );
           })}
         </div>
-      </motion.div>
+      </m.div>
 
       {/* ── Desktop right sidebar ─────────────────────── */}
-      <motion.div
+      <m.div
         initial={{ opacity: 0, x: 16 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.5, duration: 0.5 }}
@@ -87,7 +87,7 @@ export default function DockNav() {
         <div className="relative overflow-hidden rounded-xl border border-[var(--theme-hairline)] bg-surface/82 p-2 shadow-lg shadow-black/12 backdrop-blur-xl">
           <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/12 to-transparent" />
           {socialItems.map((item) => (
-            <motion.a
+            <m.a
               key={item.label}
               href={item.href}
               target={item.href.startsWith("http") ? "_blank" : undefined}
@@ -100,10 +100,10 @@ export default function DockNav() {
             >
               <span className="absolute inset-0 rounded-xl bg-white/0 transition-colors group-hover:bg-accent-cyan/8" />
               <item.icon size={16} className="relative z-10" />
-            </motion.a>
+            </m.a>
           ))}
         </div>
-      </motion.div>
+      </m.div>
     </>
   );
 }

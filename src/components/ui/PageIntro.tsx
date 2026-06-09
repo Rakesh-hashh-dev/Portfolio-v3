@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
+import { m, type Variants } from "framer-motion";
 import { ReactNode } from "react";
 
 const stagger: Variants = {
@@ -21,7 +21,7 @@ type PageIntroProps = {
 
 export function PageIntro({ eyebrow, title, children }: PageIntroProps) {
   return (
-    <motion.header
+    <m.header
       variants={stagger}
       initial="hidden"
       animate="show"
@@ -29,28 +29,28 @@ export function PageIntro({ eyebrow, title, children }: PageIntroProps) {
     >
       <div className="relative mx-auto max-w-7xl">
         {/* Masthead row */}
-        <motion.div
+        <m.div
           variants={up}
           className="mb-10 flex items-center justify-between border-b border-[var(--theme-hairline)] pb-4 text-[11px] font-semibold uppercase tracking-[0.24em] text-white/55"
         >
           <span>{eyebrow}</span>
           <span className="hidden sm:inline">Rakesh Kumar Behera</span>
-        </motion.div>
+        </m.div>
 
-        <motion.h1
+        <m.h1
           variants={up}
           className="display max-w-5xl text-[clamp(2.5rem,6vw,5rem)] text-white"
         >
           {title}
-        </motion.h1>
+        </m.h1>
 
-        <motion.p
+        <m.p
           variants={up}
           className="mt-8 max-w-2xl border-l-2 border-accent-cyan/40 pl-6 text-lg leading-[1.85] text-white/70"
         >
           {children}
-        </motion.p>
+        </m.p>
       </div>
-    </motion.header>
+    </m.header>
   );
 }

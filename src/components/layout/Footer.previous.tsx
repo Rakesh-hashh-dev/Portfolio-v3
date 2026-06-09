@@ -70,7 +70,7 @@ export default function FooterPrevious() {
             {/* Logo + name */}
             <Link href="/" className="group mb-5 flex items-center gap-3 w-fit">
               <div className="flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-md ring-1 ring-[var(--theme-hairline)] transition-all group-hover:ring-accent-cyan/45">
-                <Image src="/logo.png" alt="RK" width={36} height={36} className="object-cover" />
+                <Image src="/logo.webp" alt="RK" width={36} height={36} className="object-cover" />
               </div>
               <div className="leading-tight">
                 <p className="display text-[15px] text-white transition-colors group-hover:text-accent-cyan">
