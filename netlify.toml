@@ -5,29 +5,3 @@
 [build.environment]
   NETLIFY_NEXT_PLUGIN_SKIP = "true"
   NODE_VERSION = "20"
-
-# Fix Windows build: RSC payloads land in __next.X/ dirs but client requests __next.X.__PAGE__.txt
-[[redirects]]
-  from   = "/about/__next.about.__PAGE__.txt"
-  to     = "/about/__next.about/__PAGE__.txt"
-  status = 200
-
-[[redirects]]
-  from   = "/contact/__next.contact.__PAGE__.txt"
-  to     = "/contact/__next.contact/__PAGE__.txt"
-  status = 200
-
-[[redirects]]
-  from   = "/skills/__next.skills.__PAGE__.txt"
-  to     = "/skills/__next.skills/__PAGE__.txt"
-  status = 200
-
-[[redirects]]
-  from   = "/experience/__next.experience.__PAGE__.txt"
-  to     = "/experience/__next.experience/__PAGE__.txt"
-  status = 200
-
-[[redirects]]
-  from   = "/case-studies/__next.case-studies.__PAGE__.txt"
-  to     = "/case-studies/__next.case-studies/__PAGE__.txt"
-  status = 200
