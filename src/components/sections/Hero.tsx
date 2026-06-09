@@ -98,12 +98,12 @@ export default function Hero() {
             </m.div>
 
             {/* Stat strip */}
-            <m.div variants={fadeUp} className="mt-14 border-t border-[var(--theme-hairline)] pt-9">
-              <div className="grid grid-cols-2 gap-y-8 sm:grid-cols-4">
+            <m.div variants={fadeUp} className="mt-14 border-t border-[var(--theme-hairline)] pt-7">
+              <div className="grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4 sm:gap-x-0">
                 {stats.map((stat, i) => (
                   <div
                     key={stat.label}
-                    className={i > 0 ? "sm:border-l sm:border-[var(--theme-hairline)] sm:pl-6" : ""}
+                    className={`sm:pr-6 ${i > 0 ? "sm:border-l sm:border-[var(--theme-hairline)] sm:pl-6" : ""}`}
                   >
                     <p className="num text-4xl text-accent-purple md:text-5xl">{stat.value}</p>
                     <p className="mt-2 text-xs leading-5 text-white/60">{stat.label}</p>
