@@ -4,7 +4,6 @@ import { m } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowUpRight } from "lucide-react";
-import Image from "next/image";
 import ThemeToggle from "./ThemeToggle";
 import { useEffect, useState } from "react";
 
@@ -46,18 +45,20 @@ export default function Navigation() {
       <div className="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
 
         {/* ── Wordmark ──────────────────────────────── */}
-        <Link href="/" className="group flex shrink-0 items-center gap-3">
-          <div className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-md ring-1 ring-[var(--theme-hairline)] transition-all duration-200 group-hover:ring-accent-cyan/45">
-            <Image src="/logo.webp" alt="RK" width={32} height={32} className="object-cover" />
-          </div>
-          <div className="hidden leading-tight sm:block">
-            <p className="display text-[15px] text-white transition-colors group-hover:text-accent-cyan">
-              Rakesh Kumar Behera
-            </p>
-            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/55">
+        <Link
+          href="/"
+          aria-label="Rakesh Kumar Behera — home"
+          className="group flex shrink-0 flex-col justify-center leading-none"
+        >
+          <span className="display text-[15px] tracking-[-0.01em] text-white transition-colors duration-200 group-hover:text-accent-cyan sm:text-[17px]">
+            Rakesh Kumar Behera
+          </span>
+          <span className="mt-1.5 hidden items-center gap-2 sm:flex">
+            <span className="h-px w-4 bg-accent-cyan/60 transition-all duration-200 group-hover:w-6" />
+            <span className="text-[9.5px] font-semibold uppercase tracking-[0.22em] text-white/45">
               MBA · IIM Sambalpur
-            </p>
-          </div>
+            </span>
+          </span>
         </Link>
 
         {/* ── Center links ──────────────────────────── */}
