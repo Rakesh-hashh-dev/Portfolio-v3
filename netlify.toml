@@ -1,8 +1,10 @@
 [build]
+  command = "npm run build"
   publish = "out"
 
 [build.environment]
   NETLIFY_NEXT_PLUGIN_SKIP = "true"
+  NODE_VERSION = "20"
 
 # Fix Windows build: RSC payloads land in __next.X/ dirs but client requests __next.X.__PAGE__.txt
 [[redirects]]
