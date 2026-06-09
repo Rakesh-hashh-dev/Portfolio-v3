@@ -371,8 +371,7 @@ body::after {
   height: 820px;
   left: 8%;
   top: 14%;
-  background: var(--theme-bg-glow-primary);
-  filter: blur(100px);
+  background: radial-gradient(circle at center, var(--theme-bg-glow-primary) 0%, transparent 60%);
   animation: aurora-a 20s ease-in-out infinite;
 }
 
@@ -382,8 +381,7 @@ body::after {
   height: 760px;
   right: 6%;
   bottom: 10%;
-  background: var(--theme-bg-glow-secondary);
-  filter: blur(110px);
+  background: radial-gradient(circle at center, var(--theme-bg-glow-secondary) 0%, transparent 60%);
   animation: aurora-b 26s ease-in-out infinite -8s;
 }
 
@@ -393,8 +391,7 @@ body::after {
   height: 580px;
   right: 10%;
   top: 4%;
-  background: var(--theme-bg-glow-c);
-  filter: blur(90px);
+  background: radial-gradient(circle at center, var(--theme-bg-glow-c) 0%, transparent 60%);
   animation: aurora-c 18s ease-in-out infinite -5s;
 }
 
@@ -404,8 +401,7 @@ body::after {
   height: 520px;
   left: 3%;
   bottom: 20%;
-  background: var(--theme-bg-glow-d);
-  filter: blur(95px);
+  background: radial-gradient(circle at center, var(--theme-bg-glow-d) 0%, transparent 60%);
   animation: aurora-d 22s ease-in-out infinite -14s;
 }
 
@@ -415,8 +411,7 @@ body::after {
   height: 700px;
   left: 45%;
   top: 52%;
-  background: var(--theme-bg-glow-e);
-  filter: blur(130px);
+  background: radial-gradient(circle at center, var(--theme-bg-glow-e) 0%, transparent 60%);
   transform: translate(-50%, -50%);
   animation: aurora-e 30s ease-in-out infinite -20s;
 }
@@ -469,6 +464,8 @@ body::after {
   height: 100%;
   pointer-events: none;
   opacity: var(--theme-noise-opacity);
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAGFBMVEUAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVX1Vl41AAAACHRSTlMAMwAAMwAzM7207hMAAALrSURBVDjLhZNBT8MwEIXj+o6pEhP6oU0bO+n/f+o2xI2hHRLY1Gk41OQ0bexM2/tL/jXqQ2tN2/Z7/Oa9nSROk1qTaqv1P8S1kHwt11KzIeRSLf/oI19KLT8aR/S5VP3n6L2P1G73T//T8xN12/2T//g1O92+sJ72391e/x27z26n75196/b6v/x3n91+6+z2+v/8z7fdbv9O+92+9f5+q/0O4P5hGABg3w1jGAAAaIYZAMAwDBMAMExgABigGKYBAGCYaQAA0AwDAMAw0wAAwDDTAADAAM0w0zATABjATDMNUwAAwAzTNAMAwEwzAEAw0wwADGCYaZppAACYDABANUwAAMA0wDAAADMAMAAA1TQBADCACZoBANAEU00TAADQRFNNUwAAQAJNMwBQARNNANAEU00TAMBME0AFAEA1AQBM0wwAUAATTQAFAEA1AEAFAMU0ARQBABRNUwEUAAANAAWAFAAU00ABAAANAEVQAE0ABYAE0ARoBkgATYAmABIgAaAASIBmQBIAAqAASABIgAaABIgAKIASIAEgASABkgAFABIgASIAkgAkQBKABIAASIASIAEgABIgASAAGkACIAAkgARoQACQABIgACSAAoAAaEACkAAaQBKgAQkACSAAIIAkgACSAAiAAEAABIAAkgASAAFIAAkgAQkgACAACaAAEAACSAAIIAAkgASAACQgASCAAiCABEAABEQAEgABkIACSAAIQAISAAFIAAkgACAACSAAICAJgAAQQAIgAAIIAElAAAAACSAJkAAIQAESgAQQEAFIAAkgAQQACUgASUAACAAAkgAJIEAASQAFQAAIQAAIgAEkQAAIgAAQgAQQAAQQEAFIAAQgAAggAAQgAAggAAQAQAIEgAQQAAggAAQgIAAIgAAEIAAIAAAEIAAIIAAEAECABAQgAAIQgAAEIJAAAgAAAAAIAAAAAAQgAAEQAAAIQAAAEIAAAEIACAAABCAAAAAABCQAAAABCAAAAEAAAgAAAAkQAAEIQAACEAAEIAAQAAIQAAIAAIAgAAQgAAgAAQAAAAAgAAQgAAAgAAEgAAAgAAQgAAAQAAIAAAACAAAACAAAIAAAAIAAAJAAAJA=");
+  background-repeat: repeat;
 }
 
 @media (prefers-reduced-motion: reduce) {
