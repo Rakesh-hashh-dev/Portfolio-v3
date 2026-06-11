@@ -9,7 +9,7 @@ export default function Skills() {
 
   return (
     <section className="content-section section-raised relative mx-auto max-w-7xl px-6 py-8 pb-24">
-      <div className="grid gap-12 border-t border-[var(--theme-hairline)] pt-12 lg:grid-cols-[1fr_0.66fr]">
+      <div className="grid gap-12 border-t border-[var(--theme-hairline)] pt-12 md:grid-cols-[1fr_0.66fr]">
 
         {/* ── Skill groups ─────────────────────────────── */}
         <div>

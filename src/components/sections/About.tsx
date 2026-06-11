@@ -27,7 +27,7 @@ export default function About() {
 
       {/* ── Profile + quick facts ───────────────────────── */}
       <section className="mx-auto max-w-7xl px-6 pt-8 pb-16">
-        <div className="grid gap-12 border-t border-[var(--theme-hairline)] pt-12 lg:grid-cols-[1fr_340px] lg:items-start">
+        <div className="grid gap-12 border-t border-[var(--theme-hairline)] pt-12 md:grid-cols-[1fr_260px] md:items-start lg:grid-cols-[1fr_340px]">
           {/* Left: headline + summary */}
           <m.div
             initial={{ opacity: 0, y: 20 }}
@@ -116,7 +116,7 @@ export default function About() {
 
       {/* ── Education + Impact metrics ─────────────────── */}
       <section className="mx-auto max-w-7xl px-6">
-        <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr]">
+        <div className="grid gap-12 md:grid-cols-[1.2fr_0.8fr] lg:grid-cols-[1.15fr_0.85fr]">
 
           {/* Education */}
           <div>

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Inter, Fraunces } from "next/font/google";
 import AnimatedBackground from "@/components/layout/AnimatedBackground";
@@ -34,6 +34,12 @@ try {
   document.documentElement.style.colorScheme = "dark";
 }
 `;
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
@@ -86,7 +92,7 @@ export default function RootLayout({
           <AnimatedBackground />
           <Navigation />
           <PageTransition>
-            <div id="main" tabIndex={-1} className="pb-20 outline-none lg:pb-0">{children}</div>
+            <div id="main" tabIndex={-1} className="main-pb-safe outline-none">{children}</div>
           </PageTransition>
           <DockNav />
         </Providers>

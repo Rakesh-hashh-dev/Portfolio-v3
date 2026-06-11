@@ -30,7 +30,7 @@ export default function DockNav() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.3 }}
-        className="fixed bottom-5 left-1/2 z-50 -translate-x-1/2 lg:hidden"
+        className="fixed dock-safe-bottom left-1/2 z-50 -translate-x-1/2 lg:hidden max-w-[calc(100vw-1.5rem)]"
       >
         <div className="relative flex items-end gap-0.5 overflow-hidden rounded-xl border border-[var(--theme-hairline)] bg-surface/90 px-2.5 py-2 shadow-xl shadow-black/15 backdrop-blur-2xl">
           {/* Top accent line */}
@@ -47,7 +47,7 @@ export default function DockNav() {
               >
                 <Link
                   href={item.href}
-                  className={`relative flex flex-col items-center gap-1 rounded-xl px-3 py-2.5 transition-colors duration-150 ${
+                  className={`relative flex flex-col items-center gap-1 rounded-xl px-2 py-2.5 sm:px-3 transition-colors duration-150 ${
                     active ? "text-accent-cyan" : "text-white/60 hover:text-white/85"
                   }`}
                   aria-label={item.label}
@@ -64,7 +64,7 @@ export default function DockNav() {
                   )}
                   <item.icon size={19} className="relative z-10" />
                   <span
-                    className={`relative z-10 text-[9px] font-bold leading-none ${
+                    className={`relative z-10 hidden text-[9px] font-bold leading-none sm:block ${
                       active ? "text-accent-cyan" : ""
                     }`}
                   >

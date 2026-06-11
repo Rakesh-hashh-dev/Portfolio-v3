@@ -353,13 +353,15 @@ body::after {
 
 .content-section { position: relative; z-index: 10; }
 
-/* Card with lift on hover */
+/* Card with lift on hover — guard with (hover:hover) so iOS tap doesn't flash */
 .card-glow { transition: box-shadow 0.3s, transform 0.2s, border-color 0.3s; }
-.card-glow:hover {
-  box-shadow:
-    0 0 0 1px var(--theme-card-border),
-    0 22px 50px var(--theme-card-shadow);
-  transform: translateY(-3px);
+@media (hover: hover) and (pointer: fine) {
+  .card-glow:hover {
+    box-shadow:
+      0 0 0 1px var(--theme-card-border),
+      0 22px 50px var(--theme-card-shadow);
+    transform: translateY(-3px);
+  }
 }
 
 /* ── Animated background — aurora orb system ──── */
@@ -498,4 +500,19 @@ body::after {
     -webkit-backdrop-filter: blur(10px);
     box-shadow: 0 10px 30px var(--theme-card-shadow-mobile);
   }
+}
+
+/* ── Apple device safe area support ──────────── */
+
+/* Bottom dock: respect iPhone home indicator (env needs viewport-fit=cover) */
+.dock-safe-bottom {
+  bottom: max(1.25rem, calc(env(safe-area-inset-bottom, 0px) + 0.75rem));
+}
+
+/* Main content: clear dock + safe area on mobile, reset on desktop */
+.main-pb-safe {
+  padding-bottom: max(5rem, calc(env(safe-area-inset-bottom, 0px) + 5rem));
+}
+@media (min-width: 1024px) {
+  .main-pb-safe { padding-bottom: 0; }
 }
