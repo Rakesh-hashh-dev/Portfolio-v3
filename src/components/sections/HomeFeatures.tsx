@@ -56,15 +56,12 @@ export default function HomeFeatures() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.5 }}
-          className="mb-14 flex flex-col gap-5 border-t border-[var(--theme-hairline)] pt-10 md:flex-row md:items-end md:justify-between"
+          className="mb-14 border-t border-[var(--theme-hairline)] pt-10"
         >
-          <div>
-            <p className="eyebrow mb-5">Why this profile</p>
-            <h2 className="display max-w-xl text-4xl text-white md:text-5xl">
-              What I bring to the table.
-            </h2>
-          </div>
-          <p className="max-w-xs text-sm leading-7 text-white/65 md:text-right">
+          <h2 className="display max-w-xl text-4xl text-white md:text-5xl">
+            What I bring to the table.
+          </h2>
+          <p className="mt-5 max-w-md text-sm leading-7 text-white/65">
             Engineering foundations, MBA training, and hands-on execution across
             consulting, operations, and marketing.
           </p>
@@ -78,12 +75,9 @@ export default function HomeFeatures() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ delay: i * 0.07, duration: 0.5 }}
-              className="group relative bg-surface p-8 transition-all duration-200 hover:bg-white/[0.05] hover:border-accent-cyan/20"
+              className="group relative bg-surface p-8 transition-[background-color,border-color] duration-200 hover:bg-white/[0.05] hover:border-accent-cyan/20"
             >
-              <div className="mb-6 flex items-center justify-between">
-                <span className="num text-3xl text-accent-cyan/65">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
+              <div className="mb-6">
                 <div className="flex h-10 w-10 items-center justify-center rounded-md border border-[var(--theme-hairline)] text-accent-cyan transition-colors duration-200 group-hover:border-accent-cyan/40 group-hover:bg-accent-cyan/[0.06]">
                   <item.icon size={18} />
                 </div>
@@ -107,7 +101,6 @@ export default function HomeFeatures() {
             className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end"
           >
             <div>
-              <p className="eyebrow mb-5">The full profile</p>
               <h2 className="display text-4xl text-white md:text-5xl">Explore by area.</h2>
             </div>
             <a
@@ -140,7 +133,7 @@ export default function HomeFeatures() {
                   <h3 className="text-lg font-semibold text-white">{card.title}</h3>
                   <p className="mt-3 flex-1 text-sm leading-7 text-white/55">{card.text}</p>
                   <div className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-accent-cyan">
-                    Open
+                    {card.href === "/experience" ? "View timeline" : card.href === "/case-studies" ? "Read studies" : "See skills"}
                     <ArrowRight size={14} className="transition-transform duration-200 group-hover:translate-x-1" />
                   </div>
                 </Link>

@@ -1,13 +1,28 @@
 "use client";
 
-import { m } from "framer-motion";
+import { m, useScroll } from "framer-motion";
+import { useRef } from "react";
 import { Building2, MapPin } from "lucide-react";
 import { experience } from "@/lib/profile";
 
 export default function Experience() {
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ["start 70%", "end 40%"],
+  });
+
   return (
     <section className="content-section section-raised relative mx-auto max-w-4xl px-6 py-8 pb-28">
-      <div className="relative border-t border-[var(--theme-hairline)] pt-12">
+      <div ref={timelineRef} className="relative border-t border-[var(--theme-hairline)] pt-12">
+
+        {/* Scroll-driven fill line — overlays the individual border-l segments */}
+        <m.div
+          style={{ scaleY: scrollYProgress, originY: "0%" }}
+          className="pointer-events-none absolute inset-y-0 left-[120px] hidden w-px bg-gradient-to-b from-accent-cyan/55 via-accent-purple/40 to-transparent md:block"
+          aria-hidden
+        />
+
         {experience.map((item, index) => {
           const isCurrent = item.period.includes("Present");
           const isLast = index === experience.length - 1;

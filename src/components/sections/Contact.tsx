@@ -40,7 +40,7 @@ export default function Contact() {
         </m.h2>
 
         <m.p variants={up} className="mt-6 max-w-md text-lg leading-[1.85] text-white/70">
-          Targeting management consulting, strategy & operations, and product management — available for final placements in 2027.
+          Targeting management consulting, strategy & operations, and product management. Available for final placements in 2027.
         </m.p>
 
         {/* Email */}
@@ -62,7 +62,7 @@ export default function Contact() {
             href={profile.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center gap-4 bg-surface p-5 transition-colors hover:bg-white/[0.02]"
+            className="group flex items-center gap-4 bg-surface p-5 transition-colors hover:bg-white/[0.05]"
           >
             <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-[var(--theme-hairline)] text-accent-cyan transition-colors group-hover:border-accent-cyan/40">
               <UserRound size={19} />

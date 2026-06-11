@@ -3,6 +3,7 @@
 import { m, type Variants } from "framer-motion";
 import { GraduationCap, MapPin, Quote, Target } from "lucide-react";
 import { education, impactMetrics, philosophy, profile, stats } from "@/lib/profile";
+import StatCounter from "@/components/ui/StatCounter";
 
 const stagger: Variants = {
   hidden: {},
@@ -84,7 +85,6 @@ export default function About() {
             className="pointer-events-none absolute -right-4 -top-6 text-accent-cyan/[0.06]"
             aria-hidden
           />
-          <p className="eyebrow mb-6">{philosophy.eyebrow}</p>
           <blockquote className="display max-w-3xl text-2xl leading-[1.5] text-white/90 md:text-[2rem] md:leading-[1.45]">
             &ldquo;{philosophy.quote}&rdquo;
           </blockquote>
@@ -107,7 +107,7 @@ export default function About() {
               transition={{ delay: i * 0.07, duration: 0.45 }}
               className="bg-surface p-6"
             >
-              <p className="num text-4xl text-accent-purple">{stat.value}</p>
+              <p className="num text-4xl text-accent-purple"><StatCounter value={stat.value} /></p>
               <p className="mt-2 text-xs leading-5 text-white/60">{stat.label}</p>
             </m.div>
           ))}
@@ -142,31 +142,26 @@ export default function About() {
 
           {/* Impact metrics */}
           <div>
-            <p className="eyebrow mb-8">Impact Metrics</p>
             <m.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5 }}
-              className="rounded-lg border border-[var(--theme-hairline)] bg-surface p-7"
+              className="rounded-lg border border-[var(--theme-hairline)] bg-surface"
             >
-              <div className="divide-y divide-[var(--theme-hairline)]">
+              <div className="grid grid-cols-2 gap-px bg-[var(--theme-hairline)] overflow-hidden rounded-lg">
                 {impactMetrics.map((metric, i) => (
-                  <div key={metric.label} className="py-4 first:pt-0 last:pb-0">
-                    <div className="mb-2.5 flex items-center justify-between gap-3">
-                      <span className="text-sm text-white/70">{metric.label}</span>
-                      <span className="num text-xl font-semibold text-accent-purple">{metric.value}</span>
-                    </div>
-                    <div className="h-1 w-full overflow-hidden rounded-full bg-white/[0.08]">
-                      <m.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: metric.width }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1.0, ease: [0.22, 0.61, 0.36, 1], delay: i * 0.12 + 0.2 }}
-                        className="h-full rounded-full bg-gradient-to-r from-accent-cyan to-accent-purple"
-                      />
-                    </div>
-                  </div>
+                  <m.div
+                    key={metric.label}
+                    initial={{ opacity: 0, y: 14 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-40px" }}
+                    transition={{ delay: i * 0.08, duration: 0.45 }}
+                    className="bg-surface p-6"
+                  >
+                    <p className="num text-3xl text-accent-purple">{metric.value}</p>
+                    <p className="mt-2 text-xs leading-5 text-white/60">{metric.label}</p>
+                  </m.div>
                 ))}
               </div>
             </m.div>

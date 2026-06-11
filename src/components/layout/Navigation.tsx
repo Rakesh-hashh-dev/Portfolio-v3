@@ -35,7 +35,7 @@ export default function Navigation() {
     >
       {/* Background layer */}
       <div
-        className={`absolute inset-0 transition-all duration-300 ${
+        className={`absolute inset-0 transition-[background-color,backdrop-filter,box-shadow,border-color] duration-200 ${
           scrolled
             ? "bg-surface/90 backdrop-blur-xl border-b border-[var(--theme-hairline)] shadow-sm shadow-black/20"
             : "bg-surface/20 backdrop-blur-md border-b border-[var(--theme-hairline)]/50"

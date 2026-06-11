@@ -29,7 +29,7 @@ export default function DockNav() {
       <m.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.3, duration: 0.55 }}
+        transition={{ delay: 0.3, duration: 0.3 }}
         className="fixed bottom-5 left-1/2 z-50 -translate-x-1/2 lg:hidden"
       >
         <div className="relative flex items-end gap-0.5 overflow-hidden rounded-xl border border-[var(--theme-hairline)] bg-surface/90 px-2.5 py-2 shadow-xl shadow-black/15 backdrop-blur-2xl">
@@ -42,7 +42,7 @@ export default function DockNav() {
               <m.div
                 key={item.label}
                 whileHover={{ scale: 1.18, y: -5 }}
-                whileTap={{ scale: 0.9 }}
+                whileTap={{ scale: 0.94 }}
                 transition={{ type: "spring", stiffness: 420, damping: 20 }}
               >
                 <Link

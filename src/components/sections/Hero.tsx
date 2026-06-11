@@ -2,13 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { m } from "framer-motion";
+import { m, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Download } from "lucide-react";
 import { impactMetrics, profile, stats } from "@/lib/profile";
+import StatCounter from "@/components/ui/StatCounter";
 
 const container = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } },
+  show: { transition: { staggerChildren: 0.055, delayChildren: 0.05 } },
 };
 
 const fadeUp = {
@@ -16,11 +17,14 @@ const fadeUp = {
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.22, 0.61, 0.36, 1] as [number, number, number, number] },
+    transition: { duration: 0.35, ease: [0.22, 0.61, 0.36, 1] as [number, number, number, number] },
   },
 };
 
 export default function Hero() {
+  const { scrollY } = useScroll();
+  const portraitY = useTransform(scrollY, [0, 600], [0, -50]);
+
   return (
     <section className="relative overflow-hidden px-6 pt-28 pb-12 md:pt-32 md:pb-14">
       <div className="relative mx-auto max-w-7xl">
@@ -105,7 +109,7 @@ export default function Hero() {
                     key={stat.label}
                     className={`sm:pr-6 ${i > 0 ? "sm:border-l sm:border-[var(--theme-hairline)] sm:pl-6" : ""}`}
                   >
-                    <p className="num text-4xl text-accent-purple md:text-5xl">{stat.value}</p>
+                    <p className="num text-4xl text-accent-purple md:text-5xl"><StatCounter value={stat.value} /></p>
                     <p className="mt-2 text-xs leading-5 text-white/60">{stat.label}</p>
                   </div>
                 ))}
@@ -117,10 +121,10 @@ export default function Hero() {
           <m.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 0.61, 0.36, 1] }}
+            transition={{ duration: 0.45, delay: 0.15, ease: [0.22, 0.61, 0.36, 1] }}
             className="relative mx-auto w-full max-w-[400px] lg:max-w-none"
           >
-            <div className="relative mx-auto max-w-[400px]">
+            <m.div style={{ y: portraitY }} className="relative mx-auto max-w-[400px]">
               {/* Editorial offset frame */}
               <div className="pointer-events-none absolute -bottom-4 -right-4 h-full w-full rounded-sm border border-primary/30" />
 
@@ -146,7 +150,7 @@ export default function Hero() {
               <m.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8, duration: 0.45 }}
+                transition={{ delay: 0.5, duration: 0.3 }}
                 className="absolute -left-6 top-8 z-10 hidden md:block"
               >
                 <div style={{ animation: "float-badge-a 5s ease-in-out infinite 1.2s" }}>
@@ -192,7 +196,7 @@ export default function Hero() {
                   ))}
                 </div>
               </m.div>
-            </div>
+            </m.div>
           </m.div>
         </div>
       </div>

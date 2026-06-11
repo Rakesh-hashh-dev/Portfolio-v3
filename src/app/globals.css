@@ -247,10 +247,15 @@ body::after {
   box-shadow: 0 8px 22px color-mix(in srgb, var(--theme-primary) 22%, transparent);
   transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
 }
+.btn-primary:active {
+  transform: scale(0.97);
+}
 .btn-primary:hover {
   background: var(--theme-primary-hover);
-  transform: translateY(-2px);
   box-shadow: 0 12px 30px color-mix(in srgb, var(--theme-primary) 30%, transparent);
+}
+@media (hover: hover) and (pointer: fine) {
+  .btn-primary:hover { transform: translateY(-2px); }
 }
 
 .btn-accent {
@@ -266,10 +271,15 @@ body::after {
   box-shadow: 0 8px 22px color-mix(in srgb, var(--theme-accent-purple) 25%, transparent);
   transition: transform 0.18s ease, filter 0.18s ease, box-shadow 0.18s ease;
 }
+.btn-accent:active {
+  transform: scale(0.97);
+}
 .btn-accent:hover {
   filter: brightness(1.12);
-  transform: translateY(-2px);
   box-shadow: 0 12px 30px color-mix(in srgb, var(--theme-accent-purple) 32%, transparent);
+}
+@media (hover: hover) and (pointer: fine) {
+  .btn-accent:hover { transform: translateY(-2px); }
 }
 
 .btn-ghost {
@@ -285,11 +295,16 @@ body::after {
   background: transparent;
   transition: transform 0.18s ease, border-color 0.18s ease, color 0.18s ease, background 0.18s ease;
 }
+.btn-ghost:active {
+  transform: scale(0.97);
+}
 .btn-ghost:hover {
-  transform: translateY(-2px);
   color: var(--theme-contrast);
   border-color: color-mix(in srgb, var(--theme-contrast) 32%, transparent);
   background: color-mix(in srgb, var(--theme-contrast) 4%, transparent);
+}
+@media (hover: hover) and (pointer: fine) {
+  .btn-ghost:hover { transform: translateY(-2px); }
 }
 
 /* Underline-on-hover editorial link */
