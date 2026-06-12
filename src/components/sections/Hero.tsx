@@ -13,11 +13,11 @@ const container = {
 };
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 22 },
+  hidden: { opacity: 0, y: 28 },
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.35, ease: [0.22, 0.61, 0.36, 1] as [number, number, number, number] },
+    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
   },
 };
 
@@ -67,10 +67,17 @@ export default function Hero() {
             {/* Headline */}
             <m.h1
               variants={fadeUp}
-              className="display text-5xl text-white md:text-6xl lg:text-[4.4rem]"
+              className="display text-[clamp(3rem,2rem+4.5vw,4.4rem)] text-white"
             >
               Strategy that ships{" "}
-              <em className="italic text-gradient-cyan">measurable results.</em>
+              <m.em
+                initial={{ clipPath: "inset(0 100% 0 0)" }}
+                animate={{ clipPath: "inset(0 0% 0 0)" }}
+                transition={{ delay: 0.45, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                className="inline-block italic text-gradient-cyan"
+              >
+                measurable results.
+              </m.em>
             </m.h1>
 
             {/* Role line */}

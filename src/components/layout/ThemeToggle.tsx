@@ -1,5 +1,6 @@
 "use client";
 
+import { m } from "framer-motion";
 import { Moon, Sun } from "lucide-react";
 import { useSyncExternalStore } from "react";
 
@@ -47,11 +48,19 @@ export default function ThemeToggle() {
     <button
       type="button"
       onClick={toggleTheme}
-      className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[var(--theme-hairline)] text-white/60 transition-colors hover:bg-white/5 hover:text-white"
+      className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[var(--theme-hairline)] text-white/60 transition-[background-color,color,transform] duration-150 hover:bg-white/5 hover:text-white active:scale-95"
       aria-label={isLight ? "Switch to dark theme" : "Switch to light theme"}
       title={isLight ? "Switch to dark theme" : "Switch to light theme"}
     >
-      <Icon size={18} />
+      <m.span
+        key={theme}
+        initial={{ rotate: -90, scale: 0.5, opacity: 0 }}
+        animate={{ rotate: 0, scale: 1, opacity: 1 }}
+        transition={{ type: "spring", stiffness: 320, damping: 22 }}
+        className="inline-flex"
+      >
+        <Icon size={18} />
+      </m.span>
     </button>
   );
 }

@@ -11,7 +11,7 @@ const stagger: Variants = {
 
 const up: Variants = {
   hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.55 } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] } },
 };
 
 export default function Contact() {
@@ -35,7 +35,7 @@ export default function Contact() {
         </m.div>
 
         {/* Headline */}
-        <m.h2 variants={up} className="display text-6xl text-white md:text-8xl">
+        <m.h2 variants={up} className="display text-[clamp(3.75rem,2.2rem+7vw,6rem)] text-white">
           Let&rsquo;s talk.
         </m.h2>
 

@@ -12,7 +12,7 @@ const stagger: Variants = {
 
 const up: Variants = {
   hidden: { opacity: 0, y: 18 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
 };
 
 const quickFacts = [
@@ -80,11 +80,16 @@ export default function About() {
           transition={{ duration: 0.55, ease: [0.22, 0.61, 0.36, 1] }}
           className="relative overflow-hidden rounded-lg border border-[var(--theme-hairline)] bg-surface p-8 md:p-12"
         >
-          <Quote
-            size={120}
-            className="pointer-events-none absolute -right-4 -top-6 text-accent-cyan/[0.06]"
+          <m.span
+            initial={{ opacity: 0, scale: 0.8, rotate: -6 }}
+            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="pointer-events-none absolute -right-4 -top-6"
             aria-hidden
-          />
+          >
+            <Quote size={120} className="text-accent-cyan/[0.06]" />
+          </m.span>
           <blockquote className="display max-w-3xl text-2xl leading-[1.5] text-white/90 md:text-[2rem] md:leading-[1.45]">
             &ldquo;{philosophy.quote}&rdquo;
           </blockquote>
@@ -128,7 +133,7 @@ export default function About() {
                   initial={{ opacity: 0, y: 18 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
-                  transition={{ delay: i * 0.1, duration: 0.5 }}
+                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                   className="card-glow rounded-lg border border-[var(--theme-hairline)] bg-surface p-6"
                 >
                   <p className="text-sm font-semibold text-accent-cyan">{item.period}</p>

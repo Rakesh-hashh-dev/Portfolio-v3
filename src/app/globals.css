@@ -106,6 +106,17 @@ html { scroll-behavior: smooth; }
   border-radius: 3px;
 }
 
+/* Tailwind v4 resets button cursor — restore pointer affordance */
+button:not(:disabled),
+[role="button"]:not(:disabled) {
+  cursor: pointer;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--theme-accent-cyan) 28%, transparent);
+  color: var(--theme-contrast);
+}
+
 /* Skip to content (visible only on keyboard focus) */
 .skip-link {
   position: fixed;
@@ -247,15 +258,13 @@ body::after {
   box-shadow: 0 8px 22px color-mix(in srgb, var(--theme-primary) 22%, transparent);
   transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
 }
-.btn-primary:active {
-  transform: scale(0.97);
-}
-.btn-primary:hover {
-  background: var(--theme-primary-hover);
-  box-shadow: 0 12px 30px color-mix(in srgb, var(--theme-primary) 30%, transparent);
-}
+.btn-primary:active { transform: scale(0.97); }
 @media (hover: hover) and (pointer: fine) {
-  .btn-primary:hover { transform: translateY(-2px); }
+  .btn-primary:hover {
+    background: var(--theme-primary-hover);
+    box-shadow: 0 12px 30px color-mix(in srgb, var(--theme-primary) 30%, transparent);
+    transform: translateY(-2px);
+  }
 }
 
 .btn-accent {
@@ -271,15 +280,13 @@ body::after {
   box-shadow: 0 8px 22px color-mix(in srgb, var(--theme-accent-purple) 25%, transparent);
   transition: transform 0.18s ease, filter 0.18s ease, box-shadow 0.18s ease;
 }
-.btn-accent:active {
-  transform: scale(0.97);
-}
-.btn-accent:hover {
-  filter: brightness(1.12);
-  box-shadow: 0 12px 30px color-mix(in srgb, var(--theme-accent-purple) 32%, transparent);
-}
+.btn-accent:active { transform: scale(0.97); }
 @media (hover: hover) and (pointer: fine) {
-  .btn-accent:hover { transform: translateY(-2px); }
+  .btn-accent:hover {
+    filter: brightness(1.12);
+    box-shadow: 0 12px 30px color-mix(in srgb, var(--theme-accent-purple) 32%, transparent);
+    transform: translateY(-2px);
+  }
 }
 
 .btn-ghost {
@@ -295,16 +302,14 @@ body::after {
   background: transparent;
   transition: transform 0.18s ease, border-color 0.18s ease, color 0.18s ease, background 0.18s ease;
 }
-.btn-ghost:active {
-  transform: scale(0.97);
-}
-.btn-ghost:hover {
-  color: var(--theme-contrast);
-  border-color: color-mix(in srgb, var(--theme-contrast) 32%, transparent);
-  background: color-mix(in srgb, var(--theme-contrast) 4%, transparent);
-}
+.btn-ghost:active { transform: scale(0.97); }
 @media (hover: hover) and (pointer: fine) {
-  .btn-ghost:hover { transform: translateY(-2px); }
+  .btn-ghost:hover {
+    color: var(--theme-contrast);
+    border-color: color-mix(in srgb, var(--theme-contrast) 32%, transparent);
+    background: color-mix(in srgb, var(--theme-contrast) 4%, transparent);
+    transform: translateY(-2px);
+  }
 }
 
 /* Underline-on-hover editorial link */
@@ -322,9 +327,10 @@ body::after {
   background: currentColor;
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.28s ease;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.link-underline:hover::after { transform: scaleX(1); }
+.link-underline:hover::after,
+.group:hover .link-underline::after { transform: scaleX(1); }
 
 /* Section utilities */
 .section-band {
@@ -350,6 +356,9 @@ body::after {
   height: 1px;
   background: linear-gradient(to right, transparent, var(--theme-hairline), transparent);
 }
+
+.scrollbar-none { scrollbar-width: none; }
+.scrollbar-none::-webkit-scrollbar { display: none; }
 
 .content-section { position: relative; z-index: 10; }
 

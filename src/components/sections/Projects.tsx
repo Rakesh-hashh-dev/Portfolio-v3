@@ -19,10 +19,10 @@ export default function Projects() {
           <button
             key={cat}
             onClick={() => setFilter(cat)}
-            className={`rounded-full px-4 py-1.5 text-sm font-medium transition-[background-color,border-color,color] duration-150 ${
+            className={`rounded-full border px-4 py-1.5 text-sm font-medium transition-[background-color,border-color,color,transform] duration-150 active:scale-[0.96] ${
               filter === cat
-                ? "bg-primary text-[var(--theme-on-primary)]"
-                : "border border-[var(--theme-hairline)] text-white/55 hover:border-accent-cyan/40 hover:text-white"
+                ? "border-primary bg-primary text-[var(--theme-on-primary)]"
+                : "border-[var(--theme-hairline)] text-white/55 hover:border-accent-cyan/40 hover:text-white"
             }`}
           >
             {cat}
@@ -30,8 +30,9 @@ export default function Projects() {
         ))}
         <m.span
           key={filtered.length}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 4 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.2 }}
           className="ml-auto text-xs font-medium uppercase tracking-[0.18em] text-white/55"
         >
           {filtered.length} {filtered.length === 1 ? "study" : "studies"}
@@ -51,7 +52,7 @@ export default function Projects() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.97, transition: { duration: 0.2 } }}
                 transition={{ delay: idx * 0.06, duration: 0.28 }}
-                className={`card-glow group flex flex-col rounded-lg border p-7 transition-all duration-200 ${
+                className={`card-glow group flex flex-col rounded-lg border p-7 ${
                   isFeatured
                     ? "md:col-span-2 border-accent-cyan/25 bg-gradient-to-br from-surface to-accent-cyan/[0.04]"
                     : "border-[var(--theme-hairline)] bg-surface"

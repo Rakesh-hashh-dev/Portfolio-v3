@@ -69,16 +69,19 @@ export default function Navigation() {
               <Link
                 key={link.name}
                 href={link.href}
-                className={`relative px-3.5 py-2 text-[13px] font-medium tracking-wide transition-colors duration-150 ${
+                aria-current={active ? "page" : undefined}
+                className={`group relative px-3.5 py-2 text-[13px] font-medium tracking-wide transition-colors duration-150 ${
                   active ? "text-white" : "text-white/65 hover:text-white"
                 }`}
               >
-                {active && (
+                {active ? (
                   <m.span
                     layoutId="nav-line"
                     className="absolute inset-x-3.5 -bottom-0.5 h-px bg-accent-cyan"
                     transition={{ type: "spring", stiffness: 500, damping: 42 }}
                   />
+                ) : (
+                  <span className="absolute inset-x-3.5 -bottom-0.5 h-px origin-left scale-x-0 bg-white/30 transition-transform duration-200 ease-out group-hover:scale-x-100" />
                 )}
                 {link.name}
               </Link>
@@ -89,10 +92,8 @@ export default function Navigation() {
         {/* ── Right actions ─────────────────────────── */}
         <div className="flex shrink-0 items-center gap-2.5">
           <ThemeToggle />
-          <m.a
+          <a
             href="mailto:rk821604@gmail.com"
-            whileHover={{ y: -1 }}
-            whileTap={{ scale: 0.97 }}
             className="btn-accent group !px-4 !py-2 !text-[13px]"
           >
             Connect
@@ -100,7 +101,7 @@ export default function Navigation() {
               size={13}
               className="transition-transform duration-150 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
             />
-          </m.a>
+          </a>
         </div>
       </div>
     </m.nav>

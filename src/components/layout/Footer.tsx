@@ -66,7 +66,7 @@ export default function Footer() {
                     rel={external ? "noopener noreferrer" : undefined}
                     className="group inline-flex items-center gap-2.5 text-sm text-white/60 transition-colors hover:text-white"
                   >
-                    <Icon size={14} className="shrink-0 text-accent-purple" />
+                    <Icon size={14} className="shrink-0 text-accent-purple transition-transform duration-200 group-hover:-translate-y-0.5" />
                     <span className="link-underline">{label}</span>
                   </a>
                 </li>

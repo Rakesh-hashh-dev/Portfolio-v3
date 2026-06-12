@@ -23,7 +23,7 @@ export default function HomeFeatures() {
     <>
       {/* ── Credential trust strip ───────────────────── */}
       <section className="content-section section-raised">
-        <div className="mx-auto flex max-w-7xl items-center gap-5 overflow-x-auto px-6 py-7 md:py-8">
+        <div className="scrollbar-none mx-auto flex max-w-7xl items-center gap-5 overflow-x-auto px-6 py-7 [mask-image:linear-gradient(to_right,transparent,black_1.5rem,black_calc(100%-2.5rem),transparent)] md:py-8 md:[mask-image:none]">
           <span className="hidden shrink-0 items-center gap-3 whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.22em] text-white/45 md:inline-flex after:h-3 after:w-px after:bg-[var(--theme-hairline)]">
             Backed by
           </span>
@@ -75,7 +75,7 @@ export default function HomeFeatures() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ delay: i * 0.07, duration: 0.5 }}
-              className="group relative bg-surface p-8 transition-[background-color,border-color] duration-200 hover:bg-white/[0.05] hover:border-accent-cyan/20"
+              className="group relative bg-surface p-8 transition-[background-color] duration-200 hover:bg-white/[0.05]"
             >
               <div className="mb-6">
                 <div className="flex h-10 w-10 items-center justify-center rounded-md border border-[var(--theme-hairline)] text-accent-cyan transition-colors duration-200 group-hover:border-accent-cyan/40 group-hover:bg-accent-cyan/[0.06]">

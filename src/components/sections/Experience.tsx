@@ -33,12 +33,12 @@ export default function Experience() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ delay: index * 0.08, duration: 0.55, ease: [0.22, 0.61, 0.36, 1] }}
+              transition={{ delay: Math.min(index, 2) * 0.08, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
               className="group grid gap-3 border-b border-[var(--theme-hairline)] pb-9 last:border-b-0 md:grid-cols-[120px_1fr] md:gap-0 md:border-b-0"
             >
               {/* Left rail: index + period */}
               <div className="flex items-start justify-between md:block md:pt-0.5">
-                <span className="num text-2xl text-accent-cyan/60">
+                <span className="num text-2xl text-accent-cyan/60 transition-colors duration-200 group-hover:text-accent-cyan">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <span className="text-sm font-medium tabular-nums text-white/60 md:mt-2 md:block">

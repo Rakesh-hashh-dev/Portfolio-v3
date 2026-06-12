@@ -29,12 +29,12 @@ export default function DockNav() {
       <m.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.3, duration: 0.3 }}
+        transition={{ delay: 0.3, type: "spring", stiffness: 260, damping: 24 }}
         className="fixed dock-safe-bottom left-1/2 z-50 -translate-x-1/2 lg:hidden max-w-[calc(100vw-1.5rem)]"
       >
-        <div className="relative flex items-end gap-0.5 overflow-hidden rounded-xl border border-[var(--theme-hairline)] bg-surface/90 px-2.5 py-2 shadow-xl shadow-black/15 backdrop-blur-2xl">
+        <div className="relative flex items-end gap-0.5 rounded-xl border border-[var(--theme-hairline)] bg-surface/90 px-2.5 py-2 shadow-xl shadow-black/15 backdrop-blur-2xl">
           {/* Top accent line */}
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-cyan/30 to-transparent" />
+          <div className="pointer-events-none absolute inset-x-2 top-0 h-px rounded-full bg-gradient-to-r from-transparent via-accent-cyan/30 to-transparent" />
 
           {mainDockItems.map((item) => {
             const active = pathname === item.href;
@@ -47,10 +47,11 @@ export default function DockNav() {
               >
                 <Link
                   href={item.href}
-                  className={`relative flex flex-col items-center gap-1 rounded-xl px-2 py-2.5 sm:px-3 transition-colors duration-150 ${
+                  aria-label={item.label}
+                  aria-current={active ? "page" : undefined}
+                  className={`relative flex min-w-[44px] flex-col items-center gap-1 rounded-xl px-2 py-2.5 sm:px-3 transition-colors duration-150 ${
                     active ? "text-accent-cyan" : "text-white/60 hover:text-white/85"
                   }`}
-                  aria-label={item.label}
                 >
                   {active && (
                     <m.div

@@ -3,6 +3,7 @@
 import { m } from "framer-motion";
 import { Check } from "lucide-react";
 import { certifications, skillGroups } from "@/lib/profile";
+import StatCounter from "@/components/ui/StatCounter";
 
 export default function Skills() {
   const isOdd = skillGroups.length % 2 !== 0;
@@ -78,7 +79,7 @@ export default function Skills() {
           <p className="eyebrow mb-8">Certifications</p>
           <div className="rounded-lg border border-[var(--theme-hairline)] bg-surface p-6">
             <div className="mb-6 flex items-baseline gap-3 border-b border-[var(--theme-hairline)] pb-5">
-              <p className="num text-4xl text-white">{certifications.length}</p>
+              <p className="num text-4xl text-white"><StatCounter value={String(certifications.length)} /></p>
               <p className="text-sm text-white/60">credentials earned</p>
             </div>
 
