@@ -90,7 +90,7 @@ export default function HomeFeatures() {
       </section>
 
       {/* ── Explore by area ──────────────────────────── */}
-      <section className="section-band content-section py-20">
+      <section className="section-band content-section pt-20 pb-10">
         <div className="mx-auto max-w-7xl px-6">
 
           <m.div
@@ -141,7 +141,7 @@ export default function HomeFeatures() {
             ))}
           </div>
 
-          {/* Signal strip */}
+          {/* Signal strip — parked
           <m.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -156,6 +156,7 @@ export default function HomeFeatures() {
               </div>
             ))}
           </m.div>
+          */}
         </div>
       </section>
     </>

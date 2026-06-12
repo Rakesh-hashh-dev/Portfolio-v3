@@ -21,6 +21,8 @@
 :root {
   --theme-contrast: #000000;        /* ink (acts as "white") — pure black gives ≥4.5:1 contrast at 60%+ opacity */
   --theme-surface: #f7f4ee;
+  --footer-fill: #e8e4da;           /* warm shadow tone — distinctly darker than surface for wave contrast */
+  --wave-height: clamp(100px, 15vh, 150px); /* responsive wave height matches footer margin-top */
   --theme-primary: #1a3a5f;         /* deep navy */
   --theme-primary-hover: #12293f;
   --theme-on-primary: #f7f4ee;      /* text on navy buttons */
@@ -67,6 +69,7 @@
   --theme-accent-cyan:     #5d93b8;   /* same hue as light #2f6d97, lifted for legibility */
   --theme-accent-purple:   #c08a5e;   /* clay/ochre, light #a8602f lifted — stays earthy */
   --theme-signal:          #4ca96b;   /* forest green, muted for dark */
+  --footer-fill:           #1a1f26;   /* surface — clearly distinct from body #13171c for wave contrast */
   --theme-background:      #13171c;   /* warm charcoal-ink, faint blue-green undertone */
   --theme-foreground:      #c8c3b6;
   --theme-grid-a:          rgba(231, 226, 214, 0.045);
@@ -383,10 +386,45 @@ body::after {
   border-block: 1px solid var(--theme-hairline);
 }
 
-/* Footer zone — distinctly elevated from content */
+/* Footer zone — solid fill so wave layers read clearly */
 .footer-band {
-  background: color-mix(in srgb, var(--theme-surface) 55%, transparent);
-  border-top: 1px solid var(--theme-hairline);
+  background: var(--footer-fill);
+  margin-top: var(--wave-height);
+}
+
+/* ── Animated parallax wave divider ─────────────
+   4 <use> layers at staggered speeds/offsets
+   produce the layered shadow-fade-to-solid depth
+   from the reference (Miles/posterized_section).
+─────────────────────────────────────────────── */
+.footer-wave-container {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: calc(var(--wave-height) + 2px);      /* +2px covers section border-bottom above */
+  top: calc(-1 * var(--wave-height) - 2px);
+  overflow: hidden;
+  pointer-events: none;
+  margin-bottom: -7px; /* safari anti-gap */
+  background: var(--theme-background);
+}
+
+.footer-wave-container svg {
+  width: 100%;
+  height: 100%;
+}
+
+.footer-wave-parallax > use {
+  animation: footer-wave-move 25s cubic-bezier(.55, .5, .45, .5) infinite;
+}
+.footer-wave-parallax > use:nth-child(1) { animation-delay: -2s;  animation-duration: 7s; }
+.footer-wave-parallax > use:nth-child(2) { animation-delay: -3s;  animation-duration: 10s; }
+.footer-wave-parallax > use:nth-child(3) { animation-delay: -4s;  animation-duration: 13s; }
+.footer-wave-parallax > use:nth-child(4) { animation-delay: -5s;  animation-duration: 20s; }
+
+@keyframes footer-wave-move {
+  0%   { transform: translate3d(-90px, 0, 0); }
+  100% { transform: translate3d(85px,  0, 0); }
 }
 
 .hairline { background: var(--theme-hairline); }

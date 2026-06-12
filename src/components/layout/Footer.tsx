@@ -21,7 +21,27 @@ const connectLinks = [
 
 export default function Footer() {
   return (
-    <footer className="footer-band relative overflow-hidden">
+    <footer className="footer-band relative z-[11]">
+      {/* 4-layer animated parallax wave — from Miles/posterized_section reference */}
+      <div aria-hidden="true" className="footer-wave-container">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 24 150 28"
+          preserveAspectRatio="none"
+          shapeRendering="auto"
+        >
+          <defs>
+            <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+          </defs>
+          <g className="footer-wave-parallax">
+            <use href="#gentle-wave" x="48" y="0" style={{ fill: "var(--footer-fill)", opacity: 0.2 }} />
+            <use href="#gentle-wave" x="48" y="3" style={{ fill: "var(--footer-fill)", opacity: 0.5 }} />
+            <use href="#gentle-wave" x="48" y="5" style={{ fill: "var(--footer-fill)", opacity: 0.8 }} />
+            <use href="#gentle-wave" x="48" y="7" style={{ fill: "var(--footer-fill)" }} />
+          </g>
+        </svg>
+      </div>
+
       <div className="mx-auto max-w-7xl px-6 py-16 md:py-20">
         <div className="grid gap-12 md:grid-cols-[1.7fr_1fr_1fr] lg:grid-cols-[2fr_1fr_1fr_1.1fr]">
 
