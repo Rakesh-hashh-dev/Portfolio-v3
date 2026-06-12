@@ -90,7 +90,7 @@ export default function HomeFeatures() {
       </section>
 
       {/* ── Explore by area ──────────────────────────── */}
-      <section className="section-band content-section pt-20 pb-10">
+      <section className="section-band content-section pt-20 pb-0 md:pb-20">
         <div className="mx-auto max-w-7xl px-6">
 
           <m.div

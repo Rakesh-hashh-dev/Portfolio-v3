@@ -377,19 +377,21 @@ body::after {
 /* Section utilities */
 .section-band {
   background: var(--theme-section-bg);
-  border-block: 1px solid var(--theme-section-border);
+  border-top: 1px solid var(--theme-section-border);
 }
 
 /* Slightly elevated surface — alternating sections */
 .section-raised {
   background: color-mix(in srgb, var(--theme-surface) 38%, transparent);
-  border-block: 1px solid var(--theme-hairline);
+  border-top: 1px solid var(--theme-hairline);
 }
 
 /* Footer zone — solid fill so wave layers read clearly */
 .footer-band {
   background: var(--footer-fill);
   margin-top: var(--wave-height);
+  /* iPhone X+ home-indicator clearance */
+  padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 /* ── Animated parallax wave divider ─────────────
@@ -401,20 +403,28 @@ body::after {
   position: absolute;
   left: 0;
   width: 100%;
-  height: calc(var(--wave-height) + 2px);      /* +2px covers section border-bottom above */
-  top: calc(-1 * var(--wave-height) - 2px);
+  height: var(--wave-height);
+  top: calc(-1 * var(--wave-height));
   overflow: hidden;
   pointer-events: none;
   margin-bottom: -7px; /* safari anti-gap */
-  background: var(--theme-background);
+  background: transparent; /* let content section + aurora show through naturally */
+  /* Promote to GPU layer — prevents compositing flicker on iOS/Android */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 .footer-wave-container svg {
   width: 100%;
   height: 100%;
+  display: block;
 }
 
 .footer-wave-parallax > use {
+  /* GPU compositing per layer — critical for smooth parallax on iOS/Android */
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
   animation: footer-wave-move 25s cubic-bezier(.55, .5, .45, .5) infinite;
 }
 .footer-wave-parallax > use:nth-child(1) { animation-delay: -2s;  animation-duration: 7s; }
@@ -425,6 +435,27 @@ body::after {
 @keyframes footer-wave-move {
   0%   { transform: translate3d(-90px, 0, 0); }
   100% { transform: translate3d(85px,  0, 0); }
+}
+
+/* Phone — fixed px avoids iOS vh unreliability (address bar show/hide shifts 15vh) */
+@media (max-width: 767px) {
+  :root { --wave-height: 75px; }
+}
+
+/* Tablet — slightly reduced ceiling, keeps the wave proportional */
+@media (min-width: 768px) and (max-width: 1023px) {
+  :root { --wave-height: clamp(90px, 12vh, 120px); }
+}
+
+/* Mobile + tablet: extend wave container upward to swallow the main-pb-safe gap
+   (max(5rem, safe-area+5rem)) so the wave starts right at section bottom, not
+   120px below it. Mirrors the .main-pb-safe formula exactly. */
+@media (max-width: 1023px) {
+  .footer-wave-container {
+    --_pb: max(5rem, calc(env(safe-area-inset-bottom, 0px) + 5rem));
+    height: calc(var(--wave-height) + var(--_pb));
+    top:    calc(-1 * (var(--wave-height) + var(--_pb)));
+  }
 }
 
 .hairline { background: var(--theme-hairline); }
