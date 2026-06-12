@@ -26,12 +26,12 @@ const fraunces = Fraunces({
 const themeScript = `
 try {
   var theme = localStorage.getItem("portfolio-theme");
-  var t = theme === "light" ? "light" : "dark";
+  var t = theme === "dark" ? "dark" : "light";
   document.documentElement.dataset.theme = t;
   document.documentElement.style.colorScheme = t;
 } catch (_) {
-  document.documentElement.dataset.theme = "dark";
-  document.documentElement.style.colorScheme = "dark";
+  document.documentElement.dataset.theme = "light";
+  document.documentElement.style.colorScheme = "light";
 }
 `;
 
@@ -78,7 +78,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      data-theme="dark"
+      data-theme="light"
       className={`${inter.variable} ${fraunces.variable} h-full antialiased`}
       suppressHydrationWarning
     >
