@@ -18,7 +18,7 @@ export const profile = {
   resume: "/Profile.pdf",
   linkedin: "https://www.linkedin.com/in/rakesh-kumar-behera-rk821604",
   summary:
-    "44 months of Fortune 500-grade product delivery at TCS — managing 90K-user enterprise systems, maintaining 100% SLA, and leading a 5-member client-side tech team — now combined with IIM Sambalpur MBA training in strategy, consulting, and product management.",
+    "I keep mission-critical systems running for Fortune 500 clients — 90K users, 100% SLA, a 5-member team led at TCS over 44 months — and I'm now layering IIM Sambalpur MBA training in strategy, consulting, and product on top of that delivery foundation.",
 };
 
 export const highlights = [
@@ -41,7 +41,7 @@ export const experience = [
     company: "Mr Gardenr",
     location: "Ahmedabad, Gujarat",
     detail:
-      "Covered the full spectrum of a growing premium landscaping business — from strategy to shipping. Conducted end-to-end market research on the urban gardening and home-transformation space, including competitive analysis, supply-chain mapping, and strategic recommendations for leadership. Evaluated CRM platforms, productivity suites, and customer-engagement tools to inform tech stack decisions. Designed marketing performance dashboards to surface key metrics for decision-making. Independently designed and shipped a production-grade marketing-and-booking website (React · Vite · TailwindCSS) backed by a custom no-code CMS, and built an automated sales-visit management system to streamline field operations.",
+      "Owned strategy-to-shipping for a 200-person, 11-office premium landscaping firm. Shipped the company's first website (15 self-editable pages, ₹0/month infra), built a two-tier CRM with live dashboards tracking a ₹8L sales pipeline across 69 leads, automated field-visit coordination via Apps Script, and profiled 19 competitors in a USD 26B market to surface a white-space positioning play for leadership.",
   },
   {
     period: "Aug 2025 – Present",
@@ -49,7 +49,7 @@ export const experience = [
     company: "AlphaBeta — The Product Management Club, IIM Sambalpur",
     location: "Sambalpur",
     detail:
-      "Spearheading Product Decipher and Ultimate PM competitions — designing multi-platform promotional campaigns (LinkedIn, Instagram, Unstop) that drove 500+ student participants across B-schools. End-to-end ownership of Udbhavanam, the club's flagship event, covering guest coordination, logistics, and on-ground execution.",
+      "Spearheading Product Decipher and Ultimate PM competitions — designing multi-platform promotional campaigns (LinkedIn, Instagram, Unstop) that drove 500+ participants across B-schools and undergrad colleges. End-to-end ownership of Udbhavanam, the club's flagship event, covering guest coordination, logistics, and on-ground execution.",
   },
   {
     period: "Jan 2026 – Mar 2026",
@@ -57,7 +57,7 @@ export const experience = [
     company: "SunsysTechsol Pvt. Ltd.",
     location: "Bhubaneswar",
     detail:
-      "Short-term consulting engagement connecting technical delivery requirements with client business processes and operational needs.",
+      "Short-term IT consulting engagement for a B2B services client — mapped existing operational workflows, documented technical requirements, and delivered a system-integration roadmap to reduce manual reporting overhead across departments.",
   },
   {
     period: "Oct 2021 – Jun 2025",
@@ -89,14 +89,14 @@ export const education = [
 export const philosophy = {
   eyebrow: "Personal Philosophy & Leadership",
   quote:
-    "Great strategy is nothing without execution. I believe in data-driven decisions, empowering teams, and creating sustainable value through continuous improvement.",
+    "Great strategy is nothing without execution. I've spent four years on the execution side — keeping 90K-user systems running at 100% SLA — so when I build strategy now, it's strategy that survives contact with operations.",
 };
 
 export const stats = [
-  { value: "90K+", label: "Users on Fortune 500 product supported" },
-  { value: "100%", label: "SLA hit across all incident resolutions" },
-  { value: "30%", label: "YOY job process failure reduction" },
-  { value: "3×", label: "TCS performance awards recognised" },
+  { value: "90K+", label: "Enterprise users supported (Fortune 500 client)" },
+  { value: "100%", label: "SLA compliance across all incidents" },
+  { value: "30%", label: "YoY drop in recurring job failures" },
+  { value: "4×", label: "TCS performance awards" },
 ];
 
 export const caseStudies = [
@@ -141,7 +141,7 @@ export const caseStudies = [
     title: "AlphaBeta PM Competitions",
     category: "Marketing",
     icon: Megaphone,
-    outcome: "500+ students engaged across B-schools",
+    outcome: "500+ participants across B-schools and undergrad colleges",
     org: "AlphaBeta — The PM Club, IIM Sambalpur",
     duration: "Aug 2025 – Present",
     summary:
@@ -174,7 +174,7 @@ export const caseStudies = [
     title: "Udbhavanam — Flagship Event Operations",
     category: "Operations",
     icon: Presentation,
-    outcome: "Multi-stakeholder event delivered on schedule",
+    outcome: "15 speakers coordinated · flagship event delivered on schedule",
     org: "AlphaBeta — The PM Club, IIM Sambalpur",
     duration: "Aug 2025 – Present",
     summary:
@@ -244,7 +244,7 @@ export const caseStudies = [
     icon: Network,
     outcome: "15 editable pages · ₹0/month infra · 6–10 tools consolidated into 1",
     org: "Mr Gardenr · EcoVibes Green India Pvt. Ltd.",
-    duration: "Apr 2025 – Jun 2025",
+    duration: "Apr 2026 – Jun 2026",
     summary:
       "A 200-person, 11-office landscaping firm operated with no public website and a fragmented stack of point tools. I owned the digital backbone end to end — shipping the company's first website on a self-editable CMS at zero recurring cost, then mapping a phased CRM consolidation to retire 6–10 disconnected tools.",
     points: [
@@ -279,7 +279,7 @@ export const caseStudies = [
     icon: BarChart3,
     outcome: "₹8L pipeline live-tracked · 69 leads · 6.51-day avg ageing",
     org: "Mr Gardenr · EcoVibes Green India Pvt. Ltd.",
-    duration: "Apr 2025 – Jun 2025",
+    duration: "Apr 2026 – Jun 2026",
     summary:
       "Sales ran on disconnected spreadsheets and field coordination on manual reminder calls. I built a two-tier CRM feeding live Looker Studio dashboards and an Apps Script automation layer — turning a spreadsheet-era process into a tracked ₹8,00,000 pipeline and a self-running field cadence.",
     points: [
@@ -314,7 +314,7 @@ export const caseStudies = [
     icon: SearchCheck,
     outcome: "19 competitors profiled · USD 26B market mapped · white space identified",
     org: "Mr Gardenr · EcoVibes Green India Pvt. Ltd.",
-    duration: "Apr 2025 – Jun 2025",
+    duration: "Apr 2026 – Jun 2026",
     summary:
       "To pressure-test where Mr Gardenr could win, I profiled 19 competitors across four strategic lenses and sized a USD 26B home-decor market — surfacing an unclaimed white space in transparent, organised design-supply-install at metro scale. I then prototyped Verdana, an internal design tool, and costed the roadmap to a full 3D platform.",
     points: [

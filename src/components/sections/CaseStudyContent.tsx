@@ -28,6 +28,8 @@ function STARSection({
 }) {
   const borderColor =
     accent === "accent-cyan" ? "border-accent-cyan/25" : "border-accent-purple/25";
+  const accentLeft =
+    accent === "accent-cyan" ? "border-l-accent-cyan/55" : "border-l-accent-purple/55";
   const stepColor =
     accent === "accent-cyan" ? "text-accent-cyan" : "text-accent-purple";
 
@@ -37,12 +39,12 @@ function STARSection({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-      className={`card-glow rounded-xl border ${borderColor} bg-surface p-7`}
+      className={`card-glow rounded-xl border border-l-2 ${borderColor} ${accentLeft} bg-surface p-7`}
     >
       <div className="flex items-center gap-3 mb-5">
         <span className={`display text-4xl font-bold ${stepColor} leading-none`}>{step}</span>
         <div className={`h-px flex-1 border-t border-dashed ${borderColor}`} />
-        <span className="text-xs font-semibold uppercase tracking-[0.2em] text-white/45">
+        <span className="text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
           {label}
         </span>
       </div>
@@ -109,6 +111,16 @@ export function CaseStudyContent({ slug }: { slug: string }) {
           <p className="mt-5 text-sm leading-[1.88] text-white/70 border-t border-[var(--theme-hairline)] pt-5">
             {cs.summary}
           </p>
+          {cs.points.length > 0 && (
+            <div className="mt-5 grid gap-2.5 border-t border-[var(--theme-hairline)] pt-5 sm:grid-cols-2">
+              {cs.points.map((point) => (
+                <div key={point} className="flex items-start gap-2.5 text-sm leading-[1.7] text-white/70">
+                  <CheckCircle2 size={14} className="mt-0.5 shrink-0 text-accent-cyan" />
+                  {point}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </m.div>
 

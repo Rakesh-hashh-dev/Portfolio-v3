@@ -1,7 +1,7 @@
 "use client";
 
 import { m, type Variants } from "framer-motion";
-import { GraduationCap, MapPin, Quote, Target } from "lucide-react";
+import { BriefcaseBusiness, GraduationCap, MapPin, Quote, Target } from "lucide-react";
 import { education, impactMetrics, philosophy, profile } from "@/lib/profile";
 
 const stagger: Variants = {
@@ -16,6 +16,7 @@ const up: Variants = {
 
 const quickFacts = [
   { icon: GraduationCap, label: "Program", value: "MBA · IIM Sambalpur", sub: "2025 – 2027" },
+  { icon: BriefcaseBusiness, label: "Summer Internship", value: "Mr Gardenr · Ahmedabad", sub: "Strategy & Product · Apr – Jun 2026" },
   { icon: Target, label: "Background", value: "TCS System Engineer", sub: "44 months · Fortune 500" },
   { icon: MapPin, label: "Location", value: "Bhubaneswar, India", sub: null },
 ];
@@ -38,15 +39,15 @@ export default function About() {
               Fortune 500 delivery experience meets{" "}
               <em className="italic text-gradient-cyan">MBA strategy.</em>
             </h2>
-            <p className="mt-7 max-w-xl text-[1.0625rem] leading-[1.85] text-white/60">
-              Seven years after graduating as a production engineer, I spent 44 months at the intersection
-              of enterprise IT and business delivery — managing application support for a $29B Fortune 500
-              client at TCS, progressing from junior engineer to team lead, and earning four performance
+            <p className="mt-7 max-w-xl text-[1.0625rem] leading-[1.85] text-white/70">
+              I trained as a production engineer, then spent 44 months at TCS at the intersection of
+              enterprise IT and business delivery — managing application support for a $29B Fortune 500
+              client, progressing from junior engineer to team lead, and earning four performance
               recognitions along the way. That tenure taught me how systems actually operate under pressure:
               SLA discipline, root-cause diagnostics, 90K-user infrastructure, and the sustained work of
               keeping things reliable.
             </p>
-            <p className="mt-4 max-w-xl text-base leading-[1.85] text-white/65">
+            <p className="mt-4 max-w-xl text-base leading-[1.85] text-white/70">
               The MBA at IIM Sambalpur is a deliberate pivot — not away from execution, but toward the
               strategic layer above it. I&apos;m building fluency in consulting frameworks, product management,
               and marketing analytics because the problems I want to work on are cross-functional ones.

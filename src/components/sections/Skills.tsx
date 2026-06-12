@@ -5,6 +5,14 @@ import { Check } from "lucide-react";
 import { certifications, skillGroups } from "@/lib/profile";
 import StatCounter from "@/components/ui/StatCounter";
 
+const internshipDeliverables = [
+  "Market research: competitive analysis, supply-chain mapping & strategic recommendations for leadership",
+  "Evaluated CRM platforms, productivity suites & customer-engagement tools for tech stack decisions",
+  "Designed marketing performance dashboards to surface key decision-making metrics",
+  "Built & shipped a production website — React · Vite · TailwindCSS with custom no-code CMS",
+  "Designed an automated sales-visit management system to streamline field operations",
+];
+
 export default function Skills() {
   const isOdd = skillGroups.length % 2 !== 0;
 
@@ -52,22 +60,6 @@ export default function Skills() {
                   </div>
 
                   <h3 className="display text-xl text-white">{group.title}</h3>
-
-                  {/* Proficiency bar */}
-                  <div className="mt-3 flex items-center gap-3">
-                    <div className="h-1 flex-1 rounded-full bg-[var(--theme-hairline)] overflow-hidden">
-                      <m.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${group.level}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: i * 0.05 }}
-                        className={`h-full rounded-full ${isCore ? "bg-accent-purple/55" : "bg-accent-cyan/50"}`}
-                      />
-                    </div>
-                    <span className="shrink-0 text-[11px] font-semibold tabular-nums text-white/40">
-                      {group.level}%
-                    </span>
-                  </div>
 
                   <div className="mt-4 flex flex-wrap gap-2">
                     {group.skills.map((skill) => (
@@ -117,6 +109,53 @@ export default function Skills() {
           </div>
         </m.div>
       </div>
+
+      {/* ── Summer Internship ────────────────────────── */}
+      <m.div
+        initial={{ opacity: 0, y: 18 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.5 }}
+        className="mt-12 border-t border-[var(--theme-hairline)] pt-12"
+      >
+        <p className="eyebrow mb-8">Applied Experience</p>
+        <div className="card-glow rounded-xl border border-accent-cyan/25 bg-gradient-to-br from-surface to-accent-cyan/[0.03] p-7 md:p-8">
+          <div className="md:grid md:grid-cols-[1fr_300px] md:gap-10 md:items-start">
+
+            <div>
+              <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.22em] text-white/40">
+                Summer Internship · Apr – Jun 2026
+              </p>
+              <h3 className="display text-2xl text-white md:text-3xl">
+                Strategy, Marketing & Product Management Intern
+              </h3>
+              <p className="mt-1.5 text-base font-semibold text-accent-cyan">
+                Mr Gardenr · Ahmedabad, Gujarat
+              </p>
+              <p className="mt-5 text-sm leading-[1.88] text-white/65">
+                Covered the full spectrum of a growing premium landscaping business — from strategy to shipping.
+                End-to-end responsibility across market research, tech stack evaluation, marketing analytics,
+                and production engineering.
+              </p>
+            </div>
+
+            <div className="mt-6 rounded-lg border border-accent-cyan/20 bg-accent-cyan/[0.04] p-5 md:mt-0">
+              <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.22em] text-white/45">
+                Key deliverables
+              </p>
+              <div className="space-y-3">
+                {internshipDeliverables.map((item) => (
+                  <div key={item} className="flex items-start gap-3 text-sm leading-[1.75] text-white/70">
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-cyan" />
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </m.div>
     </section>
   );
 }

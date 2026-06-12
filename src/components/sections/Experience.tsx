@@ -25,6 +25,7 @@ export default function Experience() {
 
         {experience.map((item, index) => {
           const isCurrent = item.period.includes("Present");
+          const isSummerIntern = item.company.startsWith("Mr Gardenr");
           const isLast = index === experience.length - 1;
 
           return (
@@ -72,6 +73,11 @@ export default function Experience() {
                 {isCurrent && (
                   <span className="mb-2.5 inline-block text-[10px] font-bold uppercase tracking-[0.22em] text-accent-purple">
                     Currently active
+                  </span>
+                )}
+                {isSummerIntern && (
+                  <span className="mb-2.5 inline-flex items-center gap-1.5 rounded-full border border-accent-cyan/30 bg-accent-cyan/[0.08] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.2em] text-accent-cyan">
+                    MBA Summer Internship · IIM Sambalpur
                   </span>
                 )}
 

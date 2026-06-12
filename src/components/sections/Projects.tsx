@@ -10,6 +10,13 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 const categories = ["All", "Operations", "Marketing", "Strategy", "Leadership"];
 
+const categoryStyle: Record<string, string> = {
+  Operations: "border-accent-cyan/35 text-accent-cyan",
+  Marketing:  "border-accent-cyan/35 text-accent-cyan",
+  Strategy:   "border-accent-purple/40 text-accent-purple",
+  Leadership: "border-amber-400/35 text-amber-400",
+};
+
 const SKELETON_MS = 220;
 
 function CardSkeleton() {
@@ -152,7 +159,7 @@ export default function Projects() {
                             Read full case study <ArrowRight size={13} />
                           </div>
                         </div>
-                        <div className="mt-6 rounded-lg border border-[var(--theme-hairline)] bg-white/[0.03] p-5 md:mt-0">
+                        <div className="mt-6 rounded-lg border border-accent-cyan/20 bg-accent-cyan/[0.04] p-5 md:mt-0">
                           <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.22em] text-white/45">Key outcomes</p>
                           <div className="space-y-3">
                             {project.points.map((point) => (
@@ -171,7 +178,7 @@ export default function Projects() {
                           <div className="flex h-11 w-11 items-center justify-center rounded-md border border-[var(--theme-hairline)] text-accent-cyan transition-colors group-hover:border-accent-cyan/40">
                             <project.icon size={20} />
                           </div>
-                          <span className="rounded-full border border-[var(--theme-hairline)] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/65">
+                          <span className={`rounded-full border px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] ${categoryStyle[project.category] ?? "border-[var(--theme-hairline)] text-white/65"}`}>
                             {project.category}
                           </span>
                         </div>
@@ -181,7 +188,7 @@ export default function Projects() {
                         <div className="mt-6 space-y-2.5 border-t border-[var(--theme-hairline)] pt-5">
                           {project.points.map((point) => (
                             <div key={point} className="flex items-center gap-3 text-sm text-white/70">
-                              <span className="h-1 w-1 shrink-0 rounded-full bg-accent-cyan" />
+                              <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent-cyan" />
                               {point}
                             </div>
                           ))}

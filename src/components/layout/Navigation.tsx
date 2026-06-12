@@ -92,8 +92,8 @@ export default function Navigation() {
         {/* ── Right actions ─────────────────────────── */}
         <div className="flex shrink-0 items-center gap-2.5">
           <ThemeToggle />
-          <a
-            href={`mailto:${profile.email}`}
+          <Link
+            href="/contact"
             className="btn-accent group !px-4 !py-2 !text-[13px]"
           >
             Connect
@@ -101,7 +101,7 @@ export default function Navigation() {
               size={13}
               className="transition-transform duration-150 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
             />
-          </a>
+          </Link>
         </div>
       </div>
     </m.nav>

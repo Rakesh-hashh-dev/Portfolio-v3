@@ -191,7 +191,7 @@ export default function Hero() {
                     Selected Impact
                   </p>
                   <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-accent-cyan">
-                    2024 — 26
+                    2021 — 26
                   </span>
                 </div>
                 <div className="divide-y divide-[var(--theme-hairline)]">
