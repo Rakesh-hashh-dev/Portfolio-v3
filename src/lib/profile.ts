@@ -399,18 +399,21 @@ export const homeCards = [
     href: "/experience",
     icon: BriefcaseBusiness,
     text: "44 months at a Fortune 500 client via TCS, IT consulting, and IIM Sambalpur leadership.",
+    cta: "View timeline",
   },
   {
     title: "Case Studies",
     href: "/case-studies",
     icon: Presentation,
     text: "Enterprise SLA delivery, campus marketing campaigns, and 30+ member team leadership.",
+    cta: "Read studies",
   },
   {
     title: "Skills",
     href: "/skills",
     icon: LineChart,
     text: "Strategy, operations, analytics, product management — backed by 6 industry certifications.",
+    cta: "See skills",
   },
 ];
 

@@ -133,7 +133,7 @@ export default function HomeFeatures() {
                   <h3 className="text-lg font-semibold text-white">{card.title}</h3>
                   <p className="mt-3 flex-1 text-sm leading-7 text-white/55">{card.text}</p>
                   <div className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-accent-cyan">
-                    {card.href === "/experience" ? "View timeline" : card.href === "/case-studies" ? "Read studies" : "See skills"}
+                    {card.cta}
                     <ArrowRight size={14} className="transition-transform duration-200 group-hover:translate-x-1" />
                   </div>
                 </Link>

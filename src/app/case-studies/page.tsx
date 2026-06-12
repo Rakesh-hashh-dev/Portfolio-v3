@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import Projects from "@/components/sections/Projects";
 import { PageIntro } from "@/components/ui/PageIntro";
@@ -23,7 +24,9 @@ export default function CaseStudiesPage() {
         These case studies summarize the kind of work that best represents the profile: structured planning,
         cross-functional coordination, promotional execution, and measurable outcomes.
       </PageIntro>
-      <Projects />
+      <Suspense>
+        <Projects />
+      </Suspense>
     </main>
   );
 }

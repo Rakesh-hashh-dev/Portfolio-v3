@@ -53,6 +53,22 @@ export default function Skills() {
 
                   <h3 className="display text-xl text-white">{group.title}</h3>
 
+                  {/* Proficiency bar */}
+                  <div className="mt-3 flex items-center gap-3">
+                    <div className="h-1 flex-1 rounded-full bg-[var(--theme-hairline)] overflow-hidden">
+                      <m.div
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${group.level}%` }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: i * 0.05 }}
+                        className={`h-full rounded-full ${isCore ? "bg-accent-purple/55" : "bg-accent-cyan/50"}`}
+                      />
+                    </div>
+                    <span className="shrink-0 text-[11px] font-semibold tabular-nums text-white/40">
+                      {group.level}%
+                    </span>
+                  </div>
+
                   <div className="mt-4 flex flex-wrap gap-2">
                     {group.skills.map((skill) => (
                       <span

@@ -52,7 +52,7 @@ export default function Hero() {
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-signal opacity-60" />
                   <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-signal" />
                 </span>
-                Open to Final Placements · 2027
+                Available Now · Final Placements 2027
               </span>
             </m.div>
 

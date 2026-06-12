@@ -2,8 +2,7 @@
 
 import { m, type Variants } from "framer-motion";
 import { GraduationCap, MapPin, Quote, Target } from "lucide-react";
-import { education, impactMetrics, philosophy, profile, stats } from "@/lib/profile";
-import StatCounter from "@/components/ui/StatCounter";
+import { education, impactMetrics, philosophy, profile } from "@/lib/profile";
 
 const stagger: Variants = {
   hidden: {},
@@ -40,11 +39,19 @@ export default function About() {
               <em className="italic text-gradient-cyan">MBA strategy.</em>
             </h2>
             <p className="mt-7 max-w-xl text-[1.0625rem] leading-[1.85] text-white/60">
-              {profile.summary}
+              Seven years after graduating as a production engineer, I spent 44 months at the intersection
+              of enterprise IT and business delivery — managing application support for a $29B Fortune 500
+              client at TCS, progressing from junior engineer to team lead, and earning four performance
+              recognitions along the way. That tenure taught me how systems actually operate under pressure:
+              SLA discipline, root-cause diagnostics, 90K-user infrastructure, and the sustained work of
+              keeping things reliable.
             </p>
             <p className="mt-4 max-w-xl text-base leading-[1.85] text-white/65">
-              Targeting management consulting, strategy & operations, and product management roles —
-              where enterprise delivery experience and MBA analytical frameworks create measurable business impact.
+              The MBA at IIM Sambalpur is a deliberate pivot — not away from execution, but toward the
+              strategic layer above it. I&apos;m building fluency in consulting frameworks, product management,
+              and marketing analytics because the problems I want to work on are cross-functional ones.
+              Targeting management consulting, strategy & operations, and product roles where technical
+              grounding and business thinking are both required.
             </p>
           </m.div>
 
@@ -98,25 +105,6 @@ export default function About() {
             {profile.name}
           </figcaption>
         </m.figure>
-      </section>
-
-      {/* ── Stats band ─────────────────────────────────── */}
-      <section className="mx-auto max-w-7xl px-6 pb-16">
-        <div className="grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-[var(--theme-hairline)] bg-[var(--theme-hairline)] md:grid-cols-4">
-          {stats.map((stat, i) => (
-            <m.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ delay: i * 0.07, duration: 0.45 }}
-              className="bg-surface p-6"
-            >
-              <p className="num text-4xl text-accent-purple"><StatCounter value={stat.value} /></p>
-              <p className="mt-2 text-xs leading-5 text-white/60">{stat.label}</p>
-            </m.div>
-          ))}
-        </div>
       </section>
 
       {/* ── Education + Impact metrics ─────────────────── */}

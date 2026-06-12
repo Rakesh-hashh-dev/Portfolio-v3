@@ -6,9 +6,9 @@ import { usePathname } from "next/navigation";
 import { ArrowUpRight } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 import { useEffect, useState } from "react";
+import { profile } from "@/lib/profile";
 
 const links = [
-  { name: "Home",         href: "/" },
   { name: "About",        href: "/about" },
   { name: "Experience",   href: "/experience" },
   { name: "Case Studies", href: "/case-studies" },
@@ -93,7 +93,7 @@ export default function Navigation() {
         <div className="flex shrink-0 items-center gap-2.5">
           <ThemeToggle />
           <a
-            href="mailto:rk821604@gmail.com"
+            href={`mailto:${profile.email}`}
             className="btn-accent group !px-4 !py-2 !text-[13px]"
           >
             Connect

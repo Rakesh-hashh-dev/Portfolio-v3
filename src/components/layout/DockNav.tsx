@@ -34,7 +34,7 @@ const mainDockItems = [
 const socialItems = [
   { icon: LinkedinIcon, label: "LinkedIn", href: "https://www.linkedin.com/in/rakesh-kumar-behera-rk821604", external: true,  brandColor: "#0A66C2" },
   { icon: Mail,         label: "Email",    href: "mailto:rk821604@gmail.com",                                 external: false, brandColor: "#EA4335" },
-  { icon: FileText,     label: "Resume",   href: "/Profile.pdf",                                             external: false, brandColor: "#F59E0B" },
+  { icon: FileText,     label: "Résumé",   href: "/Profile.pdf",                                             external: false, brandColor: "#F59E0B" },
 ];
 
 function SidebarIcon({ item }: { item: (typeof socialItems)[0] }) {
