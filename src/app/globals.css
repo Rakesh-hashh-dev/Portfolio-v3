@@ -20,7 +20,7 @@
 ─────────────────────────────────────────────── */
 :root {
   --theme-contrast: #000000;        /* ink (acts as "white") — pure black gives ≥4.5:1 contrast at 60%+ opacity */
-  --theme-surface: #f7f4ee;
+  --theme-surface: #ffffff;
   --footer-fill: #e8e4da;           /* warm shadow tone — distinctly darker than surface for wave contrast */
   --wave-height: clamp(100px, 15vh, 150px); /* responsive wave height matches footer margin-top */
   --theme-primary: #1a3a5f;         /* deep navy */

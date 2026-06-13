@@ -1,6 +1,7 @@
 "use client";
 
 import { m } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
 import { homeCards, profile, recruiterFit } from "@/lib/profile";
@@ -75,15 +76,25 @@ export default function HomeFeatures() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ delay: i * 0.07, duration: 0.5 }}
-              className="group relative bg-surface p-8 transition-[background-color] duration-200 hover:bg-white/[0.05]"
+              className="group relative overflow-hidden bg-surface transition-[background-color] duration-200 hover:bg-white/[0.05]"
             >
-              <div className="mb-6">
-                <div className="flex h-10 w-10 items-center justify-center rounded-md border border-[var(--theme-hairline)] text-accent-cyan transition-colors duration-200 group-hover:border-accent-cyan/40 group-hover:bg-accent-cyan/[0.06]">
-                  <item.icon size={18} />
-                </div>
+              <div className="relative h-44 w-full overflow-hidden">
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div
+                  className="absolute inset-0"
+                  style={{ background: "linear-gradient(to bottom, transparent 40%, var(--theme-surface) 100%)" }}
+                />
               </div>
-              <h3 className="text-lg font-semibold text-white">{item.title}</h3>
-              <p className="mt-3 text-sm leading-[1.85] text-white/55">{item.text}</p>
+              <div className="px-8 pb-8 pt-5">
+                <h3 className="text-lg font-semibold text-white">{item.title}</h3>
+                <p className="mt-3 text-sm leading-[1.85] text-white/55">{item.text}</p>
+              </div>
             </m.div>
           ))}
         </div>
@@ -127,9 +138,6 @@ export default function HomeFeatures() {
                   href={card.href}
                   className="card-glow group relative flex h-full flex-col rounded-lg border border-[var(--theme-hairline)] bg-surface p-7 cursor-pointer"
                 >
-                  <div className="mb-6 flex h-11 w-11 items-center justify-center rounded-md border border-[var(--theme-hairline)] text-accent-cyan transition-all duration-200 group-hover:border-accent-cyan/45 group-hover:bg-accent-cyan/[0.06]">
-                    <card.icon size={20} />
-                  </div>
                   <h3 className="text-lg font-semibold text-white">{card.title}</h3>
                   <p className="mt-3 flex-1 text-sm leading-7 text-white/55">{card.text}</p>
                   <div className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-accent-cyan">

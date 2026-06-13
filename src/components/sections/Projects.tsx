@@ -145,9 +145,9 @@ export default function Projects() {
                       <div className="md:grid md:grid-cols-[1fr_260px] md:gap-8 md:items-start">
                         <div>
                           <div className="mb-6 flex items-start justify-between gap-4">
-                            <div className="flex h-12 w-12 items-center justify-center rounded-md border border-accent-cyan/30 text-accent-cyan">
-                              <project.icon size={22} />
-                            </div>
+                            <span className="font-mono text-4xl font-light leading-none tracking-tight text-white/15 select-none">
+                              {String(idx + 1).padStart(2, "0")}
+                            </span>
                             <span className="rounded-full border border-accent-purple/40 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-accent-purple">
                               {project.category}
                             </span>
@@ -175,9 +175,9 @@ export default function Projects() {
                       /* ── Standard layout ── */
                       <>
                         <div className="mb-6 flex items-start justify-between gap-4">
-                          <div className="flex h-11 w-11 items-center justify-center rounded-md border border-[var(--theme-hairline)] text-accent-cyan transition-colors group-hover:border-accent-cyan/40">
-                            <project.icon size={20} />
-                          </div>
+                          <span className="font-mono text-4xl font-light leading-none tracking-tight text-white/15 select-none">
+                            {String(idx + 1).padStart(2, "0")}
+                          </span>
                           <span className={`rounded-full border px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] ${categoryStyle[project.category] ?? "border-[var(--theme-hairline)] text-white/65"}`}>
                             {project.category}
                           </span>

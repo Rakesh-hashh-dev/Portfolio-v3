@@ -386,6 +386,8 @@ export const radarMethodology =
 
 export const certifications = [
   "Lean Six Sigma Green Belt — Grant Thornton (2026)",
+  "Salesforce Certified AI Associate (2026)",
+  "HubSpot Marketing Hub Software Certified (2026)",
   "Microsoft Certified: Data Analyst Associate — PL-300 (2025)",
   "Oracle Cloud Infrastructure 2024 Certified Foundations Associate (2025)",
   "Microsoft Certified: Azure Administrator Associate — AZ-104 (2024)",
@@ -420,22 +422,22 @@ export const homeCards = [
 export const recruiterFit = [
   {
     title: "Consulting-ready problem solving",
-    icon: SearchCheck,
+    image: "/skills/consulting.webp",
     text: "Structured thinking built over 44 months of Fortune 500 delivery, reinforced by Lean Six Sigma Green Belt and MBA strategy and analytics coursework.",
   },
   {
     title: "Operations execution",
-    icon: Network,
+    image: "/skills/operations.webp",
     text: "Proven 100% SLA management, 30% YOY process failure reduction, and end-to-end event ownership from logistics planning through live delivery.",
   },
   {
     title: "Marketing ownership",
-    icon: Megaphone,
+    image: "/skills/marketing.webp",
     text: "Multi-platform campaign design across LinkedIn, Instagram, and Unstop — with measurable 500+ student participation outcomes.",
   },
   {
     title: "Technical-business bridge",
-    icon: BarChart3,
+    image: "/skills/technical.webp",
     text: "Azure-certified administrator, Power BI-certified analyst, and ex-frontend engineer — translating technical systems into strategic business action.",
   },
 ];
