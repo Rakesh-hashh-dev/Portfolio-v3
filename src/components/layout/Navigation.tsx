@@ -3,7 +3,7 @@
 import { m } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, House } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 import { useEffect, useState } from "react";
 import { profile } from "@/lib/profile";
@@ -63,6 +63,23 @@ export default function Navigation() {
 
         {/* ── Center links ──────────────────────────── */}
         <div className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center lg:flex">
+          <Link
+            href="/"
+            aria-label="Home"
+            className={`group relative px-3 py-2 transition-colors duration-150 ${
+              pathname === "/" ? "text-white" : "text-white/50 hover:text-white"
+            }`}
+          >
+            {pathname === "/" && (
+              <m.span
+                layoutId="nav-line"
+                className="absolute inset-x-3 -bottom-0.5 h-px bg-accent-cyan"
+                transition={{ type: "spring", stiffness: 500, damping: 42 }}
+              />
+            )}
+            <House size={15} strokeWidth={1.75} />
+          </Link>
+          <span className="h-3.5 w-px bg-white/15" />
           {links.map((link) => {
             const active = pathname === link.href;
             return (

@@ -250,6 +250,7 @@ export default function Skills() {
               );
             })}
           </div>
+
         </div>
 
         {/* ── Certifications + Tools ───────────────────── */}
