@@ -295,7 +295,7 @@ export default function Skills() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.5 }}
-        className="mt-12 border-t border-[var(--theme-hairline)] pt-12"
+        className="mt-8"
       >
         <p className="eyebrow mb-8">Applied Experience</p>
         <div className="card-glow rounded-xl border border-accent-cyan/25 bg-gradient-to-br from-surface to-accent-cyan/[0.03] p-7 md:p-8">
